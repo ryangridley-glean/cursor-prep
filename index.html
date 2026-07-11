@@ -723,12 +723,328 @@
       border-radius: 999px;
     }
 
+    /* Cursor IDE mock (slide 5) */
+    .cursor-demo {
+      display: grid;
+      grid-template-columns: 1.55fr 0.45fr;
+      gap: 0.85rem;
+      align-items: stretch;
+      min-height: min(58vh, 520px);
+    }
+
+    .ide {
+      background: #1e1e1e;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0, 20, 30, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.06);
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      font-family: "SF Mono", "JetBrains Mono", ui-monospace, Menlo, monospace;
+    }
+
+    .ide-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.55rem 0.75rem;
+      background: #2a2a2a;
+      border-bottom: 1px solid #3a3a3a;
+      flex-shrink: 0;
+    }
+
+    .ide-dots { display: flex; gap: 6px; }
+    .ide-dots span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #555;
+    }
+    .ide-dots span:nth-child(1) { background: #ff5f57; }
+    .ide-dots span:nth-child(2) { background: #febc2e; }
+    .ide-dots span:nth-child(3) { background: #28c840; }
+
+    .ide-title {
+      flex: 1;
+      text-align: center;
+      font-size: 0.72rem;
+      color: #b0b0b0;
+      font-family: "Outfit", sans-serif;
+      font-weight: 500;
+    }
+
+    .ide-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-family: "Outfit", sans-serif;
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: #e8e8e8;
+      background: #3a3a3a;
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
+    }
+
+    .ide-badge img {
+      width: 14px;
+      height: 14px;
+      border-radius: 3px;
+    }
+
+    .ide-body {
+      display: grid;
+      grid-template-columns: 148px 1fr 220px;
+      flex: 1;
+      min-height: 0;
+    }
+
+    .ide-side {
+      background: #252526;
+      border-right: 1px solid #333;
+      padding: 0.65rem 0.5rem;
+      overflow: hidden;
+      font-size: 0.68rem;
+      color: #cccccc;
+      font-family: "Outfit", sans-serif;
+    }
+
+    .ide-side .sec {
+      font-size: 0.6rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #888;
+      margin: 0.35rem 0 0.4rem 0.25rem;
+      font-weight: 700;
+    }
+
+    .ide-file {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.28rem 0.35rem;
+      border-radius: 5px;
+      color: #bbb;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .ide-file.is-open {
+      background: #37373d;
+      color: #fff;
+    }
+
+    .ide-file .ext { color: #519aba; font-size: 0.62rem; font-weight: 700; }
+
+    .ide-editor {
+      background: #1e1e1e;
+      padding: 0.75rem 0.85rem;
+      overflow: hidden;
+      position: relative;
+      min-width: 0;
+    }
+
+    .ide-tab {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #2d2d2d;
+      color: #ddd;
+      font-family: "Outfit", sans-serif;
+      font-size: 0.7rem;
+      padding: 0.28rem 0.65rem;
+      border-radius: 6px 6px 0 0;
+      margin-bottom: 0.55rem;
+      border: 1px solid #3a3a3a;
+      border-bottom: none;
+    }
+
+    .ide-code {
+      font-size: 0.72rem;
+      line-height: 1.55;
+      color: #d4d4d4;
+      white-space: pre;
+      overflow: hidden;
+    }
+
+    .ide-code .ln { color: #558; margin-right: 0.85rem; user-select: none; }
+    .ide-code .k { color: #569cd6; }
+    .ide-code .s { color: #ce9178; }
+    .ide-code .c { color: #6a9955; }
+    .ide-code .f { color: #dcdcaa; }
+    .ide-code .t { color: #4ec9b0; }
+    .ide-code .hi {
+      background: rgba(255, 102, 0, 0.18);
+      outline: 1px solid rgba(255, 102, 0, 0.35);
+      border-radius: 3px;
+    }
+
+    .ide-agent {
+      background: #181818;
+      border-left: 1px solid #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      font-family: "Outfit", sans-serif;
+    }
+
+    .ide-agent-head {
+      padding: 0.55rem 0.7rem;
+      border-bottom: 1px solid #2e2e2e;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: #e6e6e6;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .ide-agent-head .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #28c840;
+      box-shadow: 0 0 0 3px rgba(40, 200, 64, 0.15);
+    }
+
+    .ide-chat {
+      flex: 1;
+      padding: 0.65rem 0.7rem;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .bubble {
+      font-size: 0.72rem;
+      line-height: 1.4;
+      padding: 0.55rem 0.65rem;
+      border-radius: 10px;
+      max-width: 100%;
+    }
+
+    .bubble.user {
+      background: #2f2f2f;
+      color: #e8e8e8;
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
+    }
+
+    .bubble.agent {
+      background: #243028;
+      color: #d7ebe0;
+      border: 1px solid rgba(40, 200, 64, 0.2);
+      border-bottom-left-radius: 4px;
+    }
+
+    .bubble .label {
+      display: block;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      opacity: 0.65;
+      margin-bottom: 0.2rem;
+    }
+
+    .ide-input {
+      margin: 0.5rem 0.65rem 0.65rem;
+      background: #252525;
+      border: 1px solid #3a3a3a;
+      border-radius: 10px;
+      padding: 0.45rem 0.6rem;
+      font-size: 0.68rem;
+      color: #888;
+    }
+
+    .ide-caption {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 0.95rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      box-shadow: 0 8px 24px rgba(0, 42, 66, 0.04);
+    }
+
+    .ide-caption .eyebrow {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--orange);
+    }
+
+    .ide-caption h3 {
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: 1.15rem;
+      color: var(--navy-deep);
+      line-height: 1.2;
+    }
+
+    .ide-caption p {
+      font-size: 0.86rem;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .ide-caption .initiatives {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin-top: 0.15rem;
+    }
+
+    .ide-caption .initiatives span {
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: var(--navy);
+      background: var(--sky);
+      padding: 0.22rem 0.45rem;
+      border-radius: 999px;
+    }
+
+    .ide-steps {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.15rem;
+    }
+
+    .ide-step-btn {
+      appearance: none;
+      border: 1px solid var(--line);
+      background: var(--white);
+      color: var(--navy);
+      font-family: inherit;
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.4rem 0.65rem;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+
+    .ide-step-btn:hover { background: var(--sky); }
+    .ide-step-btn.is-active {
+      background: var(--navy-deep);
+      border-color: var(--navy-deep);
+      color: white;
+    }
+
     @media (max-width: 1100px) {
       .pipeline-track { grid-template-columns: repeat(3, 1fr); }
       .pipeline::before,
       .future-pipeline::before { display: none; }
       .state-layout { grid-template-columns: 1fr; }
       .outcome-ties { grid-template-columns: 1fr; }
+      .cursor-demo { grid-template-columns: 1fr; min-height: 0; }
+      .ide-body { grid-template-columns: 1fr; }
+      .ide-side { display: none; }
+      .ide-agent { border-left: none; border-top: 1px solid #333; max-height: 180px; }
     }
 
     .pov-top {
@@ -1049,7 +1365,8 @@
       .stat-row,
       .pov-top,
       .state-layout,
-      .loop-row {
+      .loop-row,
+      .cursor-demo {
         grid-template-columns: 1fr;
       }
 
@@ -1386,101 +1703,68 @@
 
     <!-- 5. Future state -->
     <section class="slide" data-title="Future state">
-      <div class="slide-inner">
-        <p class="kicker">Future state · with Cursor</p>
-        <h2>Same path — different operating system</h2>
-        <p class="lede">
-          Cursor puts codebase history, prior PRs, and domain context in the loop at every stage — so the frictions on the prior slide become business outcomes that fund your 2026 initiatives.
-        </p>
+      <div class="slide-inner" style="gap: 0.85rem;">
+        <div>
+          <p class="kicker">Future state · with Cursor</p>
+          <h2>What it looks like in Cursor</h2>
+          <p class="lede" style="max-width: 40rem;">
+            Walk the same path as today — write, PR, review, merge, deploy, recover — inside Cursor, with codebase history in the loop.
+          </p>
+        </div>
 
-        <div class="state-layout">
-          <div class="future-pipeline" id="futurePipeline">
-            <div class="pipeline-track">
-              <button type="button" class="future-step is-active" data-future="0">
-                <span class="n">01</span>
-                <span class="title">Write with context</span>
-                <span class="cue">Agents know the repo</span>
-                <span class="gain">Days → hours</span>
-              </button>
-              <button type="button" class="future-step" data-future="1">
-                <span class="n">02</span>
-                <span class="title">PR ready to review</span>
-                <span class="cue">Tests &amp; notes drafted</span>
-                <span class="gain">Higher first-pass</span>
-              </button>
-              <button type="button" class="future-step" data-future="2">
-                <span class="n">03</span>
-                <span class="title">Deep review assist</span>
-                <span class="cue">History-aware checks</span>
-                <span class="gain">Hours, not days</span>
-              </button>
-              <button type="button" class="future-step" data-future="3">
-                <span class="n">04</span>
-                <span class="title">Greener merges</span>
-                <span class="cue">Fewer flake loops</span>
-                <span class="gain">Less queue burn</span>
-              </button>
-              <button type="button" class="future-step" data-future="4">
-                <span class="n">05</span>
-                <span class="title">Confident deploys</span>
-                <span class="cue">Risk surfaced early</span>
-                <span class="gain">Ship on cadence</span>
-              </button>
-              <button type="button" class="future-step" data-future="5">
-                <span class="n">06</span>
-                <span class="title">Faster recovery</span>
-                <span class="cue">Pattern-matched RCA</span>
-                <span class="gain">Lower MTTR</span>
-              </button>
+        <div class="ide-steps" id="ideSteps" aria-label="Cursor workflow steps">
+          <button type="button" class="ide-step-btn is-active" data-ide="0">01 Write</button>
+          <button type="button" class="ide-step-btn" data-ide="1">02 PR</button>
+          <button type="button" class="ide-step-btn" data-ide="2">03 Review</button>
+          <button type="button" class="ide-step-btn" data-ide="3">04 CI / merge</button>
+          <button type="button" class="ide-step-btn" data-ide="4">05 Deploy</button>
+          <button type="button" class="ide-step-btn" data-ide="5">06 Recover</button>
+        </div>
+
+        <div class="cursor-demo">
+          <div class="ide" id="cursorIde" aria-label="Cursor interface mock">
+            <div class="ide-bar">
+              <div class="ide-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+              <div class="ide-title" id="ideWindowTitle">manhattan-active / WarehouseAllocationService.java — Cursor</div>
+              <div class="ide-badge">
+                <img src="https://www.cursor.com/apple-touch-icon.png" alt="" width="14" height="14" />
+                Agent
+              </div>
             </div>
-
-            <div class="outcome-ties" id="outcomeTies">
-              <div class="outcome-tie is-lit" data-tie="revenue">
-                <div class="from">Business outcome</div>
-                <strong>More roadmap landed per quarter</strong>
-                <p>Higher sprint velocity and PR throughput without proportional headcount growth.</p>
-                <div class="initiatives">
-                  <span>Active suite expansion</span>
-                  <span>Active Agents</span>
-                  <span>Cloud conversions</span>
-                </div>
+            <div class="ide-body">
+              <aside class="ide-side" aria-hidden="true">
+                <div class="sec">Explorer</div>
+                <div class="ide-file"><span class="ext">dir</span> manhattan-active</div>
+                <div class="ide-file"><span class="ext">dir</span> &nbsp;&nbsp;wms</div>
+                <div class="ide-file is-open" id="ideOpenFile"><span class="ext">JAVA</span> AllocationService</div>
+                <div class="ide-file"><span class="ext">dir</span> &nbsp;&nbsp;tms</div>
+                <div class="ide-file"><span class="ext">dir</span> &nbsp;&nbsp;oms</div>
+                <div class="ide-file"><span class="ext">dir</span> &nbsp;&nbsp;agents</div>
+                <div class="sec">Timeline</div>
+                <div class="ide-file"><span class="ext">PR</span> #4821 similar</div>
+                <div class="ide-file"><span class="ext">PR</span> #4602 pattern</div>
+              </aside>
+              <div class="ide-editor">
+                <div class="ide-tab" id="ideTab">AllocationService.java</div>
+                <pre class="ide-code" id="ideCode"></pre>
               </div>
-              <div class="outcome-tie" data-tie="cost">
-                <div class="from">Business outcome</div>
-                <strong>Lower cost per initiative</strong>
-                <p>Same epics with smaller standing squads — expensive eng time spent building, not hunting context.</p>
-                <div class="initiatives">
-                  <span>Innovation / TAM</span>
-                  <span>Sustainable growth</span>
-                </div>
-              </div>
-              <div class="outcome-tie" data-tie="risk">
-                <div class="from">Business outcome</div>
-                <strong>Safer continuous delivery</strong>
-                <p>Deeper review + historical awareness reduce escaped defects on a versionless customer platform.</p>
-                <div class="initiatives">
-                  <span>Customer success</span>
-                  <span>Cloud subscription growth</span>
-                </div>
-              </div>
+              <aside class="ide-agent">
+                <div class="ide-agent-head"><span class="dot"></span> Cursor Agent</div>
+                <div class="ide-chat" id="ideChat"></div>
+                <div class="ide-input" id="idePrompt">Ask Cursor…</div>
+              </aside>
             </div>
           </div>
 
-          <aside class="state-side">
-            <div class="state-panel" id="futureDetail">
-              <div class="eyebrow" id="futureEyebrow">Stage 01 · Write</div>
-              <h3 id="futureTitle">Write with full codebase context</h3>
-              <p id="futureBody">Engineers ask Cursor how similar Active changes were made before — navigating WMS / TMS / OMS boundaries without a multi-day tribal-knowledge hunt.</p>
-              <ul class="challenge-list" id="futureOutcomes">
-                <li>Time-to-first-PR drops from weeks toward days for new hires</li>
-                <li>Unlocks capacity for Active Agents and conversion automation</li>
-                <li>Ties to: Expand Active suite · Grow cloud revenue</li>
-              </ul>
-            </div>
+          <aside class="ide-caption">
+            <div class="eyebrow" id="ideEyebrow">Stage 01 · Write</div>
+            <h3 id="ideCaptionTitle">Write with full codebase context</h3>
+            <p id="ideCaptionBody">Engineers ask Cursor how similar Active changes were made — navigating service boundaries without a multi-day tribal-knowledge hunt.</p>
+            <div class="initiatives" id="ideInitiatives"></div>
           </aside>
         </div>
 
-        <p class="note"><strong>Bridge:</strong> Every friction removed on this path is capacity returned to the initiatives on slide three — revenue, cost, and risk moving together.</p>
+        <p class="note"><strong>Bridge:</strong> Every friction removed here is capacity returned to slide three — Active expansion, cloud conversions, Agents, and customer success.</p>
       </div>
     </section>
 
@@ -1524,6 +1808,10 @@
         nextBtn.disabled = index === slides.length - 1;
         if (index === 1) flow.start();
         else flow.pause();
+        if (window.__cursorIdeDemo) {
+          if (index === 4) window.__cursorIdeDemo.start();
+          else window.__cursorIdeDemo.pause();
+        }
       }
 
       prevBtn.addEventListener("click", () => go(index - 1));
@@ -1741,105 +2029,206 @@
       })();
 
       (function initFuture() {
-        const steps = Array.from(document.querySelectorAll(".future-step"));
-        const ties = Array.from(document.querySelectorAll(".outcome-tie"));
-        const eyebrow = document.getElementById("futureEyebrow");
-        const title = document.getElementById("futureTitle");
-        const body = document.getElementById("futureBody");
-        const outcomes = document.getElementById("futureOutcomes");
-        if (!steps.length || !eyebrow) return;
+        const buttons = Array.from(document.querySelectorAll(".ide-step-btn"));
+        const codeEl = document.getElementById("ideCode");
+        const chatEl = document.getElementById("ideChat");
+        const promptEl = document.getElementById("idePrompt");
+        const tabEl = document.getElementById("ideTab");
+        const titleEl = document.getElementById("ideWindowTitle");
+        const openFile = document.getElementById("ideOpenFile");
+        const eyebrow = document.getElementById("ideEyebrow");
+        const capTitle = document.getElementById("ideCaptionTitle");
+        const capBody = document.getElementById("ideCaptionBody");
+        const initiatives = document.getElementById("ideInitiatives");
+        if (!buttons.length || !codeEl) return;
 
-        const detail = [
+        const scenes = [
           {
             eyebrow: "Stage 01 · Write",
             title: "Write with full codebase context",
-            body: "Engineers ask Cursor how similar Active changes were made before — navigating WMS / TMS / OMS boundaries without a multi-day tribal-knowledge hunt.",
-            outcomes: [
-              "Time-to-first-PR drops from weeks toward days for new hires",
-              "Unlocks capacity for Active Agents and conversion automation",
-              "Ties to: Expand Active suite · Grow cloud revenue"
+            body: "Ask Cursor how similar Active changes were made — navigate WMS boundaries without a multi-day tribal-knowledge hunt.",
+            initiatives: ["Active suite expansion", "Cloud conversions", "Active Agents"],
+            tab: "AllocationService.java",
+            fileLabel: "AllocationService",
+            window: "manhattan-active / wms/AllocationService.java — Cursor",
+            prompt: "How did we handle wave allocation overrides last time?",
+            chat: [
+              { role: "user", text: "Where do we apply directed pick overrides for Active WMS waves — and what broke last time?" },
+              { role: "agent", text: "Matched PR #4602 and #4821. Override lives in AllocationService.applyWaveRules(). Last regression: missing null-guard on empty carton groups — see lines 118–126." }
             ],
-            tie: "revenue"
+            code: [
+              ["c", "// Cursor cites PR #4821 pattern"],
+              ["", '<span class="k">public</span> <span class="t">WavePlan</span> <span class="f">applyWaveRules</span>(<span class="t">Wave</span> wave) {'],
+              ["hi", '  <span class="k">if</span> (wave.cartonGroups().isEmpty()) <span class="k">return</span> WavePlan.empty();'],
+              ["", '  <span class="k">return</span> allocator.plan(wave, <span class="s">"DIRECTED"</span>);'],
+              ["", "}"]
+            ]
           },
           {
             eyebrow: "Stage 02 · PR",
             title: "PRs that arrive review-ready",
-            body: "Cursor drafts tests, summaries, and rollout notes against repo norms — reviewers start from signal, not archaeology.",
-            outcomes: [
-              "Higher first-pass merge rate",
-              "Less rework burning senior eng hours",
-              "Ties to: Sustainable growth · Lower cost per initiative"
+            body: "Cursor drafts the summary, tests, and rollout notes against repo norms — reviewers start from signal, not archaeology.",
+            initiatives: ["Sustainable growth", "Lower cost / initiative"],
+            tab: "PULL_REQUEST.md",
+            fileLabel: "pull_request",
+            window: "manhattan-active · Create pull request — Cursor",
+            prompt: "Draft the PR for this allocation fix",
+            chat: [
+              { role: "user", text: "Open a PR for the wave allocation null-guard. Include test plan + rollout." },
+              { role: "agent", text: "Drafted title, summary, test checklist, and feature-flag rollout. Added AllocationServiceTest.emptyCartonGroups()." }
             ],
-            tie: "cost"
+            code: [
+              ["c", "## Summary"],
+              ["", "Guard empty carton groups before directed pick planning."],
+              ["c", "## Test plan"],
+              ["hi", "- [x] Unit: empty carton groups → empty WavePlan"],
+              ["", "- [ ] Staging wave replay on Active WMS tenant"]
+            ]
           },
           {
             eyebrow: "Stage 03 · Review",
             title: "History-aware review assist",
-            body: "Agents surface prior PR patterns, architectural constraints, and likely regressions — compressing 1–3 day queues into hours of high-quality review.",
-            outcomes: [
-              "Lead time collapses without skipping rigor",
-              "Scarce experts scale across more PRs",
-              "Ties to: Active Agents · Customer success"
+            body: "Agents surface prior PR patterns and likely regressions — compressing 1–3 day queues into hours of high-quality review.",
+            initiatives: ["Active Agents", "Customer success"],
+            tab: "Review · PR #4910",
+            fileLabel: "AllocationService",
+            window: "Review PR #4910 — Cursor Bugbot",
+            prompt: "Review this PR against our Active WMS patterns",
+            chat: [
+              { role: "user", text: "Review #4910 for regressions vs historical allocation PRs." },
+              { role: "agent", text: "Looks aligned with #4821. Flag: confirm TMS tender path still receives WavePlan.empty() sentinel — last miss caused silent skip in #3994." }
             ],
-            tie: "risk"
+            code: [
+              ["c", "// Bugbot review comment"],
+              ["hi", '// ⚠ Cross-service: TMS expects empty() not null'],
+              ["", '<span class="k">return</span> allocator.plan(wave, <span class="s">"DIRECTED"</span>);'],
+              ["c", "// Suggestion: add contract test wms→tms"]
+            ]
           },
           {
-            eyebrow: "Stage 04 · CI",
+            eyebrow: "Stage 04 · CI / merge",
             title: "Fewer loops before green",
-            body: "Better-localized changes and clearer tests mean fewer flake-driven re-runs and less merge-train serialization.",
-            outcomes: [
-              "Calendar time after approval shrinks",
-              "Parallel initiative work stays parallel",
-              "Ties to: Innovation / TAM · Cloud subscription growth"
+            body: "Better-localized changes and clearer tests mean fewer flake re-runs — merge trains stop serializing otherwise parallel work.",
+            initiatives: ["Innovation / TAM", "Cloud subscription growth"],
+            tab: "ci · active-wms",
+            fileLabel: "ci.yml",
+            window: "CI · active-wms pipeline — Cursor",
+            prompt: "Why did allocation-tests flake last night?",
+            chat: [
+              { role: "user", text: "CI failed on allocation-tests — flake or real?" },
+              { role: "agent", text: "Flake in shared clock mock (seen 6× in 30 days). Your new test is deterministic. Re-run recommended; no code change needed." }
             ],
-            tie: "revenue"
+            code: [
+              ["", "✓ compile"],
+              ["hi", "✓ AllocationServiceTest (12ms)"],
+              ["", "~ allocation-tests (flake known)"],
+              ["", "→ Cursor: rerun without code churn"]
+            ]
           },
           {
             eyebrow: "Stage 05 · Deploy",
             title: "Ship on a confident cadence",
-            body: "Risk is surfaced earlier in the path, so deploys to a versionless customer platform feel like a controlled release — not a leap of faith.",
-            outcomes: [
-              "Idea-to-prod aligns with business urgency",
-              "Conversion automation and Agents land when GTM needs them",
-              "Ties to: Cloud conversions · Expand Active suite"
+            body: "Risk is surfaced earlier, so deploys to a versionless customer platform feel controlled — Agents and conversions land when GTM needs them.",
+            initiatives: ["Cloud conversions", "Expand Active suite"],
+            tab: "deploy · staging→prod",
+            fileLabel: "release.md",
+            window: "Deploy checklist — Cursor",
+            prompt: "What should we verify before prod for this WMS change?",
+            chat: [
+              { role: "user", text: "Pre-prod checklist for wave allocation guard?" },
+              { role: "agent", text: "Flag off by default → 5% canary on Active tenants → watch WavePlan.empty() rate. Similar rollout to #4821 succeeded in 40m." }
             ],
-            tie: "revenue"
+            code: [
+              ["c", "# Release notes (drafted by Cursor)"],
+              ["", "feature.wms.emptyCartonGuard = false"],
+              ["hi", "canary: 5% Active WMS tenants"],
+              ["", "rollback: toggle flag (no redeploy)"]
+            ]
           },
           {
             eyebrow: "Stage 06 · Recover",
             title: "Faster, cheaper recovery",
-            body: "When something escapes, Cursor matches against codebase history and prior incidents — MTTR drops and roadmap teams stay on roadmap.",
-            outcomes: [
-              "Unplanned work stops devouring sprints",
-              "Change-fail rate and escape defects trend down",
-              "Ties to: Customer success · Cloud subscription growth"
+            body: "When something escapes, Cursor matches codebase history and prior incidents — MTTR drops and roadmap teams stay on roadmap.",
+            initiatives: ["Customer success", "Cloud subscription growth"],
+            tab: "incident · INC-2044",
+            fileLabel: "IncidentNotes",
+            window: "INC-2044 · WavePlan empty spike — Cursor",
+            prompt: "What caused similar WavePlan.empty() spikes before?",
+            chat: [
+              { role: "user", text: "Prod spike in WavePlan.empty() after canary. Root cause?" },
+              { role: "agent", text: "Same signature as INC-1788: upstream OMS sent zero carton groups during peak. Hotfix: treat as soft-skip + metric. Patch ready from #3994 follow-up." }
             ],
-            tie: "risk"
+            code: [
+              ["c", "// Hotfix suggested from INC-1788"],
+              ["hi", 'metrics.increment(<span class="s">"wms.wave.empty_cartons"</span>);'],
+              ["", '<span class="k">return</span> WavePlan.softSkip(wave);'],
+              ["c", "// MTTR target: minutes, not hours"]
+            ]
           }
         ];
 
-        function show(i) {
-          const d = detail[i];
-          if (!d) return;
-          steps.forEach((s, n) => s.classList.toggle("is-active", n === i));
-          ties.forEach((t) => t.classList.toggle("is-lit", t.dataset.tie === d.tie));
-          eyebrow.textContent = d.eyebrow;
-          title.textContent = d.title;
-          body.textContent = d.body;
-          outcomes.innerHTML = d.outcomes.map((c) => "<li>" + c + "</li>").join("");
+        let timer = null;
+        let idx = 0;
+
+        function renderCode(lines) {
+          return lines.map((row, i) => {
+            const cls = row[0] === "hi" ? " hi" : "";
+            const content = row[1];
+            const kind = row[0] === "c" ? "c" : "";
+            const inner = kind === "c" && !content.includes("<")
+              ? `<span class="c">${content}</span>`
+              : content;
+            return `<div class="${cls}"><span class="ln">${i + 1}</span>${inner}</div>`;
+          }).join("");
         }
 
-        steps.forEach((step) => {
-          const i = Number(step.dataset.future);
-          step.addEventListener("mouseenter", () => show(i));
-          step.addEventListener("focus", () => show(i));
-          step.addEventListener("click", (e) => {
+        function show(i) {
+          const s = scenes[i];
+          if (!s) return;
+          idx = i;
+          buttons.forEach((b, n) => b.classList.toggle("is-active", n === i));
+          eyebrow.textContent = s.eyebrow;
+          capTitle.textContent = s.title;
+          capBody.textContent = s.body;
+          initiatives.innerHTML = s.initiatives.map((t) => `<span>${t}</span>`).join("");
+          tabEl.textContent = s.tab;
+          titleEl.textContent = s.window;
+          openFile.innerHTML = `<span class="ext">FILE</span> ${s.fileLabel}`;
+          promptEl.textContent = s.prompt;
+          codeEl.innerHTML = renderCode(s.code);
+          chatEl.innerHTML = s.chat.map((m) =>
+            `<div class="bubble ${m.role}"><span class="label">${m.role === "user" ? "Engineer" : "Cursor"}</span>${m.text}</div>`
+          ).join("");
+        }
+
+        function startAuto() {
+          clearInterval(timer);
+          timer = window.setInterval(() => {
+            show((idx + 1) % scenes.length);
+          }, 4200);
+        }
+
+        function stopAuto() {
+          clearInterval(timer);
+          timer = null;
+        }
+
+        buttons.forEach((btn) => {
+          const i = Number(btn.dataset.ide);
+          btn.addEventListener("click", (e) => {
             e.stopPropagation();
             show(i);
+            stopAuto();
+            window.setTimeout(startAuto, 8000);
           });
         });
 
         show(0);
+
+        window.__cursorIdeDemo = {
+          start() { show(idx); startAuto(); },
+          pause() { stopAuto(); }
+        };
       })();
 
       go(0);
