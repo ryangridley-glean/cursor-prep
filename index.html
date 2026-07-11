@@ -20,6 +20,8 @@
       --paper: #f7f9fb;
       --white: #ffffff;
       --sky: #e8f1f6;
+      --mint: #e6f4ef;
+      --sand: #fff4ec;
       --shadow: 0 18px 50px rgba(0, 42, 66, 0.10);
       --radius: 18px;
       --ease: cubic-bezier(0.22, 1, 0.36, 1);
@@ -286,6 +288,105 @@
 
     .note strong { color: var(--navy); }
 
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.85rem;
+    }
+
+    .bucket {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.1rem 1.15rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      min-height: 100%;
+      box-shadow: 0 8px 24px rgba(0, 42, 66, 0.04);
+    }
+
+    .bucket .tag {
+      display: inline-flex;
+      align-self: flex-start;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.28rem 0.55rem;
+      border-radius: 999px;
+    }
+
+    .bucket.revenue .tag { background: #e6f4ef; color: #1f6b4f; }
+    .bucket.cost .tag { background: var(--sand, #fff4ec); color: #b34d00; }
+    .bucket.risk .tag { background: var(--sky); color: var(--navy); }
+
+    .bucket h3 {
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--navy-deep);
+      line-height: 1.2;
+    }
+
+    .bucket .metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin: 0.1rem 0 0.15rem;
+    }
+
+    .bucket .metric {
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: var(--navy);
+      background: rgba(0, 59, 92, 0.06);
+      border: 1px solid rgba(0, 59, 92, 0.08);
+      padding: 0.22rem 0.45rem;
+      border-radius: 999px;
+    }
+
+    .bucket ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      flex: 1;
+    }
+
+    .bucket li {
+      font-size: 0.86rem;
+      color: var(--ink);
+      line-height: 1.4;
+      padding-left: 0.85rem;
+      position: relative;
+    }
+
+    .bucket li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.5rem;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--orange);
+    }
+
+    .bucket .cost-callout {
+      margin-top: auto;
+      padding-top: 0.65rem;
+      border-top: 1px dashed rgba(0, 59, 92, 0.15);
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .bucket .cost-callout strong {
+      color: var(--navy-deep);
+      font-weight: 600;
+    }
+
     .pov-top {
       display: grid;
       grid-template-columns: 1.05fr 0.95fr;
@@ -524,11 +625,6 @@
       .flow-figure { min-height: 300px; }
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      .flow-map .wire-active,
-      .flow-figure.is-playing .flow-pulse { animation: none; }
-    }
-
     .chrome {
       position: fixed;
       z-index: 20;
@@ -605,9 +701,13 @@
     @media (max-width: 900px) {
       .intro-layout,
       .grid-2,
-      .stat-row {
+      .grid-3,
+      .stat-row,
+      .pov-top {
         grid-template-columns: 1fr;
       }
+
+      .flow-figure { min-height: 300px; }
 
       .manh-hero {
         order: -1;
@@ -627,6 +727,8 @@
 
     @media (prefers-reduced-motion: reduce) {
       .slide { transition: none; }
+      .flow-map .wire-active,
+      .flow-figure.is-playing .flow-pulse { animation: none; }
     }
   </style>
 </head>
@@ -772,17 +874,80 @@
             </ul>
           </div>
           <div class="card">
-            <span class="pill">Market posture</span>
-            <h3>Share gains in high-velocity fulfillment</h3>
+            <span class="pill">2026</span>
+            <h3>Key strategic initiatives</h3>
             <ul>
-              <li>Strong in retail / omnichannel complexity</li>
-              <li>On-prem → cloud conversions as a growth engine</li>
-              <li>New logos + expansion alongside renewals</li>
-              <li>Domain-deep services as a differentiator</li>
+              <li>Customer success &amp; sustainable long-term growth</li>
+              <li>Invest in innovation to expand products &amp; TAM</li>
+              <li>Expand the Manhattan Active® cloud suite</li>
+              <li>Grow cloud subscription revenue (incl. on‑prem conversions)</li>
+              <li>Scale global sales &amp; marketing — plus ship Active Agents</li>
             </ul>
           </div>
         </div>
         <p class="note"><strong>Check:</strong> Does this match how you describe Manhattan internally — or where do outsiders oversimplify?</p>
+      </div>
+    </section>
+
+    <!-- 3. Engineering path -->
+    <section class="slide" data-title="Engineering path">
+      <div class="slide-inner">
+        <p class="kicker">Engineering path</p>
+        <h2>Hitting the initiatives — metrics a CTO owns</h2>
+        <p class="lede">
+          Cursor’s leverage shows up in the operating system of engineering: how fast teams ship, how costly each initiative is to staff, and how safely code reaches production.
+        </p>
+        <div class="grid-3">
+          <div class="bucket revenue">
+            <span class="tag">Increase revenue</span>
+            <h3>Ship Active &amp; Agents faster</h3>
+            <div class="metrics">
+              <span class="metric">Sprint velocity</span>
+              <span class="metric">PR throughput</span>
+              <span class="metric">Lead time</span>
+              <span class="metric">Time‑to‑first‑PR</span>
+            </div>
+            <ul>
+              <li>Compress cycle time from idea → merged PR on Active platform work</li>
+              <li>Raise story points / features landed per sprint without growing headcount</li>
+              <li>Cut new-hire time-to-first-meaningful-PR from weeks toward days</li>
+              <li>Accelerate Agent Foundry &amp; conversion-automation delivery that unlocks bookings</li>
+            </ul>
+          </div>
+          <div class="bucket cost">
+            <span class="tag">Decrease cost</span>
+            <h3>Fewer expensive engineers per initiative</h3>
+            <div class="metrics">
+              <span class="metric">Cost / feature</span>
+              <span class="metric">Squad size</span>
+              <span class="metric">Eng hours / epic</span>
+            </div>
+            <ul>
+              <li>Fully loaded senior eng often lands ~$200–300K+/yr — every idle week is real burn</li>
+              <li>Typical cloud / platform initiatives still pull 6–12 engineers across squads</li>
+              <li>Raise output per engineer so the same roadmap needs smaller standing teams</li>
+              <li>Reduce coordination tax: less waiting on reviews, context recovery, and boilerplate</li>
+            </ul>
+            <p class="cost-callout"><strong>Hypothesis:</strong> If each major initiative runs ~8 engineers, even a 20% productivity lift is multiple FTEs of capacity returned to the roadmap.</p>
+          </div>
+          <div class="bucket risk">
+            <span class="tag">Decrease risk</span>
+            <h3>Safer path to production</h3>
+            <div class="metrics">
+              <span class="metric">Change fail rate</span>
+              <span class="metric">Review depth</span>
+              <span class="metric">MTTR</span>
+              <span class="metric">Escape defects</span>
+            </div>
+            <ul>
+              <li>Human-only deploys miss historical context — agents retain codebase history &amp; prior PR patterns</li>
+              <li>Deeper, consistent PR review against architectural norms before merge</li>
+              <li>Catch regressions earlier with agents that know how similar changes failed before</li>
+              <li>Lower blast radius on Active / Agents releases that customers run continuously</li>
+            </ul>
+          </div>
+        </div>
+        <p class="note"><strong>Ask:</strong> Which of these metrics does your org already instrument — and which initiative is most constrained by velocity, cost, or risk today?</p>
       </div>
     </section>
 
@@ -793,7 +958,7 @@
     <div class="nav-btns">
       <button type="button" id="prev" aria-label="Previous slide">Prev</button>
       <button type="button" id="next" aria-label="Next slide">Next</button>
-      <span class="slide-count" id="count">1 / 2</span>
+      <span class="slide-count" id="count">1 / 3</span>
     </div>
   </div>
 
