@@ -286,6 +286,249 @@
 
     .note strong { color: var(--navy); }
 
+    .pov-top {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: clamp(1rem, 3vw, 2rem);
+      align-items: start;
+    }
+
+    .pov-copy { min-width: 0; }
+
+    .flow-figure {
+      position: relative;
+      background: linear-gradient(160deg, #ffffff 0%, #f3f8fb 55%, #fff7f0 100%);
+      border: 1px solid var(--line);
+      border-radius: calc(var(--radius) + 4px);
+      box-shadow: var(--shadow);
+      padding: 1rem 1rem 0.9rem;
+      min-height: 280px;
+      overflow: hidden;
+      isolation: isolate;
+      user-select: none;
+    }
+
+    .flow-figure::before {
+      content: "";
+      position: absolute;
+      inset: -40% -20% auto auto;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 102, 0, 0.16), transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .flow-label {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 0.55rem;
+    }
+
+    .flow-label .eyebrow {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--navy);
+    }
+
+    .flow-label .hint {
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    .flow-stage {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.75rem;
+      align-items: center;
+      min-height: 64px;
+      margin-bottom: 0.65rem;
+      padding: 0.55rem 0.65rem;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(0, 59, 92, 0.08);
+      transition: border-color 0.25s var(--ease), background 0.25s var(--ease);
+    }
+
+    .flow-figure[data-active] .flow-stage {
+      border-color: rgba(255, 102, 0, 0.22);
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .flow-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: linear-gradient(145deg, var(--navy-deep), var(--navy-soft));
+      color: white;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      box-shadow: 0 10px 22px rgba(0, 42, 66, 0.22);
+    }
+
+    .flow-avatar svg { width: 26px; height: 26px; }
+
+    .flow-caption .who {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.15rem;
+    }
+
+    .flow-caption .what {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--navy-deep);
+      line-height: 1.3;
+    }
+
+    .flow-map {
+      position: relative;
+      z-index: 1;
+      height: 168px;
+    }
+
+    .flow-map svg.wires {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .flow-map .wire {
+      fill: none;
+      stroke: rgba(0, 59, 92, 0.14);
+      stroke-width: 2;
+      stroke-linecap: round;
+    }
+
+    .flow-map .wire-active {
+      stroke: var(--orange);
+      stroke-width: 2.5;
+      stroke-dasharray: 6 8;
+      animation: dash 1.1s linear infinite;
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+
+    .flow-figure[data-active] .wire-active { opacity: 1; }
+
+    @keyframes dash {
+      to { stroke-dashoffset: -28; }
+    }
+
+    .flow-node {
+      position: absolute;
+      width: 72px;
+      transform: translate(-50%, -50%);
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      padding: 0;
+      font: inherit;
+      text-align: center;
+      z-index: 2;
+    }
+
+    .flow-node .orb {
+      width: 44px;
+      height: 44px;
+      margin: 0 auto 0.28rem;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: var(--white);
+      border: 1.5px solid rgba(0, 59, 92, 0.14);
+      color: var(--navy);
+      box-shadow: 0 8px 18px rgba(0, 42, 66, 0.08);
+      transition: transform 0.25s var(--ease), border-color 0.25s, background 0.25s, color 0.25s, box-shadow 0.25s;
+    }
+
+    .flow-node svg { width: 20px; height: 20px; }
+
+    .flow-node .name {
+      font-size: 0.62rem;
+      font-weight: 600;
+      line-height: 1.15;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+
+    .flow-node:hover .orb,
+    .flow-node:focus-visible .orb {
+      transform: translateY(-2px);
+      border-color: rgba(255, 102, 0, 0.45);
+    }
+
+    .flow-node.is-active .orb {
+      background: linear-gradient(145deg, var(--navy-deep), var(--navy));
+      border-color: transparent;
+      color: white;
+      box-shadow: 0 12px 24px rgba(0, 42, 66, 0.28), 0 0 0 4px rgba(255, 102, 0, 0.18);
+      transform: translateY(-3px) scale(1.05);
+    }
+
+    .flow-node.is-active .name { color: var(--navy-deep); }
+
+    .flow-node[data-id="wms"] { left: 14%; top: 58%; }
+    .flow-node[data-id="tms"] { left: 38%; top: 28%; }
+    .flow-node[data-id="oms"] { left: 62%; top: 28%; }
+    .flow-node[data-id="pos"] { left: 86%; top: 58%; }
+    .flow-node[data-id="scp"] { left: 50%; top: 82%; }
+
+    .flow-pulse {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--orange);
+      box-shadow: 0 0 0 0 rgba(255, 102, 0, 0.45);
+      offset-path: path("M 42 98 C 70 98, 90 55, 120 48 C 150 42, 175 42, 205 48 C 235 55, 255 98, 285 98");
+      offset-distance: 0%;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .flow-figure.is-playing .flow-pulse {
+      opacity: 1;
+      animation: travel 4.8s var(--ease) infinite, ping 1.4s ease-out infinite;
+    }
+
+    @keyframes travel {
+      0% { offset-distance: 0%; }
+      100% { offset-distance: 100%; }
+    }
+
+    @keyframes ping {
+      0% { box-shadow: 0 0 0 0 rgba(255, 102, 0, 0.45); }
+      70% { box-shadow: 0 0 0 10px rgba(255, 102, 0, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(255, 102, 0, 0); }
+    }
+
+    @media (max-width: 900px) {
+      .pov-top { grid-template-columns: 1fr; }
+      .flow-figure { min-height: 300px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .flow-map .wire-active,
+      .flow-figure.is-playing .flow-pulse { animation: none; }
+    }
+
     .chrome {
       position: fixed;
       z-index: 20;
@@ -430,11 +673,79 @@
     <!-- 2. Point of view -->
     <section class="slide" data-title="Point of view">
       <div class="slide-inner">
-        <p class="kicker">Our point of view</p>
-        <h2>How we see Manhattan Associates</h2>
-        <p class="lede">
-          Manhattan Associates builds cloud software that unites warehouse, transportation, order management, POS, and planning — converging front-end commerce with back-end execution.
-        </p>
+        <div class="pov-top">
+          <div class="pov-copy">
+            <p class="kicker">Our point of view</p>
+            <h2>How we see Manhattan Associates</h2>
+            <p class="lede">
+              Manhattan Associates builds cloud software that unites warehouse, transportation, order management, POS, and planning — converging front-end commerce with back-end execution.
+            </p>
+          </div>
+
+          <aside class="flow-figure is-playing" id="flowFigure" aria-label="Interactive customer journey across Manhattan Active">
+            <div class="flow-label">
+              <span class="eyebrow">Customer in motion</span>
+              <span class="hint">Hover or click a node</span>
+            </div>
+
+            <div class="flow-stage" id="flowStage">
+              <div class="flow-avatar" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Z" />
+                  <path d="M4 21a8 8 0 0 1 16 0" />
+                </svg>
+              </div>
+              <div class="flow-caption">
+                <div class="who" id="flowWho">Warehouse associate</div>
+                <div class="what" id="flowWhat">Confirms a directed pick path and stages cartons for outbound.</div>
+              </div>
+            </div>
+
+            <div class="flow-map">
+              <svg class="wires" viewBox="0 0 320 168" preserveAspectRatio="none" aria-hidden="true">
+                <path class="wire" d="M45 98 C78 98, 95 55, 122 48" />
+                <path class="wire" d="M122 48 C155 40, 175 40, 198 48" />
+                <path class="wire" d="M198 48 C230 55, 250 98, 275 98" />
+                <path class="wire" d="M275 98 C250 128, 198 138, 160 138" />
+                <path class="wire" d="M160 138 C110 138, 70 128, 45 98" />
+                <path class="wire wire-active" id="flowWire" d="M45 98 C78 98, 95 55, 122 48" />
+              </svg>
+              <div class="flow-pulse" aria-hidden="true"></div>
+
+              <button type="button" class="flow-node is-active" data-id="wms" style="left:14%;top:58%">
+                <span class="orb">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5 12 4l9 5.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Z"/><path d="M9 21V12h6v9"/></svg>
+                </span>
+                <span class="name">Warehouse</span>
+              </button>
+              <button type="button" class="flow-node" data-id="tms" style="left:38%;top:28%">
+                <span class="orb">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v10H3z"/><path d="M14 10h4l3 3v4h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>
+                </span>
+                <span class="name">Transport</span>
+              </button>
+              <button type="button" class="flow-node" data-id="oms" style="left:62%;top:28%">
+                <span class="orb">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h13l-1.5 8H8.2L7 7Z"/><path d="M7 7 6 4H3"/><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/></svg>
+                </span>
+                <span class="name">Orders</span>
+              </button>
+              <button type="button" class="flow-node" data-id="pos" style="left:86%;top:58%">
+                <span class="orb">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/><path d="M8 8h8M8 12h5"/></svg>
+                </span>
+                <span class="name">Point of sale</span>
+              </button>
+              <button type="button" class="flow-node" data-id="scp" style="left:50%;top:82%">
+                <span class="orb">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5"/><path d="M4 19h16"/><path d="M8 15v-4"/><path d="M12 15V8"/><path d="M16 15v-6"/></svg>
+                </span>
+                <span class="name">Planning</span>
+              </button>
+            </div>
+          </aside>
+        </div>
+
         <div class="stat-row">
           <div class="stat">
             <div class="num">Manhattan Active®</div>
@@ -513,6 +824,8 @@
         count.textContent = (index + 1) + " / " + slides.length;
         prevBtn.disabled = index === 0;
         nextBtn.disabled = index === slides.length - 1;
+        if (index === 1) flow.start();
+        else flow.pause();
       }
 
       prevBtn.addEventListener("click", () => go(index - 1));
@@ -542,6 +855,98 @@
         if (Math.abs(dx) > 50) go(index + (dx < 0 ? 1 : -1));
         touchX = null;
       }, { passive: true });
+
+      const flow = (function initFlow() {
+        const figure = document.getElementById("flowFigure");
+        if (!figure) return { start() {}, pause() {} };
+
+        const whoEl = document.getElementById("flowWho");
+        const whatEl = document.getElementById("flowWhat");
+        const wire = document.getElementById("flowWire");
+        const nodes = Array.from(figure.querySelectorAll(".flow-node"));
+        const order = ["wms", "tms", "oms", "pos", "scp"];
+        const scenes = {
+          wms: {
+            who: "Warehouse associate",
+            what: "Confirms a directed pick path and stages cartons for outbound.",
+            wire: "M45 98 C78 98, 95 55, 122 48"
+          },
+          tms: {
+            who: "Transportation planner",
+            what: "Builds an optimized load and tenders the carrier for same-day departure.",
+            wire: "M122 48 C155 40, 175 40, 198 48"
+          },
+          oms: {
+            who: "Order orchestrator",
+            what: "Promises inventory across DC, store, and supplier — then routes fulfillment.",
+            wire: "M198 48 C230 55, 250 98, 275 98"
+          },
+          pos: {
+            who: "Store associate",
+            what: "Rings a buy-online-pick-up-in-store order and triggers inventory sync.",
+            wire: "M275 98 C250 128, 198 138, 160 138"
+          },
+          scp: {
+            who: "Supply chain planner",
+            what: "Rebalances demand signals into replenishment and capacity plans.",
+            wire: "M160 138 C110 138, 70 128, 45 98"
+          }
+        };
+
+        let step = 0;
+        let timer = null;
+        let pausedByUser = false;
+
+        function activate(id, { manual = false } = {}) {
+          const scene = scenes[id];
+          if (!scene) return;
+          step = order.indexOf(id);
+          figure.dataset.active = id;
+          whoEl.textContent = scene.who;
+          whatEl.textContent = scene.what;
+          wire.setAttribute("d", scene.wire);
+          nodes.forEach((n) => n.classList.toggle("is-active", n.dataset.id === id));
+          if (manual) {
+            pausedByUser = true;
+            figure.classList.remove("is-playing");
+            clearInterval(timer);
+            timer = null;
+            window.setTimeout(() => {
+              pausedByUser = false;
+              if (slides[1].classList.contains("active")) start();
+            }, 4500);
+          }
+        }
+
+        function start() {
+          if (pausedByUser) return;
+          figure.classList.add("is-playing");
+          activate(order[step] || "wms");
+          clearInterval(timer);
+          timer = window.setInterval(() => {
+            step = (step + 1) % order.length;
+            activate(order[step]);
+          }, 2400);
+        }
+
+        function pause() {
+          figure.classList.remove("is-playing");
+          clearInterval(timer);
+          timer = null;
+        }
+
+        nodes.forEach((node) => {
+          node.addEventListener("mouseenter", () => activate(node.dataset.id, { manual: true }));
+          node.addEventListener("focus", () => activate(node.dataset.id, { manual: true }));
+          node.addEventListener("click", (e) => {
+            e.stopPropagation();
+            activate(node.dataset.id, { manual: true });
+          });
+        });
+
+        activate("wms");
+        return { start, pause };
+      })();
 
       go(0);
     })();
