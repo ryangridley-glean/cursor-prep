@@ -387,74 +387,399 @@
       font-weight: 600;
     }
 
-    .moat-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0.75rem;
+    .eval-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
     }
 
-    .moat-card {
+    .eval-tab {
+      appearance: none;
+      border: 1px solid var(--line);
+      background: var(--white);
+      color: var(--navy);
+      font-family: inherit;
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.5rem 0.85rem;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.15s;
+    }
+
+    .eval-tab:hover { background: var(--sky); }
+    .eval-tab.is-active {
+      background: var(--navy-deep);
+      border-color: var(--navy-deep);
+      color: white;
+    }
+
+    .eval-panel {
+      display: none;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: clamp(1rem, 3vw, 1.75rem);
+      align-items: stretch;
       background: var(--white);
       border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 1.05rem 1.15rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.45rem;
-      box-shadow: 0 8px 24px rgba(0, 42, 66, 0.04);
-      position: relative;
-      overflow: hidden;
+      border-radius: calc(var(--radius) + 4px);
+      padding: clamp(1rem, 2.5vw, 1.35rem);
+      box-shadow: var(--shadow);
+      min-height: min(42vh, 380px);
     }
 
-    .moat-card::before {
+    .eval-panel.is-active { display: grid; }
+
+    .eval-copy .ask {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.35rem;
+    }
+
+    .eval-copy h3 {
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+      color: var(--navy-deep);
+      margin-bottom: 0.55rem;
+      line-height: 1.15;
+    }
+
+    .eval-copy p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.5;
+      margin-bottom: 0.75rem;
+    }
+
+    .eval-copy ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .eval-copy li {
+      font-size: 0.88rem;
+      color: var(--ink);
+      line-height: 1.4;
+      padding-left: 0.9rem;
+      position: relative;
+    }
+
+    .eval-copy li::before {
       content: "";
       position: absolute;
       left: 0;
-      top: 0;
-      bottom: 0;
-      width: 4px;
+      top: 0.5rem;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
       background: var(--orange);
     }
 
-    .moat-card:nth-child(2)::before { background: var(--navy); }
-    .moat-card:nth-child(3)::before { background: #1f6b4f; }
-    .moat-card:nth-child(4)::before { background: #4a6fa5; }
+    .viz {
+      position: relative;
+      border-radius: 14px;
+      background: #141414;
+      border: 1px solid #2a2a2a;
+      overflow: hidden;
+      min-height: 260px;
+      color: #e8e8e8;
+      font-family: "Outfit", sans-serif;
+    }
 
-    .moat-card .ask {
-      font-size: 0.68rem;
+    .viz-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.55rem 0.75rem;
+      background: #1c1c1c;
+      border-bottom: 1px solid #2c2c2c;
+      font-size: 0.72rem;
+      font-weight: 600;
+    }
+
+    .viz-head span { color: #8a8a8a; font-weight: 500; }
+
+    /* Multi-model viz */
+    .viz-models {
+      padding: 1rem 0.9rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      height: calc(100% - 40px);
+    }
+
+    .model-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.5rem;
+      align-items: center;
+      padding: 0.65rem 0.75rem;
+      border-radius: 10px;
+      background: #1a1a1a;
+      border: 1px solid #2e2e2e;
+      transition: border-color 0.3s, background 0.3s, transform 0.3s;
+    }
+
+    .model-row .m-name { font-size: 0.85rem; font-weight: 600; }
+    .model-row .m-role { font-size: 0.68rem; color: #8a8a8a; margin-top: 0.15rem; }
+    .model-row .m-badge {
+      font-size: 0.62rem;
       font-weight: 700;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: #8a8a8a;
+      padding: 0.2rem 0.45rem;
+      border-radius: 999px;
+      border: 1px solid #333;
     }
 
-    .moat-card h3 {
-      font-family: "Source Serif 4", Georgia, serif;
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--navy-deep);
-      line-height: 1.2;
+    .model-row.is-active {
+      border-color: rgba(255, 102, 0, 0.55);
+      background: rgba(255, 102, 0, 0.1);
+      transform: translateX(4px);
     }
 
-    .moat-card p {
-      font-size: 0.88rem;
-      color: var(--muted);
+    .model-row.is-active .m-badge {
+      color: #111;
+      background: var(--orange);
+      border-color: var(--orange);
+    }
+
+    .router-cursor {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--orange);
+      box-shadow: 0 0 0 4px rgba(255, 102, 0, 0.25), 0 8px 16px rgba(0, 0, 0, 0.4);
+      left: 12px;
+      top: 72px;
+      transition: top 0.45s var(--ease);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .router-cursor::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 7px solid #111;
+      transform: translate(-50%, -20%);
+    }
+
+    /* Indexing viz */
+    .viz-index {
+      padding: 0.85rem;
+      height: calc(100% - 40px);
+      display: grid;
+      grid-template-rows: 1fr auto;
+      gap: 0.65rem;
+    }
+
+    .index-graph {
+      position: relative;
+      border-radius: 10px;
+      background: radial-gradient(circle at 30% 40%, rgba(0, 59, 92, 0.45), transparent 55%),
+                  radial-gradient(circle at 70% 60%, rgba(255, 102, 0, 0.2), transparent 50%),
+                  #101820;
+      overflow: hidden;
+    }
+
+    .idx-node {
+      position: absolute;
+      padding: 0.35rem 0.55rem;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 0.65rem;
+      font-weight: 600;
+      white-space: nowrap;
+      transition: border-color 0.3s, background 0.3s, box-shadow 0.3s;
+    }
+
+    .idx-node.is-lit {
+      background: rgba(255, 102, 0, 0.2);
+      border-color: rgba(255, 102, 0, 0.55);
+      box-shadow: 0 0 20px rgba(255, 102, 0, 0.25);
+    }
+
+    .idx-node.n1 { left: 8%; top: 18%; }
+    .idx-node.n2 { left: 38%; top: 12%; }
+    .idx-node.n3 { left: 68%; top: 22%; }
+    .idx-node.n4 { left: 18%; top: 55%; }
+    .idx-node.n5 { left: 48%; top: 48%; }
+    .idx-node.n6 { left: 72%; top: 62%; }
+    .idx-node.n7 { left: 35%; top: 75%; }
+
+    .index-beam {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(115deg, transparent 40%, rgba(255, 102, 0, 0.35) 50%, transparent 60%);
+      background-size: 200% 100%;
+      animation: beam 2.8s linear infinite;
+      opacity: 0.55;
+      pointer-events: none;
+    }
+
+    @keyframes beam {
+      0% { background-position: 100% 0; }
+      100% { background-position: -100% 0; }
+    }
+
+    .index-log {
+      font-family: ui-monospace, Menlo, monospace;
+      font-size: 0.68rem;
       line-height: 1.45;
+      color: #9ad4b0;
+      background: #0d1210;
+      border-radius: 8px;
+      padding: 0.55rem 0.65rem;
+      border: 1px solid #243028;
+      min-height: 4.2rem;
+    }
+
+    /* Composer viz */
+    .viz-composer {
+      padding: 0.85rem;
+      height: calc(100% - 40px);
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .loop-step {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 0.65rem;
+      align-items: center;
+      padding: 0.55rem 0.7rem;
+      border-radius: 10px;
+      background: #1a1a1a;
+      border: 1px solid #2e2e2e;
+      opacity: 0.45;
+      transition: opacity 0.3s, border-color 0.3s, background 0.3s;
+    }
+
+    .loop-step.is-on {
+      opacity: 1;
+      border-color: rgba(40, 200, 64, 0.4);
+      background: rgba(40, 200, 64, 0.08);
+    }
+
+    .loop-step .ls-n {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      display: grid;
+      place-items: center;
+      font-size: 0.65rem;
+      font-weight: 700;
+      background: #2a2a2a;
+      color: #ccc;
+    }
+
+    .loop-step.is-on .ls-n { background: #28c840; color: #111; }
+    .loop-step .ls-t { font-size: 0.82rem; font-weight: 600; }
+    .loop-step .ls-d { font-size: 0.68rem; color: #8a8a8a; }
+    .loop-step .ls-cost {
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: #b7f0d4;
+    }
+
+    .cost-compare {
+      margin-top: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.45rem;
+    }
+
+    .cost-bar {
+      border-radius: 8px;
+      padding: 0.55rem 0.65rem;
+      background: #1a1a1a;
+      border: 1px solid #2e2e2e;
+    }
+
+    .cost-bar .cb-l { font-size: 0.65rem; color: #8a8a8a; margin-bottom: 0.25rem; }
+    .cost-bar .cb-v { font-size: 0.85rem; font-weight: 700; }
+    .cost-bar.lab .cb-v { color: #ff8b84; }
+    .cost-bar.comp .cb-v { color: #b7f0d4; }
+    .cost-bar .cb-meter {
+      margin-top: 0.35rem;
+      height: 6px;
+      border-radius: 999px;
+      background: #2a2a2a;
+      overflow: hidden;
+    }
+
+    .cost-bar .cb-meter i {
+      display: block;
+      height: 100%;
+      border-radius: 999px;
+    }
+
+    .cost-bar.lab .cb-meter i { width: 92%; background: #f85149; }
+    .cost-bar.comp .cb-meter i { width: 28%; background: #28c840; }
+
+    /* Enterprise viz */
+    .viz-enterprise {
+      padding: 0.85rem;
+      height: calc(100% - 40px);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+    }
+
+    .ctl {
+      border-radius: 10px;
+      background: #1a1a1a;
+      border: 1px solid #2e2e2e;
+      padding: 0.65rem 0.7rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .ctl .ctl-t {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #e8e8e8;
+    }
+
+    .ctl .ctl-d {
+      font-size: 0.68rem;
+      color: #8a8a8a;
+      line-height: 1.35;
       flex: 1;
     }
 
-    .moat-card .cursor-answer {
-      margin-top: 0.25rem;
-      padding-top: 0.55rem;
-      border-top: 1px dashed rgba(0, 59, 92, 0.15);
-      font-size: 0.82rem;
-      color: var(--ink);
-      line-height: 1.4;
+    .ctl .ctl-status {
+      align-self: flex-start;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.18rem 0.4rem;
+      border-radius: 999px;
+      background: rgba(40, 200, 64, 0.15);
+      color: #b7f0d4;
+      border: 1px solid rgba(40, 200, 64, 0.3);
     }
 
-    .moat-card .cursor-answer strong {
-      color: var(--navy-deep);
-      font-weight: 600;
+    .ctl.is-pulse {
+      border-color: rgba(255, 102, 0, 0.45);
+      box-shadow: 0 0 0 1px rgba(255, 102, 0, 0.15);
     }
 
     .moat-strip {
@@ -465,8 +790,8 @@
       background: linear-gradient(135deg, var(--navy-deep), var(--navy));
       color: white;
       border-radius: var(--radius);
-      padding: 0.85rem 1.1rem;
-      font-size: 0.9rem;
+      padding: 0.75rem 1.05rem;
+      font-size: 0.88rem;
       line-height: 1.4;
     }
 
@@ -477,7 +802,12 @@
       text-transform: uppercase;
       opacity: 0.7;
       width: 100%;
-      margin-bottom: 0.15rem;
+      margin-bottom: 0.1rem;
+    }
+
+    @media (max-width: 900px) {
+      .eval-panel.is-active { grid-template-columns: 1fr; }
+      .viz-enterprise { grid-template-columns: 1fr; }
     }
 
     .state-layout {
@@ -1483,7 +1813,6 @@
       .intro-layout,
       .grid-2,
       .grid-3,
-      .moat-grid,
       .stat-row,
       .pov-top,
       .state-layout,
@@ -1895,65 +2224,203 @@
 
     <!-- 6. Evaluation / moat -->
     <section class="slide" data-title="Evaluation">
-      <div class="slide-inner">
-        <p class="kicker">Evaluation</p>
-        <h2>What to consider in agentic coding</h2>
-        <p class="lede">
-          Four questions that separate a plugin from an operating system — and how Cursor’s moat answers each for a multi-service platform like Manhattan Active.
-        </p>
+      <div class="slide-inner" style="gap: 0.75rem;">
+        <div>
+          <p class="kicker">Evaluation</p>
+          <h2>What to consider in agentic coding</h2>
+          <p class="lede">
+            Four criteria that separate a plugin from an operating system — tap each to see what Cursor’s moat looks like in practice.
+          </p>
+        </div>
 
-        <div class="moat-grid">
-          <article class="moat-card">
-            <div class="ask">Ask · Model strategy</div>
+        <div class="eval-tabs" id="evalTabs" role="tablist" aria-label="Evaluation criteria">
+          <button type="button" class="eval-tab is-active" role="tab" aria-selected="true" data-eval="0">Multi-model</button>
+          <button type="button" class="eval-tab" role="tab" aria-selected="false" data-eval="1">Deep codebase indexing</button>
+          <button type="button" class="eval-tab" role="tab" aria-selected="false" data-eval="2">Composer 2.5</button>
+          <button type="button" class="eval-tab" role="tab" aria-selected="false" data-eval="3">Enterprise control plane</button>
+        </div>
+
+        <!-- Tab 1: Multi-model -->
+        <div class="eval-panel is-active" data-eval-panel="0" role="tabpanel">
+          <div class="eval-copy">
+            <div class="ask">Criteria 01</div>
             <h3>Multi-model ability</h3>
             <p>
               Can the platform route work across frontier models as they leapfrog — or are you locked to one lab’s release cycle?
             </p>
-            <div class="cursor-answer">
-              <strong>Cursor:</strong> Model-agnostic routing — pick the best model per task, without rewriting how engineers work when the leaderboard flips.
+            <ul>
+              <li>Route planning, coding, and review to the best model for the job</li>
+              <li>Avoid single-vendor lock-in when the leaderboard flips</li>
+              <li>Keep the engineer workflow stable while models change underneath</li>
+            </ul>
+          </div>
+          <div class="viz" id="vizModels">
+            <div class="viz-head">Cursor router <span>selecting frontier models</span></div>
+            <div class="router-cursor" id="routerCursor" aria-hidden="true"></div>
+            <div class="viz-models">
+              <div class="model-row is-active" data-model="0">
+                <div>
+                  <div class="m-name">Claude Opus</div>
+                  <div class="m-role">Deep reasoning · hard refactors</div>
+                </div>
+                <span class="m-badge">Active</span>
+              </div>
+              <div class="model-row" data-model="1">
+                <div>
+                  <div class="m-name">GPT‑5.4</div>
+                  <div class="m-role">Broad coding · tool use</div>
+                </div>
+                <span class="m-badge">Standby</span>
+              </div>
+              <div class="model-row" data-model="2">
+                <div>
+                  <div class="m-name">Gemini 2.5</div>
+                  <div class="m-role">Long context · synthesis</div>
+                </div>
+                <span class="m-badge">Standby</span>
+              </div>
+              <div class="model-row" data-model="3">
+                <div>
+                  <div class="m-name">Composer 2.5</div>
+                  <div class="m-role">Cursor agent engine · low latency</div>
+                </div>
+                <span class="m-badge">Standby</span>
+              </div>
             </div>
-          </article>
+          </div>
+        </div>
 
-          <article class="moat-card">
-            <div class="ask">Ask · Agent engine</div>
-            <h3>Composer 2.5</h3>
-            <p>
-              Is the agent stack purpose-built for long coding loops (plan → edit → verify), or a general chat model bolted onto an editor?
-            </p>
-            <div class="cursor-answer">
-              <strong>Cursor:</strong> Proprietary Composer 2.5 — trained for agentic coding latency and multi-step edits; powers agents and Bugbot, not just autocomplete.
-            </div>
-          </article>
-
-          <article class="moat-card">
-            <div class="ask">Ask · Context &amp; coherence</div>
+        <!-- Tab 2: Deep indexing -->
+        <div class="eval-panel" data-eval-panel="1" role="tabpanel" hidden>
+          <div class="eval-copy">
+            <div class="ask">Criteria 02</div>
             <h3>Deep codebase indexing</h3>
             <p>
-              Can agents stay coherent across WMS / TMS / OMS / Agents services over long-running work — or do they lose the plot after a few files?
+              Can agents stay coherent across WMS, TMS, OMS, and Agents services — reasoning over years of institutional knowledge, not just the open file?
             </p>
-            <div class="cursor-answer">
-              <strong>Cursor:</strong> Deep codebase indexing + agent tooling that keeps multi-service refactors and Active platform work coherent end-to-end.
+            <ul>
+              <li>Index the graph of services, PRs, and patterns Manhattan has already built</li>
+              <li>Keep long-running, multi-service work coherent end-to-end</li>
+              <li>Surface “how we did this last time” without Slack archaeology</li>
+            </ul>
+          </div>
+          <div class="viz">
+            <div class="viz-head">Codebase graph <span>Active platform memory</span></div>
+            <div class="viz-index">
+              <div class="index-graph" id="indexGraph">
+                <div class="index-beam" aria-hidden="true"></div>
+                <div class="idx-node n1 is-lit">WMS</div>
+                <div class="idx-node n2">TMS</div>
+                <div class="idx-node n3">OMS</div>
+                <div class="idx-node n4">POS</div>
+                <div class="idx-node n5 is-lit">PR #4821</div>
+                <div class="idx-node n6">Agents</div>
+                <div class="idx-node n7">Planning</div>
+              </div>
+              <div class="index-log" id="indexLog">Tracing WavePlan.empty() → TMS tender contract → PR #3994…</div>
             </div>
-          </article>
+          </div>
+        </div>
 
-          <article class="moat-card">
-            <div class="ask">Ask · Enterprise fit</div>
+        <!-- Tab 3: Composer 2.5 -->
+        <div class="eval-panel" data-eval-panel="2" role="tabpanel" hidden>
+          <div class="eval-copy">
+            <div class="ask">Criteria 03</div>
+            <h3>Composer 2.5</h3>
+            <p>
+              Is the agent stack purpose-built for long coding loops (plan → edit → verify), and massively cost-efficient versus premier lab models for day-to-day agent work?
+            </p>
+            <ul>
+              <li>Trained for agentic coding latency and multi-step edits</li>
+              <li>Powers Cursor agents and Bugbot — not just autocomplete</li>
+              <li>Run more loops per dollar than frontier-only stacks</li>
+            </ul>
+          </div>
+          <div class="viz">
+            <div class="viz-head">Composer 2.5 loop <span>vs premier labs on cost</span></div>
+            <div class="viz-composer" id="vizComposer">
+              <div class="loop-step is-on" data-loop="0">
+                <span class="ls-n">1</span>
+                <div><div class="ls-t">Plan</div><div class="ls-d">Decompose the Active change</div></div>
+                <span class="ls-cost">fast</span>
+              </div>
+              <div class="loop-step" data-loop="1">
+                <span class="ls-n">2</span>
+                <div><div class="ls-t">Edit</div><div class="ls-d">Multi-file agent edits</div></div>
+                <span class="ls-cost">cheap</span>
+              </div>
+              <div class="loop-step" data-loop="2">
+                <span class="ls-n">3</span>
+                <div><div class="ls-t">Verify</div><div class="ls-d">Tests · Bugbot · iterate</div></div>
+                <span class="ls-cost">repeat</span>
+              </div>
+              <div class="cost-compare">
+                <div class="cost-bar lab">
+                  <div class="cb-l">Premier lab model / loop</div>
+                  <div class="cb-v">High $</div>
+                  <div class="cb-meter"><i></i></div>
+                </div>
+                <div class="cost-bar comp">
+                  <div class="cb-l">Composer 2.5 / loop</div>
+                  <div class="cb-v">Far leaner / loop</div>
+                  <div class="cb-meter"><i></i></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 4: Enterprise -->
+        <div class="eval-panel" data-eval-panel="3" role="tabpanel" hidden>
+          <div class="eval-copy">
+            <div class="ask">Criteria 04</div>
             <h3>Enterprise control plane</h3>
             <p>
-              Can you run this on a versionless customer platform with SSO, audit, privacy modes, and (where needed) self-hosted agent execution?
+              Can security and IT say yes on a versionless customer platform — with privacy, audit, cost, policy, and hosting under your control?
             </p>
-            <div class="cursor-answer">
-              <strong>Cursor:</strong> Teams / Enterprise controls — org policies, audit logs, privacy modes, and self-hosted cloud agents so security and IT can say yes.
+            <ul>
+              <li>Privacy modes for sensitive code paths</li>
+              <li>Audit controls and org policies</li>
+              <li>Cost control actions across teams</li>
+              <li>Self-hosted cloud agents where required</li>
+            </ul>
+          </div>
+          <div class="viz">
+            <div class="viz-head">Control plane <span>Teams / Enterprise</span></div>
+            <div class="viz-enterprise" id="vizEnterprise">
+              <div class="ctl is-pulse" data-ctl="0">
+                <div class="ctl-t">Privacy modes</div>
+                <div class="ctl-d">Keep sensitive Active / customer logic off unintended model paths</div>
+                <span class="ctl-status">Enforced</span>
+              </div>
+              <div class="ctl" data-ctl="1">
+                <div class="ctl-t">Audit controls</div>
+                <div class="ctl-d">Who ran which agent, on which repo, with what outcome</div>
+                <span class="ctl-status">Logged</span>
+              </div>
+              <div class="ctl" data-ctl="2">
+                <div class="ctl-t">Cost controls</div>
+                <div class="ctl-d">Budgets, caps, and spend visibility by team / initiative</div>
+                <span class="ctl-status">Capped</span>
+              </div>
+              <div class="ctl" data-ctl="3">
+                <div class="ctl-t">Org policies</div>
+                <div class="ctl-d">SSO, model allowlists, and shared Cursor rules</div>
+                <span class="ctl-status">Applied</span>
+              </div>
+              <div class="ctl" data-ctl="4" style="grid-column: 1 / -1;">
+                <div class="ctl-t">Self-hosted cloud agents</div>
+                <div class="ctl-d">Run agent execution in your infrastructure when compliance requires it — same agent UX, your boundary</div>
+                <span class="ctl-status">Optional</span>
+              </div>
             </div>
-          </article>
+          </div>
         </div>
 
         <div class="moat-strip">
           <span class="label">The moat</span>
-          <span>AI-native IDE + Composer agents + codebase memory + Bugbot review + enterprise control — one loop from write → review → fix → ship, not four disconnected tools.</span>
+          <span>Multi-model routing + deep codebase memory + Composer loops + enterprise control — one write → review → fix → ship system, not four disconnected tools.</span>
         </div>
-
-        <p class="note"><strong>Close:</strong> Which of these four is non-negotiable for Manhattan before a broader rollout — model flexibility, agent quality, cross-service context, or enterprise controls?</p>
       </div>
     </section>
 
@@ -2000,6 +2467,10 @@
         if (window.__cursorIdeDemo) {
           if (index === 4) window.__cursorIdeDemo.start();
           else window.__cursorIdeDemo.pause();
+        }
+        if (window.__evalTabs) {
+          if (index === 5) window.__evalTabs.start();
+          else window.__evalTabs.pause();
         }
       }
 
@@ -2480,6 +2951,114 @@
         window.__cursorIdeDemo = {
           start() { show(idx); startAuto(); },
           pause() { stopAuto(); }
+        };
+      })();
+
+      (function initEvalTabs() {
+        const tabs = Array.from(document.querySelectorAll(".eval-tab"));
+        const panels = Array.from(document.querySelectorAll(".eval-panel"));
+        if (!tabs.length) return;
+
+        let active = 0;
+        let timers = [];
+
+        function clearTimers() {
+          timers.forEach((t) => clearInterval(t));
+          timers = [];
+        }
+
+        function showTab(i) {
+          active = i;
+          tabs.forEach((t, n) => {
+            t.classList.toggle("is-active", n === i);
+            t.setAttribute("aria-selected", n === i ? "true" : "false");
+          });
+          panels.forEach((p, n) => {
+            const on = n === i;
+            p.classList.toggle("is-active", on);
+            if (on) p.removeAttribute("hidden");
+            else p.setAttribute("hidden", "");
+          });
+          clearTimers();
+          if (i === 0) runModels();
+          if (i === 1) runIndex();
+          if (i === 2) runComposer();
+          if (i === 3) runEnterprise();
+        }
+
+        function runModels() {
+          const rows = Array.from(document.querySelectorAll("#vizModels .model-row"));
+          const cursor = document.getElementById("routerCursor");
+          if (!rows.length || !cursor) return;
+          let i = 0;
+          const tops = [72, 128, 184, 240];
+          function tick() {
+            rows.forEach((r, n) => {
+              const on = n === i;
+              r.classList.toggle("is-active", on);
+              r.querySelector(".m-badge").textContent = on ? "Active" : "Standby";
+            });
+            cursor.style.top = (tops[i] || 72) + "px";
+            i = (i + 1) % rows.length;
+          }
+          tick();
+          timers.push(setInterval(tick, 1600));
+        }
+
+        function runIndex() {
+          const nodes = Array.from(document.querySelectorAll("#indexGraph .idx-node"));
+          const log = document.getElementById("indexLog");
+          const lines = [
+            "Indexing manhattan-active · 1.2M symbols…",
+            "Linking WMS ↔ TMS tender contracts…",
+            "Tracing WavePlan.empty() → PR #4821 / #3994…",
+            "Reasoning across OMS peak-load incidents…",
+            "Ready: multi-service context for agent loop"
+          ];
+          let i = 0;
+          function tick() {
+            nodes.forEach((n) => n.classList.remove("is-lit"));
+            nodes[i % nodes.length].classList.add("is-lit");
+            nodes[(i + 3) % nodes.length].classList.add("is-lit");
+            if (log) log.textContent = lines[i % lines.length];
+            i += 1;
+          }
+          tick();
+          timers.push(setInterval(tick, 1400));
+        }
+
+        function runComposer() {
+          const steps = Array.from(document.querySelectorAll("#vizComposer .loop-step"));
+          let i = 0;
+          function tick() {
+            steps.forEach((s, n) => s.classList.toggle("is-on", n === i));
+            i = (i + 1) % steps.length;
+          }
+          tick();
+          timers.push(setInterval(tick, 1200));
+        }
+
+        function runEnterprise() {
+          const ctls = Array.from(document.querySelectorAll("#vizEnterprise .ctl"));
+          let i = 0;
+          function tick() {
+            ctls.forEach((c, n) => c.classList.toggle("is-pulse", n === i));
+            i = (i + 1) % ctls.length;
+          }
+          tick();
+          timers.push(setInterval(tick, 1500));
+        }
+
+        tabs.forEach((tab) => {
+          tab.addEventListener("click", (e) => {
+            e.stopPropagation();
+            showTab(Number(tab.dataset.eval));
+          });
+        });
+
+        window.__evalTabs = {
+          start() { showTab(active); },
+          pause() { clearTimers(); }
         };
       })();
 
