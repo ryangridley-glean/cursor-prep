@@ -387,6 +387,199 @@
       font-weight: 600;
     }
 
+    .state-layout {
+      display: grid;
+      grid-template-columns: 1.35fr 0.65fr;
+      gap: clamp(1rem, 2.5vw, 1.75rem);
+      align-items: stretch;
+    }
+
+    .pipeline {
+      position: relative;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: calc(var(--radius) + 4px);
+      padding: 1.1rem 1rem 1rem;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .pipeline::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 52px;
+      height: 3px;
+      background: linear-gradient(90deg, rgba(0, 59, 92, 0.08), rgba(255, 102, 0, 0.35), rgba(0, 59, 92, 0.08));
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .pipeline-track {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 0.45rem;
+    }
+
+    .pipe-step {
+      appearance: none;
+      border: 1.5px solid rgba(0, 59, 92, 0.12);
+      background: linear-gradient(180deg, #fff, #f7fafc);
+      border-radius: 14px;
+      padding: 0.7rem 0.55rem 0.65rem;
+      text-align: left;
+      cursor: pointer;
+      font: inherit;
+      color: inherit;
+      transition: transform 0.22s var(--ease), border-color 0.22s, box-shadow 0.22s, background 0.22s;
+      min-height: 132px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .pipe-step:hover,
+    .pipe-step:focus-visible {
+      transform: translateY(-3px);
+      border-color: rgba(255, 102, 0, 0.45);
+      outline: none;
+    }
+
+    .pipe-step.is-active {
+      border-color: transparent;
+      background: linear-gradient(160deg, var(--navy-deep), var(--navy));
+      color: white;
+      box-shadow: 0 14px 28px rgba(0, 42, 66, 0.25);
+      transform: translateY(-4px);
+    }
+
+    .pipe-step .n {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.55;
+    }
+
+    .pipe-step.is-active .n { opacity: 0.75; color: #ffb380; }
+
+    .pipe-step .title {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--navy-deep);
+      line-height: 1.2;
+    }
+
+    .pipe-step.is-active .title { color: white; }
+
+    .pipe-step .time {
+      margin-top: auto;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--orange);
+    }
+
+    .pipe-step.is-active .time { color: #ffb380; }
+
+    .pipe-step .friction {
+      font-size: 0.72rem;
+      line-height: 1.3;
+      color: var(--muted);
+    }
+
+    .pipe-step.is-active .friction { color: rgba(255, 255, 255, 0.82); }
+
+    .state-side {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .state-panel {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1rem 1.1rem;
+      flex: 1;
+      box-shadow: 0 8px 24px rgba(0, 42, 66, 0.04);
+    }
+
+    .state-panel .eyebrow {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.35rem;
+    }
+
+    .state-panel h3 {
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: 1.15rem;
+      color: var(--navy-deep);
+      margin-bottom: 0.45rem;
+    }
+
+    .state-panel p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .challenge-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      margin-top: 0.65rem;
+    }
+
+    .challenge-list li {
+      font-size: 0.82rem;
+      line-height: 1.35;
+      color: var(--ink);
+      padding: 0.45rem 0.55rem;
+      border-radius: 10px;
+      background: rgba(255, 102, 0, 0.06);
+      border: 1px solid rgba(255, 102, 0, 0.12);
+    }
+
+    .loop-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.65rem;
+      margin-top: 0.15rem;
+    }
+
+    .loop-card {
+      background: rgba(0, 59, 92, 0.04);
+      border: 1px dashed rgba(0, 59, 92, 0.18);
+      border-radius: 12px;
+      padding: 0.7rem 0.8rem;
+    }
+
+    .loop-card strong {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--navy-deep);
+      margin-bottom: 0.2rem;
+    }
+
+    .loop-card span {
+      font-size: 0.75rem;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+
+    @media (max-width: 1100px) {
+      .pipeline-track { grid-template-columns: repeat(3, 1fr); }
+      .pipeline::before { display: none; }
+      .state-layout { grid-template-columns: 1fr; }
+    }
+
     .pov-top {
       display: grid;
       grid-template-columns: 1.05fr 0.95fr;
@@ -703,10 +896,14 @@
       .grid-2,
       .grid-3,
       .stat-row,
-      .pov-top {
+      .pov-top,
+      .state-layout,
+      .loop-row {
         grid-template-columns: 1fr;
       }
 
+      .pipeline-track { grid-template-columns: repeat(2, 1fr); }
+      .pipeline::before { display: none; }
       .flow-figure { min-height: 300px; }
 
       .manh-hero {
@@ -890,12 +1087,12 @@
     </section>
 
     <!-- 3. Engineering path -->
-    <section class="slide" data-title="Engineering path">
+    <section class="slide" data-title="Priorities">
       <div class="slide-inner">
         <p class="kicker">Engineering path</p>
-        <h2>Hitting the initiatives — metrics a CTO owns</h2>
+        <h2>Your top priority initiatives</h2>
         <p class="lede">
-          Cursor’s leverage shows up in the operating system of engineering: how fast teams ship, how costly each initiative is to staff, and how safely code reaches production.
+          Where engineering velocity most directly moves the 2026 agenda — and the metrics that tell you if you’re winning.
         </p>
         <div class="grid-3">
           <div class="bucket revenue">
@@ -947,7 +1144,90 @@
             </ul>
           </div>
         </div>
-        <p class="note"><strong>Ask:</strong> Which of these metrics does your org already instrument — and which initiative is most constrained by velocity, cost, or risk today?</p>
+        <p class="note"><strong>Ask:</strong> Which of these is the binding constraint on your roadmap right now — velocity, cost, or risk?</p>
+      </div>
+    </section>
+
+    <!-- 4. Current state -->
+    <section class="slide" data-title="Current state">
+      <div class="slide-inner">
+        <p class="kicker">Current state</p>
+        <h2>How code moves today</h2>
+        <p class="lede">
+          A working hypothesis of the engineering path from ticket → production — and where friction quietly blocks the priorities on the prior slide.
+        </p>
+
+        <div class="state-layout">
+          <div class="pipeline" id="pipeline">
+            <div class="pipeline-track">
+              <button type="button" class="pipe-step is-active" data-step="0">
+                <span class="n">01</span>
+                <span class="title">Write &amp; context</span>
+                <span class="friction">Tribal knowledge hunt</span>
+                <span class="time">Hours → days</span>
+              </button>
+              <button type="button" class="pipe-step" data-step="1">
+                <span class="n">02</span>
+                <span class="title">Open PR</span>
+                <span class="friction">Incomplete self-check</span>
+                <span class="time">Same day</span>
+              </button>
+              <button type="button" class="pipe-step" data-step="2">
+                <span class="n">03</span>
+                <span class="title">Human review</span>
+                <span class="friction">Queue &amp; context loss</span>
+                <span class="time">1–3 days</span>
+              </button>
+              <button type="button" class="pipe-step" data-step="3">
+                <span class="n">04</span>
+                <span class="title">CI &amp; merge</span>
+                <span class="friction">Flakes &amp; re-runs</span>
+                <span class="time">Hours</span>
+              </button>
+              <button type="button" class="pipe-step" data-step="4">
+                <span class="n">05</span>
+                <span class="title">Deploy</span>
+                <span class="friction">Windows &amp; caution</span>
+                <span class="time">Hours → days</span>
+              </button>
+              <button type="button" class="pipe-step" data-step="5">
+                <span class="n">06</span>
+                <span class="title">Bugs &amp; hotfixes</span>
+                <span class="friction">Reactive firefight</span>
+                <span class="time">Unplanned</span>
+              </button>
+            </div>
+            <div class="loop-row">
+              <div class="loop-card">
+                <strong>Design → build</strong>
+                <span>Specs land in Jira; engineers reconstruct architecture from tribal memory and prior PRs.</span>
+              </div>
+              <div class="loop-card">
+                <strong>Review → wait</strong>
+                <span>Senior reviewers are scarce; feedback arrives after context has left the author’s head.</span>
+              </div>
+              <div class="loop-card">
+                <strong>Prod → rewind</strong>
+                <span>Escaped defects pull the same expensive team off roadmap work into incident mode.</span>
+              </div>
+            </div>
+          </div>
+
+          <aside class="state-side">
+            <div class="state-panel" id="stateDetail">
+              <div class="eyebrow" id="stateEyebrow">Stage 01</div>
+              <h3 id="stateTitle">Write &amp; gather context</h3>
+              <p id="stateBody">Engineers spend meaningful time reconstructing how Active services fit together — searching Slack, asking teammates, and reading old PRs — before a single line of net-new code.</p>
+              <ul class="challenge-list" id="stateChallenges">
+                <li>Onboarding to a dense domain codebase is measured in weeks</li>
+                <li>Context switching between WMS / TMS / OMS surfaces multiplies ramp cost</li>
+                <li>Directly taxes sprint velocity and time-to-first-PR</li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+
+        <p class="note"><strong>Discovery:</strong> Where does this map match your world — and which stage burns the most calendar time before Active / Agents work ships?</p>
       </div>
     </section>
 
@@ -958,7 +1238,7 @@
     <div class="nav-btns">
       <button type="button" id="prev" aria-label="Previous slide">Prev</button>
       <button type="button" id="next" aria-label="Next slide">Next</button>
-      <span class="slide-count" id="count">1 / 3</span>
+      <span class="slide-count" id="count">1 / 4</span>
     </div>
   </div>
 
@@ -1111,6 +1391,100 @@
 
         activate("wms");
         return { start, pause };
+      })();
+
+      (function initPipeline() {
+        const steps = Array.from(document.querySelectorAll(".pipe-step"));
+        const eyebrow = document.getElementById("stateEyebrow");
+        const title = document.getElementById("stateTitle");
+        const body = document.getElementById("stateBody");
+        const challenges = document.getElementById("stateChallenges");
+        if (!steps.length || !eyebrow) return;
+
+        const detail = [
+          {
+            eyebrow: "Stage 01 · Write",
+            title: "Write & gather context",
+            body: "Engineers spend meaningful time reconstructing how Active services fit together — searching Slack, asking teammates, and reading old PRs — before net-new code lands.",
+            challenges: [
+              "Onboarding to a dense domain codebase is measured in weeks",
+              "Context switching across WMS / TMS / OMS surfaces multiplies ramp cost",
+              "Directly taxes sprint velocity and time-to-first-PR"
+            ]
+          },
+          {
+            eyebrow: "Stage 02 · PR",
+            title: "Open the pull request",
+            body: "Authors self-review under time pressure. Description quality varies; edge cases and cross-service impact are easy to miss without deep historical context.",
+            challenges: [
+              "Inconsistent PR quality across squads",
+              "Missing test notes and rollout plans",
+              "Rework later shows up as review churn and delayed merges"
+            ]
+          },
+          {
+            eyebrow: "Stage 03 · Review",
+            title: "Human code review queue",
+            body: "Senior reviewers are the bottleneck. PRs sit 1–3 days; when feedback arrives, the author has already context-switched to the next ticket.",
+            challenges: [
+              "Review latency dominates lead time",
+              "Reviewers lack full codebase history in working memory",
+              "Blocks revenue initiatives waiting on scarce experts"
+            ]
+          },
+          {
+            eyebrow: "Stage 04 · CI",
+            title: "CI, checks & merge",
+            body: "Flaky tests and re-runs burn calendar time. Merges stack behind green builds while initiative owners wait on seemingly “done” work.",
+            challenges: [
+              "Queue time after approval still eats days",
+              "Flakes create false risk signals",
+              "Merge trains serialize otherwise parallel work"
+            ]
+          },
+          {
+            eyebrow: "Stage 05 · Deploy",
+            title: "Deploy to production",
+            body: "Caution is rational on a versionless cloud platform customers run continuously — but deploy windows and manual gates stretch idea-to-prod even when the code is ready.",
+            challenges: [
+              "Change windows vs. continuous delivery tension",
+              "Rollback anxiety slows ship decisions",
+              "Slows Active Agents and conversion automation releases"
+            ]
+          },
+          {
+            eyebrow: "Stage 06 · Bugs",
+            title: "Incidents, bugs & hotfixes",
+            body: "Escaped defects pull the same expensive engineers off roadmap work. Root-cause across a large platform history is slow when humans alone hold the institutional memory.",
+            challenges: [
+              "Unplanned work destroys sprint commitments",
+              "MTTR rises without fast historical pattern matching",
+              "Risk compounds: the next initiative ships thinner and later"
+            ]
+          }
+        ];
+
+        function show(i) {
+          const d = detail[i];
+          if (!d) return;
+          steps.forEach((s, n) => s.classList.toggle("is-active", n === i));
+          eyebrow.textContent = d.eyebrow;
+          title.textContent = d.title;
+          body.textContent = d.body;
+          challenges.innerHTML = d.challenges.map((c) => "<li>" + c + "</li>").join("");
+        }
+
+        steps.forEach((step) => {
+          const i = Number(step.dataset.step);
+          step.addEventListener("mouseenter", () => show(i));
+          step.addEventListener("focus", () => show(i));
+          step.addEventListener("click", (e) => {
+            e.stopPropagation();
+            show(i);
+          });
+        });
+
+        show(0);
       })();
 
       go(0);
