@@ -387,6 +387,99 @@
       font-weight: 600;
     }
 
+    .moat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+    }
+
+    .moat-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.05rem 1.15rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      box-shadow: 0 8px 24px rgba(0, 42, 66, 0.04);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .moat-card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: var(--orange);
+    }
+
+    .moat-card:nth-child(2)::before { background: var(--navy); }
+    .moat-card:nth-child(3)::before { background: #1f6b4f; }
+    .moat-card:nth-child(4)::before { background: #4a6fa5; }
+
+    .moat-card .ask {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .moat-card h3 {
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--navy-deep);
+      line-height: 1.2;
+    }
+
+    .moat-card p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.45;
+      flex: 1;
+    }
+
+    .moat-card .cursor-answer {
+      margin-top: 0.25rem;
+      padding-top: 0.55rem;
+      border-top: 1px dashed rgba(0, 59, 92, 0.15);
+      font-size: 0.82rem;
+      color: var(--ink);
+      line-height: 1.4;
+    }
+
+    .moat-card .cursor-answer strong {
+      color: var(--navy-deep);
+      font-weight: 600;
+    }
+
+    .moat-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem 0.75rem;
+      align-items: baseline;
+      background: linear-gradient(135deg, var(--navy-deep), var(--navy));
+      color: white;
+      border-radius: var(--radius);
+      padding: 0.85rem 1.1rem;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    .moat-strip .label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0.7;
+      width: 100%;
+      margin-bottom: 0.15rem;
+    }
+
     .state-layout {
       display: grid;
       grid-template-columns: 1.35fr 0.65fr;
@@ -1390,6 +1483,7 @@
       .intro-layout,
       .grid-2,
       .grid-3,
+      .moat-grid,
       .stat-row,
       .pov-top,
       .state-layout,
@@ -1799,6 +1893,70 @@
       </div>
     </section>
 
+    <!-- 6. Evaluation / moat -->
+    <section class="slide" data-title="Evaluation">
+      <div class="slide-inner">
+        <p class="kicker">Evaluation</p>
+        <h2>What to consider in agentic coding</h2>
+        <p class="lede">
+          Four questions that separate a plugin from an operating system — and how Cursor’s moat answers each for a multi-service platform like Manhattan Active.
+        </p>
+
+        <div class="moat-grid">
+          <article class="moat-card">
+            <div class="ask">Ask · Model strategy</div>
+            <h3>Multi-model ability</h3>
+            <p>
+              Can the platform route work across frontier models as they leapfrog — or are you locked to one lab’s release cycle?
+            </p>
+            <div class="cursor-answer">
+              <strong>Cursor:</strong> Model-agnostic routing — pick the best model per task, without rewriting how engineers work when the leaderboard flips.
+            </div>
+          </article>
+
+          <article class="moat-card">
+            <div class="ask">Ask · Agent engine</div>
+            <h3>Composer 2.5</h3>
+            <p>
+              Is the agent stack purpose-built for long coding loops (plan → edit → verify), or a general chat model bolted onto an editor?
+            </p>
+            <div class="cursor-answer">
+              <strong>Cursor:</strong> Proprietary Composer 2.5 — trained for agentic coding latency and multi-step edits; powers agents and Bugbot, not just autocomplete.
+            </div>
+          </article>
+
+          <article class="moat-card">
+            <div class="ask">Ask · Context &amp; coherence</div>
+            <h3>Deep codebase indexing</h3>
+            <p>
+              Can agents stay coherent across WMS / TMS / OMS / Agents services over long-running work — or do they lose the plot after a few files?
+            </p>
+            <div class="cursor-answer">
+              <strong>Cursor:</strong> Deep codebase indexing + agent tooling that keeps multi-service refactors and Active platform work coherent end-to-end.
+            </div>
+          </article>
+
+          <article class="moat-card">
+            <div class="ask">Ask · Enterprise fit</div>
+            <h3>Enterprise control plane</h3>
+            <p>
+              Can you run this on a versionless customer platform with SSO, audit, privacy modes, and (where needed) self-hosted agent execution?
+            </p>
+            <div class="cursor-answer">
+              <strong>Cursor:</strong> Teams / Enterprise controls — org policies, audit logs, privacy modes, and self-hosted cloud agents so security and IT can say yes.
+            </div>
+          </article>
+        </div>
+
+        <div class="moat-strip">
+          <span class="label">The moat</span>
+          <span>AI-native IDE + Composer agents + codebase memory + Bugbot review + enterprise control — one loop from write → review → fix → ship, not four disconnected tools.</span>
+        </div>
+
+        <p class="note"><strong>Close:</strong> Which of these four is non-negotiable for Manhattan before a broader rollout — model flexibility, agent quality, cross-service context, or enterprise controls?</p>
+      </div>
+    </section>
+
   </div>
 
   <div class="chrome">
@@ -1806,7 +1964,7 @@
     <div class="nav-btns">
       <button type="button" id="prev" aria-label="Previous slide">Prev</button>
       <button type="button" id="next" aria-label="Next slide">Next</button>
-      <span class="slide-count" id="count">1 / 5</span>
+      <span class="slide-count" id="count">1 / 6</span>
     </div>
   </div>
 
