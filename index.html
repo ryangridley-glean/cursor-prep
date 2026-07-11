@@ -574,10 +574,161 @@
       line-height: 1.35;
     }
 
+    .future-pipeline {
+      position: relative;
+      background: linear-gradient(160deg, #ffffff 0%, #f0f7f4 55%, #fff8f2 100%);
+      border: 1px solid var(--line);
+      border-radius: calc(var(--radius) + 4px);
+      padding: 1.1rem 1rem 1rem;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .future-pipeline::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 52px;
+      height: 3px;
+      background: linear-gradient(90deg, rgba(31, 107, 79, 0.15), rgba(255, 102, 0, 0.4), rgba(0, 59, 92, 0.2));
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .future-step {
+      appearance: none;
+      border: 1.5px solid rgba(31, 107, 79, 0.18);
+      background: linear-gradient(180deg, #fff, #f4faf7);
+      border-radius: 14px;
+      padding: 0.7rem 0.55rem 0.65rem;
+      text-align: left;
+      cursor: pointer;
+      font: inherit;
+      color: inherit;
+      transition: transform 0.22s var(--ease), border-color 0.22s, box-shadow 0.22s, background 0.22s;
+      min-height: 128px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .future-step:hover,
+    .future-step:focus-visible {
+      transform: translateY(-3px);
+      border-color: rgba(31, 107, 79, 0.45);
+      outline: none;
+    }
+
+    .future-step.is-active {
+      border-color: transparent;
+      background: linear-gradient(160deg, #1f6b4f, #2a8f68);
+      color: white;
+      box-shadow: 0 14px 28px rgba(31, 107, 79, 0.28);
+      transform: translateY(-4px);
+    }
+
+    .future-step .n {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.55;
+    }
+
+    .future-step.is-active .n { opacity: 0.85; color: #b7f0d4; }
+
+    .future-step .title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--navy-deep);
+      line-height: 1.2;
+    }
+
+    .future-step.is-active .title { color: white; }
+
+    .future-step .gain {
+      margin-top: auto;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #1f6b4f;
+    }
+
+    .future-step.is-active .gain { color: #b7f0d4; }
+
+    .future-step .cue {
+      font-size: 0.72rem;
+      line-height: 1.3;
+      color: var(--muted);
+    }
+
+    .future-step.is-active .cue { color: rgba(255, 255, 255, 0.85); }
+
+    .outcome-ties {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.65rem;
+      margin-top: 0.15rem;
+    }
+
+    .outcome-tie {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 0.75rem 0.85rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .outcome-tie.is-lit {
+      border-color: rgba(31, 107, 79, 0.35);
+      box-shadow: 0 10px 22px rgba(31, 107, 79, 0.1);
+    }
+
+    .outcome-tie .from {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #1f6b4f;
+      margin-bottom: 0.25rem;
+    }
+
+    .outcome-tie strong {
+      display: block;
+      font-size: 0.88rem;
+      color: var(--navy-deep);
+      margin-bottom: 0.3rem;
+      line-height: 1.25;
+    }
+
+    .outcome-tie p {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .outcome-tie .initiatives {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin-top: 0.55rem;
+    }
+
+    .outcome-tie .initiatives span {
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: var(--navy);
+      background: var(--sky);
+      padding: 0.2rem 0.4rem;
+      border-radius: 999px;
+    }
+
     @media (max-width: 1100px) {
       .pipeline-track { grid-template-columns: repeat(3, 1fr); }
-      .pipeline::before { display: none; }
+      .pipeline::before,
+      .future-pipeline::before { display: none; }
       .state-layout { grid-template-columns: 1fr; }
+      .outcome-ties { grid-template-columns: 1fr; }
     }
 
     .pov-top {
@@ -903,7 +1054,9 @@
       }
 
       .pipeline-track { grid-template-columns: repeat(2, 1fr); }
-      .pipeline::before { display: none; }
+      .pipeline::before,
+      .future-pipeline::before { display: none; }
+      .outcome-ties { grid-template-columns: 1fr; }
       .flow-figure { min-height: 300px; }
 
       .manh-hero {
@@ -1231,6 +1384,106 @@
       </div>
     </section>
 
+    <!-- 5. Future state -->
+    <section class="slide" data-title="Future state">
+      <div class="slide-inner">
+        <p class="kicker">Future state · with Cursor</p>
+        <h2>Same path — different operating system</h2>
+        <p class="lede">
+          Cursor puts codebase history, prior PRs, and domain context in the loop at every stage — so the frictions on the prior slide become business outcomes that fund your 2026 initiatives.
+        </p>
+
+        <div class="state-layout">
+          <div class="future-pipeline" id="futurePipeline">
+            <div class="pipeline-track">
+              <button type="button" class="future-step is-active" data-future="0">
+                <span class="n">01</span>
+                <span class="title">Write with context</span>
+                <span class="cue">Agents know the repo</span>
+                <span class="gain">Days → hours</span>
+              </button>
+              <button type="button" class="future-step" data-future="1">
+                <span class="n">02</span>
+                <span class="title">PR ready to review</span>
+                <span class="cue">Tests &amp; notes drafted</span>
+                <span class="gain">Higher first-pass</span>
+              </button>
+              <button type="button" class="future-step" data-future="2">
+                <span class="n">03</span>
+                <span class="title">Deep review assist</span>
+                <span class="cue">History-aware checks</span>
+                <span class="gain">Hours, not days</span>
+              </button>
+              <button type="button" class="future-step" data-future="3">
+                <span class="n">04</span>
+                <span class="title">Greener merges</span>
+                <span class="cue">Fewer flake loops</span>
+                <span class="gain">Less queue burn</span>
+              </button>
+              <button type="button" class="future-step" data-future="4">
+                <span class="n">05</span>
+                <span class="title">Confident deploys</span>
+                <span class="cue">Risk surfaced early</span>
+                <span class="gain">Ship on cadence</span>
+              </button>
+              <button type="button" class="future-step" data-future="5">
+                <span class="n">06</span>
+                <span class="title">Faster recovery</span>
+                <span class="cue">Pattern-matched RCA</span>
+                <span class="gain">Lower MTTR</span>
+              </button>
+            </div>
+
+            <div class="outcome-ties" id="outcomeTies">
+              <div class="outcome-tie is-lit" data-tie="revenue">
+                <div class="from">Business outcome</div>
+                <strong>More roadmap landed per quarter</strong>
+                <p>Higher sprint velocity and PR throughput without proportional headcount growth.</p>
+                <div class="initiatives">
+                  <span>Active suite expansion</span>
+                  <span>Active Agents</span>
+                  <span>Cloud conversions</span>
+                </div>
+              </div>
+              <div class="outcome-tie" data-tie="cost">
+                <div class="from">Business outcome</div>
+                <strong>Lower cost per initiative</strong>
+                <p>Same epics with smaller standing squads — expensive eng time spent building, not hunting context.</p>
+                <div class="initiatives">
+                  <span>Innovation / TAM</span>
+                  <span>Sustainable growth</span>
+                </div>
+              </div>
+              <div class="outcome-tie" data-tie="risk">
+                <div class="from">Business outcome</div>
+                <strong>Safer continuous delivery</strong>
+                <p>Deeper review + historical awareness reduce escaped defects on a versionless customer platform.</p>
+                <div class="initiatives">
+                  <span>Customer success</span>
+                  <span>Cloud subscription growth</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <aside class="state-side">
+            <div class="state-panel" id="futureDetail">
+              <div class="eyebrow" id="futureEyebrow">Stage 01 · Write</div>
+              <h3 id="futureTitle">Write with full codebase context</h3>
+              <p id="futureBody">Engineers ask Cursor how similar Active changes were made before — navigating WMS / TMS / OMS boundaries without a multi-day tribal-knowledge hunt.</p>
+              <ul class="challenge-list" id="futureOutcomes">
+                <li>Time-to-first-PR drops from weeks toward days for new hires</li>
+                <li>Unlocks capacity for Active Agents and conversion automation</li>
+                <li>Ties to: Expand Active suite · Grow cloud revenue</li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+
+        <p class="note"><strong>Bridge:</strong> Every friction removed on this path is capacity returned to the initiatives on slide three — revenue, cost, and risk moving together.</p>
+      </div>
+    </section>
+
   </div>
 
   <div class="chrome">
@@ -1238,7 +1491,7 @@
     <div class="nav-btns">
       <button type="button" id="prev" aria-label="Previous slide">Prev</button>
       <button type="button" id="next" aria-label="Next slide">Next</button>
-      <span class="slide-count" id="count">1 / 4</span>
+      <span class="slide-count" id="count">1 / 5</span>
     </div>
   </div>
 
@@ -1476,6 +1729,108 @@
 
         steps.forEach((step) => {
           const i = Number(step.dataset.step);
+          step.addEventListener("mouseenter", () => show(i));
+          step.addEventListener("focus", () => show(i));
+          step.addEventListener("click", (e) => {
+            e.stopPropagation();
+            show(i);
+          });
+        });
+
+        show(0);
+      })();
+
+      (function initFuture() {
+        const steps = Array.from(document.querySelectorAll(".future-step"));
+        const ties = Array.from(document.querySelectorAll(".outcome-tie"));
+        const eyebrow = document.getElementById("futureEyebrow");
+        const title = document.getElementById("futureTitle");
+        const body = document.getElementById("futureBody");
+        const outcomes = document.getElementById("futureOutcomes");
+        if (!steps.length || !eyebrow) return;
+
+        const detail = [
+          {
+            eyebrow: "Stage 01 · Write",
+            title: "Write with full codebase context",
+            body: "Engineers ask Cursor how similar Active changes were made before — navigating WMS / TMS / OMS boundaries without a multi-day tribal-knowledge hunt.",
+            outcomes: [
+              "Time-to-first-PR drops from weeks toward days for new hires",
+              "Unlocks capacity for Active Agents and conversion automation",
+              "Ties to: Expand Active suite · Grow cloud revenue"
+            ],
+            tie: "revenue"
+          },
+          {
+            eyebrow: "Stage 02 · PR",
+            title: "PRs that arrive review-ready",
+            body: "Cursor drafts tests, summaries, and rollout notes against repo norms — reviewers start from signal, not archaeology.",
+            outcomes: [
+              "Higher first-pass merge rate",
+              "Less rework burning senior eng hours",
+              "Ties to: Sustainable growth · Lower cost per initiative"
+            ],
+            tie: "cost"
+          },
+          {
+            eyebrow: "Stage 03 · Review",
+            title: "History-aware review assist",
+            body: "Agents surface prior PR patterns, architectural constraints, and likely regressions — compressing 1–3 day queues into hours of high-quality review.",
+            outcomes: [
+              "Lead time collapses without skipping rigor",
+              "Scarce experts scale across more PRs",
+              "Ties to: Active Agents · Customer success"
+            ],
+            tie: "risk"
+          },
+          {
+            eyebrow: "Stage 04 · CI",
+            title: "Fewer loops before green",
+            body: "Better-localized changes and clearer tests mean fewer flake-driven re-runs and less merge-train serialization.",
+            outcomes: [
+              "Calendar time after approval shrinks",
+              "Parallel initiative work stays parallel",
+              "Ties to: Innovation / TAM · Cloud subscription growth"
+            ],
+            tie: "revenue"
+          },
+          {
+            eyebrow: "Stage 05 · Deploy",
+            title: "Ship on a confident cadence",
+            body: "Risk is surfaced earlier in the path, so deploys to a versionless customer platform feel like a controlled release — not a leap of faith.",
+            outcomes: [
+              "Idea-to-prod aligns with business urgency",
+              "Conversion automation and Agents land when GTM needs them",
+              "Ties to: Cloud conversions · Expand Active suite"
+            ],
+            tie: "revenue"
+          },
+          {
+            eyebrow: "Stage 06 · Recover",
+            title: "Faster, cheaper recovery",
+            body: "When something escapes, Cursor matches against codebase history and prior incidents — MTTR drops and roadmap teams stay on roadmap.",
+            outcomes: [
+              "Unplanned work stops devouring sprints",
+              "Change-fail rate and escape defects trend down",
+              "Ties to: Customer success · Cloud subscription growth"
+            ],
+            tie: "risk"
+          }
+        ];
+
+        function show(i) {
+          const d = detail[i];
+          if (!d) return;
+          steps.forEach((s, n) => s.classList.toggle("is-active", n === i));
+          ties.forEach((t) => t.classList.toggle("is-lit", t.dataset.tie === d.tie));
+          eyebrow.textContent = d.eyebrow;
+          title.textContent = d.title;
+          body.textContent = d.body;
+          outcomes.innerHTML = d.outcomes.map((c) => "<li>" + c + "</li>").join("");
+        }
+
+        steps.forEach((step) => {
+          const i = Number(step.dataset.future);
           step.addEventListener("mouseenter", () => show(i));
           step.addEventListener("focus", () => show(i));
           step.addEventListener("click", (e) => {
