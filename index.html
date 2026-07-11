@@ -723,250 +723,279 @@
       border-radius: 999px;
     }
 
-    /* Cursor IDE mock (slide 5) */
+    /* Cursor agent + changes mock (slide 5) */
     .cursor-demo {
       display: grid;
-      grid-template-columns: 1.55fr 0.45fr;
-      gap: 0.85rem;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
       align-items: stretch;
-      min-height: min(58vh, 520px);
+      min-height: min(52vh, 460px);
     }
 
-    .ide {
-      background: #1e1e1e;
+    .agent-shell,
+    .changes-shell {
+      background: #141414;
       border-radius: 14px;
       overflow: hidden;
-      box-shadow: 0 24px 60px rgba(0, 20, 30, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.06);
+      box-shadow: 0 20px 50px rgba(0, 20, 30, 0.28), 0 0 0 1px rgba(255, 255, 255, 0.06);
       display: flex;
       flex-direction: column;
       min-height: 0;
-      font-family: "SF Mono", "JetBrains Mono", ui-monospace, Menlo, monospace;
+      font-family: "Outfit", sans-serif;
     }
 
-    .ide-bar {
+    .agent-top,
+    .changes-top {
       display: flex;
       align-items: center;
-      gap: 0.55rem;
-      padding: 0.55rem 0.75rem;
-      background: #2a2a2a;
-      border-bottom: 1px solid #3a3a3a;
+      justify-content: space-between;
+      gap: 0.5rem;
+      padding: 0.6rem 0.75rem;
+      background: #1c1c1c;
+      border-bottom: 1px solid #2c2c2c;
       flex-shrink: 0;
     }
 
-    .ide-dots { display: flex; gap: 6px; }
-    .ide-dots span {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #555;
-    }
-    .ide-dots span:nth-child(1) { background: #ff5f57; }
-    .ide-dots span:nth-child(2) { background: #febc2e; }
-    .ide-dots span:nth-child(3) { background: #28c840; }
-
-    .ide-title {
-      flex: 1;
-      text-align: center;
-      font-size: 0.72rem;
-      color: #b0b0b0;
-      font-family: "Outfit", sans-serif;
-      font-weight: 500;
-    }
-
-    .ide-badge {
-      display: inline-flex;
+    .agent-top-left,
+    .changes-top-left {
+      display: flex;
       align-items: center;
-      gap: 0.35rem;
-      font-family: "Outfit", sans-serif;
-      font-size: 0.68rem;
+      gap: 0.45rem;
+      min-width: 0;
+    }
+
+    .agent-top img {
+      width: 16px;
+      height: 16px;
+      border-radius: 4px;
+    }
+
+    .agent-top .name,
+    .changes-top .name {
+      font-size: 0.78rem;
       font-weight: 600;
-      color: #e8e8e8;
-      background: #3a3a3a;
-      padding: 0.2rem 0.5rem;
-      border-radius: 6px;
+      color: #ececec;
     }
 
-    .ide-badge img {
-      width: 14px;
-      height: 14px;
-      border-radius: 3px;
+    .agent-top .meta,
+    .changes-top .meta {
+      font-size: 0.68rem;
+      color: #8a8a8a;
     }
 
-    .ide-body {
-      display: grid;
-      grid-template-columns: 148px 1fr 220px;
+    .agent-pill {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #b7f0d4;
+      background: rgba(40, 200, 64, 0.12);
+      border: 1px solid rgba(40, 200, 64, 0.25);
+      padding: 0.18rem 0.45rem;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .agent-stream {
       flex: 1;
+      padding: 0.75rem;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
       min-height: 0;
     }
 
-    .ide-side {
-      background: #252526;
-      border-right: 1px solid #333;
-      padding: 0.65rem 0.5rem;
-      overflow: hidden;
-      font-size: 0.68rem;
-      color: #cccccc;
-      font-family: "Outfit", sans-serif;
+    .msg {
+      max-width: 94%;
+      font-size: 0.78rem;
+      line-height: 1.45;
+      padding: 0.65rem 0.75rem;
+      border-radius: 12px;
     }
 
-    .ide-side .sec {
-      font-size: 0.6rem;
-      letter-spacing: 0.08em;
+    .msg.user {
+      align-self: flex-end;
+      background: #2a2a2a;
+      color: #f0f0f0;
+      border-bottom-right-radius: 4px;
+    }
+
+    .msg.assistant {
+      align-self: flex-start;
+      background: #1a2420;
+      color: #dceee4;
+      border: 1px solid rgba(40, 200, 64, 0.18);
+      border-bottom-left-radius: 4px;
+    }
+
+    .msg .who {
+      display: block;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: #888;
-      margin: 0.35rem 0 0.4rem 0.25rem;
+      opacity: 0.6;
+      margin-bottom: 0.25rem;
+    }
+
+    .tool-card {
+      align-self: flex-start;
+      width: 100%;
+      max-width: 94%;
+      background: #1a1a1a;
+      border: 1px solid #303030;
+      border-radius: 10px;
+      padding: 0.55rem 0.65rem;
+      font-size: 0.72rem;
+      color: #c8c8c8;
+    }
+
+    .tool-card .tool-name {
+      font-weight: 700;
+      color: #9cdcfe;
+      font-family: ui-monospace, Menlo, monospace;
+      font-size: 0.68rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .tool-card .tool-body {
+      color: #9a9a9a;
+      line-height: 1.35;
+    }
+
+    .agent-composer {
+      margin: 0.55rem 0.7rem 0.7rem;
+      background: #1f1f1f;
+      border: 1px solid #333;
+      border-radius: 12px;
+      padding: 0.55rem 0.7rem;
+      color: #8a8a8a;
+      font-size: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .agent-composer .send {
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: #111;
+      background: #e8e8e8;
+      padding: 0.25rem 0.5rem;
+      border-radius: 6px;
+    }
+
+    .changes-body {
+      flex: 1;
+      padding: 0.65rem 0.7rem 0.75rem;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      min-height: 0;
+      font-family: ui-monospace, Menlo, monospace;
+    }
+
+    .change-file {
+      background: #1a1a1a;
+      border: 1px solid #2e2e2e;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .change-file-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.4rem 0.6rem;
+      background: #222;
+      border-bottom: 1px solid #2e2e2e;
+      font-family: "Outfit", sans-serif;
+      font-size: 0.7rem;
+      color: #d0d0d0;
+    }
+
+    .change-file-head .stats {
+      font-size: 0.65rem;
       font-weight: 700;
     }
 
-    .ide-file {
-      display: flex;
-      align-items: center;
+    .change-file-head .add { color: #3fb950; }
+    .change-file-head .del { color: #f85149; margin-left: 0.35rem; }
+
+    .diff-lines {
+      padding: 0.35rem 0;
+      font-size: 0.68rem;
+      line-height: 1.5;
+    }
+
+    .diff-line {
+      display: grid;
+      grid-template-columns: 2.2rem 1fr;
       gap: 0.35rem;
-      padding: 0.28rem 0.35rem;
-      border-radius: 5px;
-      color: #bbb;
-      white-space: nowrap;
+      padding: 0.05rem 0.55rem;
+      color: #c9d1d9;
+      white-space: pre;
       overflow: hidden;
       text-overflow: ellipsis;
     }
 
-    .ide-file.is-open {
-      background: #37373d;
-      color: #fff;
+    .diff-line .n { color: #484f58; text-align: right; }
+    .diff-line.add { background: rgba(46, 160, 67, 0.18); color: #aff5b4; }
+    .diff-line.del { background: rgba(248, 81, 73, 0.15); color: #ffc1ba; }
+    .diff-line.ctx { color: #8b949e; }
+    .diff-line.flag {
+      background: rgba(255, 102, 0, 0.14);
+      color: #ffd8b5;
+      border-left: 2px solid var(--orange);
     }
 
-    .ide-file .ext { color: #519aba; font-size: 0.62rem; font-weight: 700; }
-
-    .ide-editor {
-      background: #1e1e1e;
-      padding: 0.75rem 0.85rem;
-      overflow: hidden;
-      position: relative;
-      min-width: 0;
-    }
-
-    .ide-tab {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      background: #2d2d2d;
-      color: #ddd;
-      font-family: "Outfit", sans-serif;
-      font-size: 0.7rem;
-      padding: 0.28rem 0.65rem;
-      border-radius: 6px 6px 0 0;
-      margin-bottom: 0.55rem;
-      border: 1px solid #3a3a3a;
-      border-bottom: none;
-    }
-
-    .ide-code {
-      font-size: 0.72rem;
-      line-height: 1.55;
-      color: #d4d4d4;
-      white-space: pre;
-      overflow: hidden;
-    }
-
-    .ide-code .ln { color: #558; margin-right: 0.85rem; user-select: none; }
-    .ide-code .k { color: #569cd6; }
-    .ide-code .s { color: #ce9178; }
-    .ide-code .c { color: #6a9955; }
-    .ide-code .f { color: #dcdcaa; }
-    .ide-code .t { color: #4ec9b0; }
-    .ide-code .hi {
-      background: rgba(255, 102, 0, 0.18);
-      outline: 1px solid rgba(255, 102, 0, 0.35);
-      border-radius: 3px;
-    }
-
-    .ide-agent {
-      background: #181818;
-      border-left: 1px solid #333;
+    .review-findings {
       display: flex;
       flex-direction: column;
-      min-height: 0;
+      gap: 0.4rem;
       font-family: "Outfit", sans-serif;
     }
 
-    .ide-agent-head {
-      padding: 0.55rem 0.7rem;
-      border-bottom: 1px solid #2e2e2e;
-      font-size: 0.72rem;
-      font-weight: 600;
-      color: #e6e6e6;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .ide-agent-head .dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #28c840;
-      box-shadow: 0 0 0 3px rgba(40, 200, 64, 0.15);
-    }
-
-    .ide-chat {
-      flex: 1;
-      padding: 0.65rem 0.7rem;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      gap: 0.55rem;
-    }
-
-    .bubble {
-      font-size: 0.72rem;
-      line-height: 1.4;
-      padding: 0.55rem 0.65rem;
+    .finding {
+      background: #1a1a1a;
+      border: 1px solid #333;
       border-radius: 10px;
-      max-width: 100%;
+      padding: 0.55rem 0.65rem;
     }
 
-    .bubble.user {
-      background: #2f2f2f;
-      color: #e8e8e8;
-      align-self: flex-end;
-      border-bottom-right-radius: 4px;
-    }
-
-    .bubble.agent {
-      background: #243028;
-      color: #d7ebe0;
-      border: 1px solid rgba(40, 200, 64, 0.2);
-      border-bottom-left-radius: 4px;
-    }
-
-    .bubble .label {
-      display: block;
+    .finding .sev {
+      display: inline-block;
       font-size: 0.6rem;
       font-weight: 700;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      opacity: 0.65;
-      margin-bottom: 0.2rem;
+      padding: 0.15rem 0.4rem;
+      border-radius: 999px;
+      margin-bottom: 0.3rem;
     }
 
-    .ide-input {
-      margin: 0.5rem 0.65rem 0.65rem;
-      background: #252525;
-      border: 1px solid #3a3a3a;
-      border-radius: 10px;
-      padding: 0.45rem 0.6rem;
-      font-size: 0.68rem;
-      color: #888;
+    .finding .sev.high { background: rgba(248, 81, 73, 0.2); color: #ff8b84; }
+    .finding .sev.med { background: rgba(255, 102, 0, 0.18); color: #ffb380; }
+    .finding .sev.info { background: rgba(88, 166, 255, 0.15); color: #9ecbff; }
+
+    .finding p {
+      font-size: 0.72rem;
+      color: #d0d0d0;
+      line-height: 1.4;
     }
 
     .ide-caption {
       background: var(--white);
       border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 0.95rem 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
+      border-radius: 12px;
+      padding: 0.7rem 0.9rem;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 0.75rem;
+      align-items: start;
       box-shadow: 0 8px 24px rgba(0, 42, 66, 0.04);
     }
 
@@ -980,22 +1009,23 @@
 
     .ide-caption h3 {
       font-family: "Source Serif 4", Georgia, serif;
-      font-size: 1.15rem;
+      font-size: 1.05rem;
       color: var(--navy-deep);
       line-height: 1.2;
+      margin: 0.2rem 0 0.35rem;
     }
 
     .ide-caption p {
-      font-size: 0.86rem;
+      font-size: 0.82rem;
       color: var(--muted);
-      line-height: 1.45;
+      line-height: 1.4;
     }
 
     .ide-caption .initiatives {
       display: flex;
       flex-wrap: wrap;
       gap: 0.3rem;
-      margin-top: 0.15rem;
+      align-content: start;
     }
 
     .ide-caption .initiatives span {
@@ -1042,9 +1072,7 @@
       .state-layout { grid-template-columns: 1fr; }
       .outcome-ties { grid-template-columns: 1fr; }
       .cursor-demo { grid-template-columns: 1fr; min-height: 0; }
-      .ide-body { grid-template-columns: 1fr; }
-      .ide-side { display: none; }
-      .ide-agent { border-left: none; border-top: 1px solid #333; max-height: 180px; }
+      .ide-caption { grid-template-columns: 1fr; }
     }
 
     .pov-top {
@@ -1367,6 +1395,10 @@
       .state-layout,
       .loop-row,
       .cursor-demo {
+        grid-template-columns: 1fr;
+      }
+
+      .ide-caption {
         grid-template-columns: 1fr;
       }
 
@@ -1703,12 +1735,12 @@
 
     <!-- 5. Future state -->
     <section class="slide" data-title="Future state">
-      <div class="slide-inner" style="gap: 0.85rem;">
+      <div class="slide-inner" style="gap: 0.7rem;">
         <div>
           <p class="kicker">Future state · with Cursor</p>
-          <h2>What it looks like in Cursor</h2>
-          <p class="lede" style="max-width: 40rem;">
-            Walk the same path as today — write, PR, review, merge, deploy, recover — inside Cursor, with codebase history in the loop.
+          <h2>Agent on the left · changes on the right</h2>
+          <p class="lede" style="max-width: 42rem;">
+            Same path as today — but the work happens in Cursor’s agent, with a live diff of what it’s changing. Review is where Cursor is most differentiated: Bugbot + <code style="font-size:0.85em">/review</code> before humans ever open the PR.
           </p>
         </div>
 
@@ -1722,49 +1754,48 @@
         </div>
 
         <div class="cursor-demo">
-          <div class="ide" id="cursorIde" aria-label="Cursor interface mock">
-            <div class="ide-bar">
-              <div class="ide-dots" aria-hidden="true"><span></span><span></span><span></span></div>
-              <div class="ide-title" id="ideWindowTitle">manhattan-active / WarehouseAllocationService.java — Cursor</div>
-              <div class="ide-badge">
-                <img src="https://www.cursor.com/apple-touch-icon.png" alt="" width="14" height="14" />
-                Agent
+          <div class="agent-shell" aria-label="Cursor agent view">
+            <div class="agent-top">
+              <div class="agent-top-left">
+                <img src="https://www.cursor.com/apple-touch-icon.png" alt="" width="16" height="16" />
+                <div>
+                  <div class="name" id="agentName">Agent</div>
+                  <div class="meta" id="agentMeta">manhattan-active · New chat</div>
+                </div>
               </div>
+              <span class="agent-pill" id="agentPill">Running</span>
             </div>
-            <div class="ide-body">
-              <aside class="ide-side" aria-hidden="true">
-                <div class="sec">Explorer</div>
-                <div class="ide-file"><span class="ext">dir</span> manhattan-active</div>
-                <div class="ide-file"><span class="ext">dir</span> &nbsp;&nbsp;wms</div>
-                <div class="ide-file is-open" id="ideOpenFile"><span class="ext">JAVA</span> AllocationService</div>
-                <div class="ide-file"><span class="ext">dir</span> &nbsp;&nbsp;tms</div>
-                <div class="ide-file"><span class="ext">dir</span> &nbsp;&nbsp;oms</div>
-                <div class="ide-file"><span class="ext">dir</span> &nbsp;&nbsp;agents</div>
-                <div class="sec">Timeline</div>
-                <div class="ide-file"><span class="ext">PR</span> #4821 similar</div>
-                <div class="ide-file"><span class="ext">PR</span> #4602 pattern</div>
-              </aside>
-              <div class="ide-editor">
-                <div class="ide-tab" id="ideTab">AllocationService.java</div>
-                <pre class="ide-code" id="ideCode"></pre>
-              </div>
-              <aside class="ide-agent">
-                <div class="ide-agent-head"><span class="dot"></span> Cursor Agent</div>
-                <div class="ide-chat" id="ideChat"></div>
-                <div class="ide-input" id="idePrompt">Ask Cursor…</div>
-              </aside>
+            <div class="agent-stream" id="agentStream"></div>
+            <div class="agent-composer">
+              <span id="agentComposer">Ask Cursor to continue…</span>
+              <span class="send">Send</span>
             </div>
           </div>
 
-          <aside class="ide-caption">
-            <div class="eyebrow" id="ideEyebrow">Stage 01 · Write</div>
-            <h3 id="ideCaptionTitle">Write with full codebase context</h3>
-            <p id="ideCaptionBody">Engineers ask Cursor how similar Active changes were made — navigating service boundaries without a multi-day tribal-knowledge hunt.</p>
-            <div class="initiatives" id="ideInitiatives"></div>
-          </aside>
+          <div class="changes-shell" aria-label="Changes panel">
+            <div class="changes-top">
+              <div class="changes-top-left">
+                <div>
+                  <div class="name">Changes</div>
+                  <div class="meta" id="changesMeta">1 file · review the diff</div>
+                </div>
+              </div>
+              <span class="agent-pill" id="changesPill">+3 −1</span>
+            </div>
+            <div class="changes-body" id="changesBody"></div>
+          </div>
         </div>
 
-        <p class="note"><strong>Bridge:</strong> Every friction removed here is capacity returned to slide three — Active expansion, cloud conversions, Agents, and customer success.</p>
+        <div class="ide-caption">
+          <div>
+            <div class="eyebrow" id="ideEyebrow">Stage 01 · Write</div>
+            <h3 id="ideCaptionTitle">Write with full codebase context</h3>
+            <p id="ideCaptionBody">The agent reconstructs how similar Active changes were made — and edits the code while you watch the diff.</p>
+          </div>
+          <div class="initiatives" id="ideInitiatives"></div>
+        </div>
+
+        <p class="note"><strong>Bridge:</strong> Capacity freed here funds slide three — Active expansion, cloud conversions, Agents, and customer success.</p>
       </div>
     </section>
 
@@ -2030,155 +2061,222 @@
 
       (function initFuture() {
         const buttons = Array.from(document.querySelectorAll(".ide-step-btn"));
-        const codeEl = document.getElementById("ideCode");
-        const chatEl = document.getElementById("ideChat");
-        const promptEl = document.getElementById("idePrompt");
-        const tabEl = document.getElementById("ideTab");
-        const titleEl = document.getElementById("ideWindowTitle");
-        const openFile = document.getElementById("ideOpenFile");
+        const stream = document.getElementById("agentStream");
+        const changes = document.getElementById("changesBody");
+        const composer = document.getElementById("agentComposer");
+        const agentMeta = document.getElementById("agentMeta");
+        const agentName = document.getElementById("agentName");
+        const agentPill = document.getElementById("agentPill");
+        const changesMeta = document.getElementById("changesMeta");
+        const changesPill = document.getElementById("changesPill");
         const eyebrow = document.getElementById("ideEyebrow");
         const capTitle = document.getElementById("ideCaptionTitle");
         const capBody = document.getElementById("ideCaptionBody");
         const initiatives = document.getElementById("ideInitiatives");
-        if (!buttons.length || !codeEl) return;
+        if (!buttons.length || !stream || !changes) return;
 
         const scenes = [
           {
             eyebrow: "Stage 01 · Write",
-            title: "Write with full codebase context",
-            body: "Ask Cursor how similar Active changes were made — navigate WMS boundaries without a multi-day tribal-knowledge hunt.",
+            title: "Agent writes with repo memory",
+            body: "Ask in the agent — it finds prior Active PRs, then edits AllocationService while the Changes panel shows the live diff.",
             initiatives: ["Active suite expansion", "Cloud conversions", "Active Agents"],
-            tab: "AllocationService.java",
-            fileLabel: "AllocationService",
-            window: "manhattan-active / wms/AllocationService.java — Cursor",
-            prompt: "How did we handle wave allocation overrides last time?",
-            chat: [
-              { role: "user", text: "Where do we apply directed pick overrides for Active WMS waves — and what broke last time?" },
-              { role: "agent", text: "Matched PR #4602 and #4821. Override lives in AllocationService.applyWaveRules(). Last regression: missing null-guard on empty carton groups — see lines 118–126." }
+            meta: "manhattan-active · wave-allocation-guard",
+            name: "Agent",
+            pill: "Editing",
+            composer: "Apply the empty-carton guard the way #4821 did…",
+            changesMeta: "1 file changed",
+            changesPill: "+3 −0",
+            stream: [
+              { type: "user", text: "Add a null-safe empty carton guard for directed pick waves — match how we fixed this last time on Active WMS." },
+              { type: "tool", name: "codebase_search", body: "Query: wave allocation empty cartonGroups · found PR #4821, #4602" },
+              { type: "assistant", text: "Last regression was a missing empty() sentinel. I’ll mirror #4821 in AllocationService.applyWaveRules() and add a unit test." }
             ],
-            code: [
-              ["c", "// Cursor cites PR #4821 pattern"],
-              ["", '<span class="k">public</span> <span class="t">WavePlan</span> <span class="f">applyWaveRules</span>(<span class="t">Wave</span> wave) {'],
-              ["hi", '  <span class="k">if</span> (wave.cartonGroups().isEmpty()) <span class="k">return</span> WavePlan.empty();'],
-              ["", '  <span class="k">return</span> allocator.plan(wave, <span class="s">"DIRECTED"</span>);'],
-              ["", "}"]
-            ]
+            changesHtml: `
+              <div class="change-file">
+                <div class="change-file-head"><span>wms/AllocationService.java</span><span class="stats"><span class="add">+3</span></span></div>
+                <div class="diff-lines">
+                  <div class="diff-line ctx"><span class="n">116</span><span>public WavePlan applyWaveRules(Wave wave) {</span></div>
+                  <div class="diff-line add"><span class="n">117</span><span>+  if (wave.cartonGroups().isEmpty()) {</span></div>
+                  <div class="diff-line add"><span class="n">118</span><span>+    return WavePlan.empty();</span></div>
+                  <div class="diff-line add"><span class="n">119</span><span>+  }</span></div>
+                  <div class="diff-line ctx"><span class="n">120</span><span>  return allocator.plan(wave, "DIRECTED");</span></div>
+                </div>
+              </div>`
           },
           {
             eyebrow: "Stage 02 · PR",
-            title: "PRs that arrive review-ready",
-            body: "Cursor drafts the summary, tests, and rollout notes against repo norms — reviewers start from signal, not archaeology.",
+            title: "Agent opens a review-ready PR",
+            body: "The agent drafts the PR body, tests, and rollout notes — Changes shows the test file and PR template it just wrote.",
             initiatives: ["Sustainable growth", "Lower cost / initiative"],
-            tab: "PULL_REQUEST.md",
-            fileLabel: "pull_request",
-            window: "manhattan-active · Create pull request — Cursor",
-            prompt: "Draft the PR for this allocation fix",
-            chat: [
-              { role: "user", text: "Open a PR for the wave allocation null-guard. Include test plan + rollout." },
-              { role: "agent", text: "Drafted title, summary, test checklist, and feature-flag rollout. Added AllocationServiceTest.emptyCartonGroups()." }
+            meta: "manhattan-active · create pull request",
+            name: "Agent",
+            pill: "Opening PR",
+            composer: "Open the PR with test plan + feature-flag rollout…",
+            changesMeta: "2 files changed",
+            changesPill: "+18 −0",
+            stream: [
+              { type: "user", text: "Open a PR for this guard. Include test plan and a flag-based rollout." },
+              { type: "tool", name: "run_terminal_cmd", body: "gh pr create --title \"fix(wms): guard empty carton groups\"" },
+              { type: "assistant", text: "PR #4910 opened. Added AllocationServiceTest.emptyCartonGroups() and a rollout checklist in the description." }
             ],
-            code: [
-              ["c", "## Summary"],
-              ["", "Guard empty carton groups before directed pick planning."],
-              ["c", "## Test plan"],
-              ["hi", "- [x] Unit: empty carton groups → empty WavePlan"],
-              ["", "- [ ] Staging wave replay on Active WMS tenant"]
-            ]
+            changesHtml: `
+              <div class="change-file">
+                <div class="change-file-head"><span>wms/AllocationServiceTest.java</span><span class="stats"><span class="add">+12</span></span></div>
+                <div class="diff-lines">
+                  <div class="diff-line add"><span class="n">44</span><span>+ @Test void emptyCartonGroups_returnsEmptyPlan() {</span></div>
+                  <div class="diff-line add"><span class="n">45</span><span>+   Wave wave = Wave.withCartons(List.of());</span></div>
+                  <div class="diff-line add"><span class="n">46</span><span>+   assertEquals(WavePlan.empty(), svc.applyWaveRules(wave));</span></div>
+                  <div class="diff-line add"><span class="n">47</span><span>+ }</span></div>
+                </div>
+              </div>
+              <div class="change-file">
+                <div class="change-file-head"><span>PR #4910 description</span><span class="stats"><span class="add">+6</span></span></div>
+                <div class="diff-lines">
+                  <div class="diff-line add"><span class="n">1</span><span>+ ## Summary</span></div>
+                  <div class="diff-line add"><span class="n">2</span><span>+ Guard empty carton groups before directed pick.</span></div>
+                  <div class="diff-line add"><span class="n">3</span><span>+ Flag: feature.wms.emptyCartonGuard (default off)</span></div>
+                </div>
+              </div>`
           },
           {
-            eyebrow: "Stage 03 · Review",
-            title: "History-aware review assist",
-            body: "Agents surface prior PR patterns and likely regressions — compressing 1–3 day queues into hours of high-quality review.",
-            initiatives: ["Active Agents", "Customer success"],
-            tab: "Review · PR #4910",
-            fileLabel: "AllocationService",
-            window: "Review PR #4910 — Cursor Bugbot",
-            prompt: "Review this PR against our Active WMS patterns",
-            chat: [
-              { role: "user", text: "Review #4910 for regressions vs historical allocation PRs." },
-              { role: "agent", text: "Looks aligned with #4821. Flag: confirm TMS tender path still receives WavePlan.empty() sentinel — last miss caused silent skip in #3994." }
+            eyebrow: "Stage 03 · Review · Bugbot",
+            title: "Differentiated review: Bugbot + /review",
+            body: "Not generic lint — Bugbot reviews the diff with codebase + prior PR context, runs pre-push via /review, and can autofix. Humans review architecture; Bugbot clears the mechanical risk first.",
+            initiatives: ["Customer success", "Active Agents", "Safer delivery"],
+            meta: "Bugbot · /review-bugbot · PR #4910",
+            name: "Bugbot",
+            pill: "Reviewing",
+            composer: "/review-bugbot",
+            changesMeta: "Findings on this diff",
+            changesPill: "2 findings",
+            stream: [
+              { type: "user", text: "/review-bugbot — check this branch before I push. Focus on Active WMS ↔ TMS contracts." },
+              { type: "tool", name: "bugbot.review", body: "Analyzing branch diff vs main · reading PR comments · matching prior #3994 / #4821" },
+              { type: "assistant", text: "Pre-push Bugbot pass complete (synced to GitHub so the PR won’t double-bill). 1 high: TMS still expects WavePlan.empty(), not null — same class of miss as #3994. 1 medium: add wms→tms contract test. I can Autofix both with a cloud agent." }
             ],
-            code: [
-              ["c", "// Bugbot review comment"],
-              ["hi", '// ⚠ Cross-service: TMS expects empty() not null'],
-              ["", '<span class="k">return</span> allocator.plan(wave, <span class="s">"DIRECTED"</span>);'],
-              ["c", "// Suggestion: add contract test wms→tms"]
-            ]
+            changesHtml: `
+              <div class="review-findings">
+                <div class="finding">
+                  <span class="sev high">High · contract</span>
+                  <p>Returning null on empty cartons would break TMS tendering. Use WavePlan.empty() sentinel — matched to INC pattern in #3994.</p>
+                </div>
+                <div class="finding">
+                  <span class="sev med">Medium · coverage</span>
+                  <p>No cross-service test proves OMS→WMS→TMS still handles empty() through the tender path.</p>
+                </div>
+                <div class="finding">
+                  <span class="sev info">Bugbot</span>
+                  <p>Pre-push /review · incremental on next pushes · Autofix available · learns from resolved PR comments</p>
+                </div>
+              </div>
+              <div class="change-file">
+                <div class="change-file-head"><span>Suggested fix · AllocationService.java</span><span class="stats"><span class="add">+2</span><span class="del">−1</span></span></div>
+                <div class="diff-lines">
+                  <div class="diff-line del"><span class="n">118</span><span>-    return null;</span></div>
+                  <div class="diff-line add"><span class="n">118</span><span>+    return WavePlan.empty(); // TMS contract</span></div>
+                  <div class="diff-line flag"><span class="n">—</span><span>  Autofix: spawn cloud agent to apply + add contract test</span></div>
+                </div>
+              </div>`
           },
           {
             eyebrow: "Stage 04 · CI / merge",
-            title: "Fewer loops before green",
-            body: "Better-localized changes and clearer tests mean fewer flake re-runs — merge trains stop serializing otherwise parallel work.",
+            title: "Agent clears CI noise",
+            body: "After Bugbot, the agent explains flakes vs real failures and keeps the merge moving — Changes shows the green path.",
             initiatives: ["Innovation / TAM", "Cloud subscription growth"],
-            tab: "ci · active-wms",
-            fileLabel: "ci.yml",
-            window: "CI · active-wms pipeline — Cursor",
-            prompt: "Why did allocation-tests flake last night?",
-            chat: [
-              { role: "user", text: "CI failed on allocation-tests — flake or real?" },
-              { role: "agent", text: "Flake in shared clock mock (seen 6× in 30 days). Your new test is deterministic. Re-run recommended; no code change needed." }
+            meta: "Agent · CI diagnosis",
+            name: "Agent",
+            pill: "Diagnosing",
+            composer: "Is allocation-tests a flake or a real fail?",
+            changesMeta: "CI status · active-wms",
+            changesPill: "Green path",
+            stream: [
+              { type: "user", text: "CI failed on allocation-tests after Bugbot autofix — flake or real?" },
+              { type: "tool", name: "read_ci_logs", body: "allocation-tests · shared clock mock · 6 failures / 30 days" },
+              { type: "assistant", text: "Flake in the shared clock mock — your new test is deterministic. Re-run only; no further code change." }
             ],
-            code: [
-              ["", "✓ compile"],
-              ["hi", "✓ AllocationServiceTest (12ms)"],
-              ["", "~ allocation-tests (flake known)"],
-              ["", "→ Cursor: rerun without code churn"]
-            ]
+            changesHtml: `
+              <div class="change-file">
+                <div class="change-file-head"><span>pipeline · active-wms</span><span class="stats"><span class="add">pass</span></span></div>
+                <div class="diff-lines">
+                  <div class="diff-line ctx"><span class="n">—</span><span>  ✓ compile</span></div>
+                  <div class="diff-line add"><span class="n">—</span><span>+ ✓ AllocationServiceTest (12ms)</span></div>
+                  <div class="diff-line del"><span class="n">—</span><span>- ~ allocation-tests (known flake)</span></div>
+                  <div class="diff-line add"><span class="n">—</span><span>+ → re-run queued · merge unblocked</span></div>
+                </div>
+              </div>`
           },
           {
             eyebrow: "Stage 05 · Deploy",
-            title: "Ship on a confident cadence",
-            body: "Risk is surfaced earlier, so deploys to a versionless customer platform feel controlled — Agents and conversions land when GTM needs them.",
+            title: "Agent drafts the safe rollout",
+            body: "Changes shows the flag + canary plan the agent wrote — so versionless Active deploys stay controlled.",
             initiatives: ["Cloud conversions", "Expand Active suite"],
-            tab: "deploy · staging→prod",
-            fileLabel: "release.md",
-            window: "Deploy checklist — Cursor",
-            prompt: "What should we verify before prod for this WMS change?",
-            chat: [
-              { role: "user", text: "Pre-prod checklist for wave allocation guard?" },
-              { role: "agent", text: "Flag off by default → 5% canary on Active tenants → watch WavePlan.empty() rate. Similar rollout to #4821 succeeded in 40m." }
+            meta: "Agent · release plan",
+            name: "Agent",
+            pill: "Planning",
+            composer: "Draft the canary rollout for emptyCartonGuard…",
+            changesMeta: "2 files · release artifacts",
+            changesPill: "+8 −0",
+            stream: [
+              { type: "user", text: "Prep prod rollout for the carton guard on Active tenants." },
+              { type: "tool", name: "search_docs", body: "Prior rollout #4821 · 5% canary · 40m to full" },
+              { type: "assistant", text: "Flag default off → 5% canary → watch WavePlan.empty() rate. Rollback is a flag flip, no redeploy." }
             ],
-            code: [
-              ["c", "# Release notes (drafted by Cursor)"],
-              ["", "feature.wms.emptyCartonGuard = false"],
-              ["hi", "canary: 5% Active WMS tenants"],
-              ["", "rollback: toggle flag (no redeploy)"]
-            ]
+            changesHtml: `
+              <div class="change-file">
+                <div class="change-file-head"><span>config/feature-flags.yaml</span><span class="stats"><span class="add">+2</span></span></div>
+                <div class="diff-lines">
+                  <div class="diff-line add"><span class="n">88</span><span>+ feature.wms.emptyCartonGuard: false</span></div>
+                  <div class="diff-line add"><span class="n">89</span><span>+ feature.wms.emptyCartonGuard.canary: 0.05</span></div>
+                </div>
+              </div>
+              <div class="change-file">
+                <div class="change-file-head"><span>RELEASE_NOTES.md</span><span class="stats"><span class="add">+4</span></span></div>
+                <div class="diff-lines">
+                  <div class="diff-line add"><span class="n">1</span><span>+ Canary 5% Active WMS · metric: wms.wave.empty_cartons</span></div>
+                  <div class="diff-line add"><span class="n">2</span><span>+ Rollback: toggle flag (no redeploy)</span></div>
+                </div>
+              </div>`
           },
           {
             eyebrow: "Stage 06 · Recover",
-            title: "Faster, cheaper recovery",
-            body: "When something escapes, Cursor matches codebase history and prior incidents — MTTR drops and roadmap teams stay on roadmap.",
+            title: "Agent hotfixes from history",
+            body: "When something escapes, the agent matches prior incidents and lands a patch — Changes shows the hotfix as it lands.",
             initiatives: ["Customer success", "Cloud subscription growth"],
-            tab: "incident · INC-2044",
-            fileLabel: "IncidentNotes",
-            window: "INC-2044 · WavePlan empty spike — Cursor",
-            prompt: "What caused similar WavePlan.empty() spikes before?",
-            chat: [
-              { role: "user", text: "Prod spike in WavePlan.empty() after canary. Root cause?" },
-              { role: "agent", text: "Same signature as INC-1788: upstream OMS sent zero carton groups during peak. Hotfix: treat as soft-skip + metric. Patch ready from #3994 follow-up." }
+            meta: "Agent · INC-2044",
+            name: "Agent",
+            pill: "Hotfixing",
+            composer: "Match this empty() spike to prior incidents and patch…",
+            changesMeta: "1 file · hotfix",
+            changesPill: "+3 −1",
+            stream: [
+              { type: "user", text: "Prod spike in WavePlan.empty() after canary. Same as anything we’ve seen?" },
+              { type: "tool", name: "search_incidents", body: "INC-1788 · OMS sent zero carton groups at peak" },
+              { type: "assistant", text: "Same signature as INC-1788. Applying soft-skip + metric; keeps TMS happy and roadmap teams off the firefight." }
             ],
-            code: [
-              ["c", "// Hotfix suggested from INC-1788"],
-              ["hi", 'metrics.increment(<span class="s">"wms.wave.empty_cartons"</span>);'],
-              ["", '<span class="k">return</span> WavePlan.softSkip(wave);'],
-              ["c", "// MTTR target: minutes, not hours"]
-            ]
+            changesHtml: `
+              <div class="change-file">
+                <div class="change-file-head"><span>wms/AllocationService.java</span><span class="stats"><span class="add">+3</span><span class="del">−1</span></span></div>
+                <div class="diff-lines">
+                  <div class="diff-line del"><span class="n">118</span><span>-    return WavePlan.empty();</span></div>
+                  <div class="diff-line add"><span class="n">118</span><span>+    metrics.increment("wms.wave.empty_cartons");</span></div>
+                  <div class="diff-line add"><span class="n">119</span><span>+    return WavePlan.softSkip(wave);</span></div>
+                  <div class="diff-line flag"><span class="n">—</span><span>  MTTR: minutes · patterned on INC-1788</span></div>
+                </div>
+              </div>`
           }
         ];
 
         let timer = null;
         let idx = 0;
 
-        function renderCode(lines) {
-          return lines.map((row, i) => {
-            const cls = row[0] === "hi" ? " hi" : "";
-            const content = row[1];
-            const kind = row[0] === "c" ? "c" : "";
-            const inner = kind === "c" && !content.includes("<")
-              ? `<span class="c">${content}</span>`
-              : content;
-            return `<div class="${cls}"><span class="ln">${i + 1}</span>${inner}</div>`;
+        function renderStream(items) {
+          return items.map((item) => {
+            if (item.type === "tool") {
+              return `<div class="tool-card"><div class="tool-name">${item.name}</div><div class="tool-body">${item.body}</div></div>`;
+            }
+            const who = item.type === "user" ? "You" : "Cursor";
+            return `<div class="msg ${item.type === "user" ? "user" : "assistant"}"><span class="who">${who}</span>${item.text}</div>`;
           }).join("");
         }
 
@@ -2191,21 +2289,19 @@
           capTitle.textContent = s.title;
           capBody.textContent = s.body;
           initiatives.innerHTML = s.initiatives.map((t) => `<span>${t}</span>`).join("");
-          tabEl.textContent = s.tab;
-          titleEl.textContent = s.window;
-          openFile.innerHTML = `<span class="ext">FILE</span> ${s.fileLabel}`;
-          promptEl.textContent = s.prompt;
-          codeEl.innerHTML = renderCode(s.code);
-          chatEl.innerHTML = s.chat.map((m) =>
-            `<div class="bubble ${m.role}"><span class="label">${m.role === "user" ? "Engineer" : "Cursor"}</span>${m.text}</div>`
-          ).join("");
+          agentMeta.textContent = s.meta;
+          agentName.textContent = s.name;
+          agentPill.textContent = s.pill;
+          composer.textContent = s.composer;
+          changesMeta.textContent = s.changesMeta;
+          changesPill.textContent = s.changesPill;
+          stream.innerHTML = renderStream(s.stream);
+          changes.innerHTML = s.changesHtml;
         }
 
         function startAuto() {
           clearInterval(timer);
-          timer = window.setInterval(() => {
-            show((idx + 1) % scenes.length);
-          }, 4200);
+          timer = window.setInterval(() => show((idx + 1) % scenes.length), 5200);
         }
 
         function stopAuto() {
@@ -2214,17 +2310,15 @@
         }
 
         buttons.forEach((btn) => {
-          const i = Number(btn.dataset.ide);
           btn.addEventListener("click", (e) => {
             e.stopPropagation();
-            show(i);
+            show(Number(btn.dataset.ide));
             stopAuto();
-            window.setTimeout(startAuto, 8000);
+            window.setTimeout(startAuto, 9000);
           });
         });
 
         show(0);
-
         window.__cursorIdeDemo = {
           start() { show(idx); startAuto(); },
           pause() { stopAuto(); }
