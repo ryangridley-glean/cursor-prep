@@ -870,6 +870,225 @@
       margin-bottom: 0.1rem;
     }
 
+    /* Coinbase story */
+    .story-layout {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 0.85rem;
+      align-items: stretch;
+    }
+
+    .story-visual {
+      background: #0f141c;
+      border-radius: calc(var(--radius) + 2px);
+      border: 1px solid #243044;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      color: #e8eef5;
+      display: flex;
+      flex-direction: column;
+      min-height: 320px;
+    }
+
+    .story-visual-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding: 0.7rem 0.9rem;
+      background: #171d28;
+      border-bottom: 1px solid #2a3444;
+    }
+
+    .story-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .story-brand .cb {
+      width: 26px;
+      height: 26px;
+      border-radius: 8px;
+      background: #0052ff;
+      display: grid;
+      place-items: center;
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: white;
+    }
+
+    .story-visual-head a {
+      font-size: 0.68rem;
+      color: #9fb4d0;
+      text-decoration: none;
+    }
+
+    .story-visual-head a:hover { color: white; }
+
+    .story-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.55rem;
+      padding: 0.85rem;
+    }
+
+    .story-metric {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 0.75rem 0.8rem;
+    }
+
+    .story-metric .sm-l {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #8fa3bd;
+      margin-bottom: 0.35rem;
+    }
+
+    .story-metric .sm-v {
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+      font-weight: 700;
+      color: white;
+      line-height: 1.1;
+    }
+
+    .story-metric .sm-s {
+      margin-top: 0.25rem;
+      font-size: 0.72rem;
+      color: #7d93ad;
+    }
+
+    .story-metric.hero {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, rgba(0, 82, 255, 0.25), rgba(255, 102, 0, 0.18));
+      border-color: rgba(0, 82, 255, 0.35);
+    }
+
+    .speed-bar {
+      margin-top: 0.65rem;
+      display: grid;
+      gap: 0.35rem;
+    }
+
+    .speed-row {
+      display: grid;
+      grid-template-columns: 4.5rem 1fr auto;
+      gap: 0.5rem;
+      align-items: center;
+      font-size: 0.72rem;
+    }
+
+    .speed-row .label { color: #9fb4d0; font-weight: 600; }
+    .speed-row .track {
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+    }
+
+    .speed-row .track i {
+      display: block;
+      height: 100%;
+      border-radius: 999px;
+    }
+
+    .speed-row.before .track i {
+      width: 100%;
+      background: #5a6a80;
+    }
+
+    .speed-row.after .track i {
+      width: 10%;
+      background: linear-gradient(90deg, #0052ff, #28c840);
+      animation: shrinkIn 1.2s var(--ease) both;
+    }
+
+    .speed-row .days { font-weight: 700; color: white; min-width: 3.2rem; text-align: right; }
+
+    @keyframes shrinkIn {
+      from { width: 100%; }
+      to { width: 10%; }
+    }
+
+    .story-quote {
+      margin: 0 0.85rem 0.85rem;
+      padding: 0.7rem 0.8rem;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.04);
+      border-left: 3px solid #0052ff;
+      font-size: 0.78rem;
+      line-height: 1.45;
+      color: #c5d3e4;
+    }
+
+    .story-quote cite {
+      display: block;
+      margin-top: 0.4rem;
+      font-size: 0.68rem;
+      font-style: normal;
+      color: #8fa3bd;
+    }
+
+    .bridge-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .bridge-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 0.85rem 0.95rem;
+      box-shadow: 0 8px 24px rgba(0, 42, 66, 0.04);
+      flex: 1;
+    }
+
+    .bridge-card .from-to {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      align-items: center;
+      margin-bottom: 0.4rem;
+    }
+
+    .bridge-card .chip {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.45rem;
+      border-radius: 999px;
+    }
+
+    .bridge-card .chip.cb { background: #e8efff; color: #0052ff; }
+    .bridge-card .chip.manh { background: var(--sky); color: var(--navy); }
+    .bridge-card .arrow { color: var(--orange); font-weight: 700; font-size: 0.8rem; }
+
+    .bridge-card h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--navy-deep);
+      margin-bottom: 0.25rem;
+    }
+
+    .bridge-card p {
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    @media (max-width: 900px) {
+      .story-layout { grid-template-columns: 1fr; }
+    }
+
     @media (max-width: 900px) {
       .eval-panel.is-active { grid-template-columns: 1fr; }
       .viz-enterprise { grid-template-columns: 1fr; }
@@ -2509,6 +2728,114 @@
       </div>
     </section>
 
+    <!-- 7. Customer story -->
+    <section class="slide" data-title="Coinbase story">
+      <div class="slide-inner" style="gap: 0.75rem;">
+        <div>
+          <p class="kicker">Customer proof</p>
+          <h2>Coinbase → what Sanjeev can expect</h2>
+          <p class="lede">
+            Same class of outcome Coinbase published with Cursor — mapped to Manhattan’s need to increase revenue, decrease cost, and decrease risk on Active / Agents.
+          </p>
+        </div>
+
+        <div class="story-layout">
+          <div class="story-visual">
+            <div class="story-visual-head">
+              <div class="story-brand">
+                <span class="cb">CB</span>
+                Coinbase · agent-first engineering
+              </div>
+              <a href="https://cursor.com/blog/coinbase" target="_blank" rel="noopener noreferrer">cursor.com/blog/coinbase</a>
+            </div>
+
+            <div class="story-metrics">
+              <div class="story-metric hero">
+                <div class="sm-l">Idea → production (north star)</div>
+                <div class="sm-v">90% faster</div>
+                <div class="sm-s">Some teams: 20 days → &lt;2 days (1.8 days reported)</div>
+                <div class="speed-bar" aria-hidden="true">
+                  <div class="speed-row before">
+                    <span class="label">Before</span>
+                    <span class="track"><i></i></span>
+                    <span class="days">20d</span>
+                  </div>
+                  <div class="speed-row after">
+                    <span class="label">With Cursor</span>
+                    <span class="track"><i></i></span>
+                    <span class="days">&lt;2d</span>
+                  </div>
+                </div>
+              </div>
+              <div class="story-metric">
+                <div class="sm-l">Idea → first PR</div>
+                <div class="sm-v">8d → &lt;30m</div>
+                <div class="sm-s">Plan Mode + agent implementation</div>
+              </div>
+              <div class="story-metric">
+                <div class="sm-l">PRs created by agents</div>
+                <div class="sm-v">75%</div>
+                <div class="sm-s">Across Coinbase</div>
+              </div>
+              <div class="story-metric">
+                <div class="sm-l">Merged PRs / engineer</div>
+                <div class="sm-v">+55%</div>
+                <div class="sm-s">YTD since agent-first shift</div>
+              </div>
+              <div class="story-metric">
+                <div class="sm-l">Time back / developer</div>
+                <div class="sm-v">7 hrs/wk</div>
+                <div class="sm-s">1–2 eng teams ship former full-team scope</div>
+              </div>
+            </div>
+
+            <blockquote class="story-quote">
+              “Coinbase values the freedom to use any model… And with Composer 2.5, Cursor gives us the most cost-competitive model at the frontier of intelligence.”
+              <cite>— Kyle Cesmat, Engineering Manager, Agent Experience, Coinbase</cite>
+            </blockquote>
+          </div>
+
+          <div class="bridge-stack">
+            <div class="bridge-card">
+              <div class="from-to">
+                <span class="chip cb">Coinbase</span>
+                <span class="arrow">→</span>
+                <span class="chip manh">Manhattan · Revenue</span>
+              </div>
+              <h3>Ship value when GTM needs it</h3>
+              <p>
+                90% faster idea→prod and minutes-to-first-PR is the same lever Sanjeev needs for Active suite expansion, cloud conversions, and Active Agents — not more headcount, more cycle speed.
+              </p>
+            </div>
+            <div class="bridge-card">
+              <div class="from-to">
+                <span class="chip cb">Coinbase</span>
+                <span class="arrow">→</span>
+                <span class="chip manh">Manhattan · Cost</span>
+              </div>
+              <h3>Smaller squads, more output</h3>
+              <p>
+                1–2 engineers owning former full-team scope + 7 hrs/week back + Composer cost efficiency maps to fewer expensive engineers per initiative on a complex Active platform.
+              </p>
+            </div>
+            <div class="bridge-card">
+              <div class="from-to">
+                <span class="chip cb">Coinbase</span>
+                <span class="arrow">→</span>
+                <span class="chip manh">Manhattan · Risk</span>
+              </div>
+              <h3>Outcomes over lines of code</h3>
+              <p>
+                Coinbase’s north star is time-to-production, not LOC (“every new line is a risk”). Engineers move up to intent, architecture, and validation — the same safer operating model for a versionless customer cloud.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <p class="note"><strong>Ask:</strong> If Manhattan cut idea→production anything like Coinbase’s 90%, which 2026 initiative would you put that capacity on first — conversions, Active Agents, or suite expansion?</p>
+      </div>
+    </section>
+
   </div>
 
   <div class="chrome">
@@ -2516,7 +2843,7 @@
     <div class="nav-btns">
       <button type="button" id="prev" aria-label="Previous slide">Prev</button>
       <button type="button" id="next" aria-label="Next slide">Next</button>
-      <span class="slide-count" id="count">1 / 6</span>
+      <span class="slide-count" id="count">1 / 7</span>
     </div>
   </div>
 
