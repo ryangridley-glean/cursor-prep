@@ -1089,6 +1089,261 @@
       .story-layout { grid-template-columns: 1fr; }
     }
 
+    /* Taylor English cost/risk */
+    .legal-layout {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 0.85rem;
+      align-items: stretch;
+    }
+
+    .firm-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: calc(var(--radius) + 2px);
+      padding: 1rem 1.1rem;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .firm-head {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .firm-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: linear-gradient(145deg, #1a3a52, #003b5c);
+      color: white;
+      display: grid;
+      place-items: center;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+
+    .firm-head h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy-deep);
+      line-height: 1.2;
+    }
+
+    .firm-head p {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .firm-pillars {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    .firm-pillars span {
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: var(--navy);
+      background: var(--sky);
+      padding: 0.22rem 0.45rem;
+      border-radius: 999px;
+    }
+
+    .firm-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .firm-list li {
+      font-size: 0.82rem;
+      color: var(--ink);
+      line-height: 1.4;
+      padding-left: 0.85rem;
+      position: relative;
+    }
+
+    .firm-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.5rem;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--navy);
+    }
+
+    .firm-note {
+      font-size: 0.75rem;
+      color: var(--muted);
+      background: #fff8f0;
+      border: 1px solid rgba(255, 102, 0, 0.2);
+      border-radius: 10px;
+      padding: 0.55rem 0.65rem;
+      line-height: 1.4;
+    }
+
+    .firm-note strong { color: var(--navy-deep); }
+
+    .matrix-wrap {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: calc(var(--radius) + 2px);
+      padding: 0.85rem 0.95rem 0.95rem;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .matrix-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--navy);
+    }
+
+    .matrix {
+      position: relative;
+      flex: 1;
+      min-height: 280px;
+      border-radius: 12px;
+      background:
+        linear-gradient(90deg, rgba(0, 59, 92, 0.06) 50%, transparent 50%),
+        linear-gradient(0deg, rgba(0, 59, 92, 0.06) 50%, transparent 50%),
+        #fafcfd;
+      border: 1px solid var(--line);
+      overflow: hidden;
+    }
+
+    .matrix-axis {
+      position: absolute;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .matrix-axis.y-low { left: 0.55rem; bottom: 0.45rem; }
+    .matrix-axis.y-high { left: 0.55rem; top: 0.45rem; writing-mode: vertical-rl; transform: rotate(180deg); }
+    .matrix-axis.x-low { left: 2.2rem; bottom: 0.45rem; }
+    .matrix-axis.x-high { right: 0.55rem; bottom: 0.45rem; }
+
+    .matrix-axis.center-y {
+      left: 0.35rem;
+      top: 50%;
+      transform: translateY(-50%) rotate(180deg);
+      writing-mode: vertical-rl;
+      font-size: 0.58rem;
+    }
+
+    .matrix-axis.center-x {
+      left: 50%;
+      bottom: 0.2rem;
+      transform: translateX(-50%);
+      font-size: 0.58rem;
+    }
+
+    .risk-bubble {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      width: clamp(88px, 14vw, 118px);
+      padding: 0.45rem 0.5rem;
+      border-radius: 12px;
+      border: 1.5px solid rgba(0, 59, 92, 0.15);
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 8px 20px rgba(0, 42, 66, 0.08);
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+      z-index: 3;
+    }
+
+    .risk-bubble:hover,
+    .risk-bubble.is-active {
+      border-color: rgba(255, 102, 0, 0.55);
+      box-shadow: 0 12px 28px rgba(255, 102, 0, 0.15);
+      transform: translate(-50%, -50%) scale(1.04);
+    }
+
+    .risk-bubble .rb-t {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--navy-deep);
+      line-height: 1.2;
+      margin-bottom: 0.2rem;
+    }
+
+    .risk-bubble .rb-s {
+      font-size: 0.6rem;
+      color: var(--muted);
+      line-height: 1.25;
+    }
+
+    .risk-bubble .rb-tag {
+      display: inline-block;
+      margin-top: 0.25rem;
+      font-size: 0.55rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 0.12rem 0.35rem;
+      border-radius: 999px;
+    }
+
+    .risk-bubble .rb-tag.cost { background: #fff4ec; color: #b34d00; }
+    .risk-bubble .rb-tag.risk { background: #fde8e8; color: #b42318; }
+    .risk-bubble .rb-tag.both { background: var(--sky); color: var(--navy); }
+
+    .matrix-detail {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.45;
+      min-height: 2.8rem;
+      padding: 0.55rem 0.65rem;
+      background: var(--sky);
+      border-radius: 10px;
+    }
+
+    .matrix-detail strong { color: var(--navy-deep); }
+
+    .legal-shift {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+    }
+
+    .legal-shift-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 0.55rem 0.65rem;
+    }
+
+    .legal-shift-card h4 {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.2rem;
+    }
+
+    .legal-shift-card p {
+      font-size: 0.75rem;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+
     @media (max-width: 900px) {
       .eval-panel.is-active { grid-template-columns: 1fr; }
       .viz-enterprise { grid-template-columns: 1fr; }
@@ -2101,7 +2356,10 @@
       .pov-top,
       .state-layout,
       .loop-row,
-      .cursor-demo {
+      .cursor-demo,
+      .story-layout,
+      .legal-layout,
+      .legal-shift {
         grid-template-columns: 1fr;
       }
 
@@ -2836,6 +3094,114 @@
       </div>
     </section>
 
+    <!-- 8. Taylor English cost/risk -->
+    <section class="slide" data-title="Legal cost risk">
+      <div class="slide-inner" style="gap: 0.75rem;">
+        <div>
+          <p class="kicker">Georgia counsel lens</p>
+          <h2>Cost &amp; risk analysis — agentic coding rollout</h2>
+          <p class="lede">
+            What Taylor English Duma (Taylor Duma) counseled Atlanta tech enterprises on — and where legal gates trade velocity for exposure when Manhattan adopts Cursor at scale.
+          </p>
+        </div>
+
+        <div class="legal-layout">
+          <div class="firm-card">
+            <div class="firm-head">
+              <div class="firm-mark" aria-hidden="true">TE</div>
+              <div>
+                <h3>Taylor English Duma → Taylor Duma LLP</h3>
+                <p>Atlanta HQ · Fortune 500 to startups · GGI Global Alliance (Georgia)</p>
+              </div>
+            </div>
+
+            <div class="firm-pillars">
+              <span>Technology</span>
+              <span>IP protection</span>
+              <span>Data privacy</span>
+              <span>IT sourcing</span>
+              <span>Software dev ops</span>
+              <span>Corporate</span>
+            </div>
+
+            <ul class="firm-list">
+              <li><strong>Technology practice</strong> — IP, information security &amp; privacy, IT sourcing, and operational issues around designing and developing software.</li>
+              <li><strong>Client profile</strong> — Middle-market and enterprise operators who need transactional speed without sacrificing audit-ready contracts.</li>
+              <li><strong>Relevance to Cursor</strong> — Vendor MSAs/DPAs, trade-secret posture for codebase indexing, ownership of agent-generated code, and acceptable-use policy for engineers.</li>
+            </ul>
+
+            <p class="firm-note">
+              <strong>Status (Mar 2026):</strong> Firm wound down after partner departures; technology and corporate lawyers dispersed to Offit Kurman, Ardis Law, Smith Gambrell &amp; Russell, and others.
+              <strong>Counsel continuity</strong> is itself a cost/risk variable when your AI rollout spans multi-year agreements.
+            </p>
+          </div>
+
+          <div class="matrix-wrap">
+            <div class="matrix-title">Legal gate cost vs. risk if under-gated · click a topic</div>
+            <div class="matrix" id="legalMatrix" role="group" aria-label="Cost risk matrix for agentic coding legal topics">
+              <span class="matrix-axis center-y">Risk if under-gated ↑</span>
+              <span class="matrix-axis center-x">Legal process cost →</span>
+              <span class="matrix-axis x-low">Heavy / slow</span>
+              <span class="matrix-axis x-high">Lean / templated</span>
+              <span class="matrix-axis y-low">Lower</span>
+              <span class="matrix-axis y-high">Critical</span>
+
+              <button type="button" class="risk-bubble is-active" style="left: 24%; top: 88%;" data-detail="Trade-secret exposure from codebase indexing and model context is the highest-stakes review for Manhattan Active — WMS/TMS logic, customer configs, and integration patterns. Taylor English’s technology group routinely scoped data-flow and access controls for software operators. <strong>Cost:</strong> weeks of outside counsel + security review. <strong>Risk:</strong> litigation, customer breach notice, competitive leakage.">
+                <div class="rb-t">Codebase &amp; trade secrets</div>
+                <div class="rb-s">Indexing, context windows</div>
+                <span class="rb-tag both">Cost + risk</span>
+              </button>
+              <button type="button" class="risk-bubble" style="left: 34%; top: 76%;" data-detail="Enterprise AI vendor terms (MSA, DPA, subprocessors, training opt-out, indemnity) are where Georgia tech counsel spent disproportionate hours. A mis-negotiated clause can block rollout or create uncapped liability. <strong>Cursor shift:</strong> standard enterprise package + Privacy Mode reduces bespoke negotiation surface.">
+                <div class="rb-t">Vendor AI agreement</div>
+                <div class="rb-s">MSA · DPA · subprocessors</div>
+                <span class="rb-tag both">Cost + risk</span>
+              </button>
+              <button type="button" class="risk-bubble" style="left: 42%; top: 64%;" data-detail="Who owns agent-generated code and derivative works matters for a product company shipping versionless cloud. Work-for-hire, assignment, and OSS contamination in agent PRs need a clear playbook — not per-PR legal review. <strong>Risk:</strong> IP disputes, customer escrow, M&amp;A diligence findings.">
+                <div class="rb-t">IP &amp; generated code</div>
+                <div class="rb-s">Ownership · OSS in PRs</div>
+                <span class="rb-tag risk">High risk</span>
+              </button>
+              <button type="button" class="risk-bubble" style="left: 30%; top: 58%;" data-detail="Customer PII, warehouse data, and regulated flows in prompts trigger GDPR/CCPA and customer DPAs. Taylor English’s privacy bench focused on information access and security programs — the same gates that slow agent adoption if every prompt is treated as a novel data transfer.">
+                <div class="rb-t">Privacy in prompts</div>
+                <div class="rb-s">PII · customer DPAs</div>
+                <span class="rb-tag both">Cost + risk</span>
+              </button>
+              <button type="button" class="risk-bubble" style="left: 56%; top: 52%;" data-detail="Agent-written PRs can import GPL or ambiguous licenses at machine speed. Legal cost scales with PR volume unless Bugbot + policy checks catch license headers pre-merge. <strong>Sweet spot:</strong> automate the gate, reserve counsel for exceptions.">
+                <div class="rb-t">License compliance</div>
+                <div class="rb-s">Automatable review</div>
+                <span class="rb-tag cost">Moderate cost</span>
+              </button>
+              <button type="button" class="risk-bubble" style="left: 76%; top: 30%;" data-detail="Acceptable-use, attribution, and performance expectations for engineers using agents are lower legal cost but still required — especially when 75% of PRs may be agent-assisted. Template policy updates are cheaper than re-litigating conduct after an incident.">
+                <div class="rb-t">Employment &amp; AUP</div>
+                <div class="rb-s">Engineer policy</div>
+                <span class="rb-tag cost">Lower cost</span>
+              </button>
+            </div>
+            <div class="matrix-detail" id="legalMatrixDetail">
+              <strong>Codebase &amp; trade secrets:</strong> Trade-secret exposure from codebase indexing and model context is the highest-stakes review for Manhattan Active — WMS/TMS logic, customer configs, and integration patterns. Taylor English’s technology group routinely scoped data-flow and access controls for software operators. <strong>Cost:</strong> weeks of outside counsel + security review. <strong>Risk:</strong> litigation, customer breach notice, competitive leakage.
+            </div>
+          </div>
+        </div>
+
+        <div class="legal-shift">
+          <div class="legal-shift-card">
+            <h4>Over-gate → velocity tax</h4>
+            <p>Per-PR legal review on agent output recreates the bottleneck slide 4 — outside counsel hours scale with PR volume, not value.</p>
+          </div>
+          <div class="legal-shift-card">
+            <h4>Under-gate → enterprise risk</h4>
+            <p>Skipping vendor DPAs or indexing review invites the IP/privacy exposure Taylor English’s technology practice was built to prevent.</p>
+          </div>
+          <div class="legal-shift-card">
+            <h4>Cursor narrows the curve</h4>
+            <p>Enterprise controls, Privacy Mode, and automated review (Bugbot) move topics right on the matrix — lean gates on high-risk areas.</p>
+          </div>
+        </div>
+
+        <p class="note"><strong>Ask:</strong> Which legal workstream is slowest today for a new dev tool — vendor contracting, security/privacy sign-off, or IP review — and who owns shortening it without increasing risk?</p>
+      </div>
+    </section>
+
   </div>
 
   <div class="chrome">
@@ -2843,7 +3209,7 @@
     <div class="nav-btns">
       <button type="button" id="prev" aria-label="Previous slide">Prev</button>
       <button type="button" id="next" aria-label="Next slide">Next</button>
-      <span class="slide-count" id="count">1 / 7</span>
+      <span class="slide-count" id="count">1 / 8</span>
     </div>
   </div>
 
@@ -3531,6 +3897,25 @@
           start() { showTab(active); },
           pause() { clearTimers(); }
         };
+      })();
+
+      (function initLegalMatrix() {
+        const matrix = document.getElementById("legalMatrix");
+        const detail = document.getElementById("legalMatrixDetail");
+        if (!matrix || !detail) return;
+
+        const bubbles = Array.from(matrix.querySelectorAll(".risk-bubble"));
+
+        function selectBubble(btn) {
+          bubbles.forEach((b) => b.classList.toggle("is-active", b === btn));
+          const text = btn.getAttribute("data-detail") || "";
+          const title = btn.querySelector(".rb-t")?.textContent || "Topic";
+          detail.innerHTML = "<strong>" + title + ":</strong> " + text;
+        }
+
+        bubbles.forEach((btn) => {
+          btn.addEventListener("click", () => selectBubble(btn));
+        });
       })();
 
       go(0);
