@@ -1197,6 +1197,194 @@
       color: #8fa3bd;
     }
 
+    /* CTA / next steps */
+    .cta-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
+      gap: clamp(1rem, 2.5vw, 2rem);
+      align-items: center;
+    }
+
+    .cta-card {
+      background: linear-gradient(145deg, var(--navy-deep), var(--navy));
+      color: white;
+      border-radius: calc(var(--radius) + 4px);
+      padding: clamp(1.25rem, 2.5vw, 2rem);
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .cta-card .kicker {
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .cta-card .kicker::before {
+      background: var(--orange);
+    }
+
+    .cta-card h2 {
+      color: white;
+      font-size: clamp(1.85rem, 3.5vw, 2.75rem);
+    }
+
+    .cta-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      align-self: flex-start;
+      background: var(--orange);
+      color: white;
+      font-size: clamp(1rem, 1.6vw, 1.15rem);
+      font-weight: 700;
+      padding: 0.85rem 1.25rem;
+      border-radius: 12px;
+      box-shadow: 0 12px 28px rgba(255, 102, 0, 0.35);
+    }
+
+    .cta-action svg {
+      width: 1.15rem;
+      height: 1.15rem;
+      flex-shrink: 0;
+    }
+
+    .cta-sub {
+      font-size: 0.92rem;
+      color: rgba(255, 255, 255, 0.78);
+      line-height: 1.5;
+      max-width: 28rem;
+    }
+
+    .cta-steps {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      margin-top: 0.25rem;
+    }
+
+    .cta-steps li {
+      font-size: 0.84rem;
+      color: rgba(255, 255, 255, 0.72);
+      padding-left: 1rem;
+      position: relative;
+      line-height: 1.4;
+    }
+
+    .cta-steps li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.5rem;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--orange);
+    }
+
+    .pilot-calendar {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: calc(var(--radius) + 2px);
+      padding: 1rem 1.1rem 1.15rem;
+      box-shadow: var(--shadow);
+    }
+
+    .cal-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.85rem;
+    }
+
+    .cal-head strong {
+      font-size: 1.05rem;
+      color: var(--navy-deep);
+    }
+
+    .cal-head span {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--orange);
+    }
+
+    .cal-weekdays {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 0.25rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .cal-weekdays span {
+      text-align: center;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 0.3rem;
+    }
+
+    .cal-day {
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--ink);
+      border-radius: 10px;
+      position: relative;
+    }
+
+    .cal-day.is-muted {
+      color: rgba(90, 101, 119, 0.35);
+      font-weight: 500;
+    }
+
+    .cal-day.is-selected {
+      background: var(--orange);
+      color: white;
+      box-shadow: 0 8px 20px rgba(255, 102, 0, 0.35);
+      transform: scale(1.08);
+      z-index: 1;
+    }
+
+    .cal-day.is-selected::after {
+      content: "Pilot";
+      position: absolute;
+      bottom: -1.15rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.55rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--orange);
+      white-space: nowrap;
+    }
+
+    .cal-foot {
+      margin-top: 1.35rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--line);
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.4;
+      text-align: center;
+    }
+
+    .cal-foot strong {
+      color: var(--navy-deep);
+    }
+
     .bridge-stack {
       display: flex;
       flex-direction: column;
@@ -1247,7 +1435,8 @@
     }
 
     @media (max-width: 900px) {
-      .story-layout { grid-template-columns: 1fr; }
+      .story-layout,
+      .cta-layout { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 900px) {
@@ -2396,6 +2585,15 @@
                 </span>
               </button>
             </li>
+            <li>
+              <button type="button" class="agenda-item" data-slide="8">
+                <span class="agenda-num">8</span>
+                <span class="agenda-copy">
+                  <strong>Next steps</strong>
+                  <span>Walk through pilot planning</span>
+                </span>
+              </button>
+            </li>
           </ol>
         </div>
       </div>
@@ -3090,6 +3288,44 @@
       </div>
     </section>
 
+    <!-- 8. Next steps / CTA -->
+    <section class="slide" data-title="Next steps">
+      <div class="slide-inner">
+        <div class="cta-layout">
+          <div class="cta-card">
+            <p class="kicker">Call to action</p>
+            <h2>Next steps</h2>
+            <div class="cta-action" role="status" aria-live="polite">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M8 2v4"/><path d="M16 2v4"/><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18"/><path d="m9 16 2 2 4-4"/>
+              </svg>
+              Walk through pilot planning
+            </div>
+            <p class="cta-sub">
+              Lock a working session to scope the Manhattan pilot — squad selection, success metrics, security review, and a 30/60/90-day rollout path on Active.
+            </p>
+            <ul class="cta-steps">
+              <li>Align on pilot squad and first use cases (Active, Agents, or conversions)</li>
+              <li>Define velocity, cost, and risk metrics from slide three</li>
+              <li>Confirm enterprise security &amp; Privacy Mode requirements</li>
+            </ul>
+          </div>
+
+          <div class="pilot-calendar" id="pilotCalendar" aria-label="Pilot planning calendar">
+            <div class="cal-head">
+              <strong id="calMonthLabel">July 2026</strong>
+              <span>Selected</span>
+            </div>
+            <div class="cal-weekdays" aria-hidden="true">
+              <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+            </div>
+            <div class="cal-grid" id="calGrid"></div>
+            <p class="cal-foot" id="calFoot"><strong>Friday, July 17</strong> · Pilot planning working session</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </div>
 
   <div class="chrome">
@@ -3097,7 +3333,7 @@
     <div class="nav-btns">
       <button type="button" id="prev" aria-label="Previous slide">Prev</button>
       <button type="button" id="next" aria-label="Next slide">Next</button>
-      <span class="slide-count" id="count">1 / 8</span>
+      <span class="slide-count" id="count">1 / 9</span>
     </div>
   </div>
 
@@ -3865,6 +4101,71 @@
           start() { showTab(active); },
           pause() { clearTimers(); }
         };
+      })();
+
+      (function initPilotCalendar() {
+        const grid = document.getElementById("calGrid");
+        const monthLabel = document.getElementById("calMonthLabel");
+        const foot = document.getElementById("calFoot");
+        if (!grid || !monthLabel || !foot) return;
+
+        function followingFriday(from) {
+          const d = new Date(from);
+          d.setHours(12, 0, 0, 0);
+          let add = (5 - d.getDay() + 7) % 7;
+          if (add === 0) add = 7;
+          d.setDate(d.getDate() + add);
+          return d;
+        }
+
+        const selected = followingFriday(new Date());
+        const year = selected.getFullYear();
+        const month = selected.getMonth();
+        const selectedDate = selected.getDate();
+
+        const monthName = selected.toLocaleDateString("en-US", { month: "long", year: "numeric" });
+        monthLabel.textContent = monthName;
+
+        const weekday = selected.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" });
+        foot.innerHTML = "<strong>" + weekday + "</strong> · Pilot planning working session";
+
+        const first = new Date(year, month, 1);
+        const startPad = first.getDay();
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+        const prevMonthDays = new Date(year, month, 0).getDate();
+
+        grid.innerHTML = "";
+
+        for (let i = 0; i < startPad; i += 1) {
+          const cell = document.createElement("div");
+          cell.className = "cal-day is-muted";
+          cell.textContent = String(prevMonthDays - startPad + i + 1);
+          cell.setAttribute("aria-hidden", "true");
+          grid.appendChild(cell);
+        }
+
+        for (let day = 1; day <= daysInMonth; day += 1) {
+          const cell = document.createElement("div");
+          cell.className = "cal-day";
+          if (day === selectedDate) {
+            cell.classList.add("is-selected");
+            cell.setAttribute("aria-label", weekday + ", pilot planning selected");
+          } else {
+            cell.setAttribute("aria-label", new Date(year, month, day).toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" }));
+          }
+          cell.textContent = String(day);
+          grid.appendChild(cell);
+        }
+
+        const totalCells = startPad + daysInMonth;
+        const trailing = totalCells % 7 === 0 ? 0 : 7 - (totalCells % 7);
+        for (let i = 1; i <= trailing; i += 1) {
+          const cell = document.createElement("div");
+          cell.className = "cal-day is-muted";
+          cell.textContent = String(i);
+          cell.setAttribute("aria-hidden", "true");
+          grid.appendChild(cell);
+        }
       })();
 
       go(0);
