@@ -458,6 +458,96 @@
       font-weight: 600;
     }
 
+    .priorities-reveal {
+      position: relative;
+    }
+
+    .priority-bucket {
+      transition:
+        opacity 0.45s var(--ease),
+        transform 0.45s var(--ease),
+        filter 0.45s var(--ease),
+        box-shadow 0.45s var(--ease);
+    }
+
+    .priority-bucket.is-ghost {
+      opacity: 0.22;
+      filter: blur(5px);
+      transform: scale(0.96);
+      pointer-events: none;
+    }
+
+    .priority-bucket.is-dimmed {
+      opacity: 0.42;
+      filter: blur(3px);
+      transform: scale(0.98);
+      pointer-events: none;
+    }
+
+    .priority-bucket.is-focused {
+      opacity: 1;
+      filter: none;
+      transform: translateY(0) scale(1);
+      box-shadow: 0 16px 40px rgba(0, 42, 66, 0.12);
+      z-index: 2;
+      animation: bucketPop 0.55s var(--ease) both;
+    }
+
+    .priority-bucket.is-clear {
+      opacity: 1;
+      filter: none;
+      transform: translateY(0) scale(1);
+      box-shadow: 0 8px 24px rgba(0, 42, 66, 0.04);
+      animation: none;
+    }
+
+    @keyframes bucketPop {
+      from {
+        opacity: 0;
+        transform: translateY(22px) scale(0.94);
+        filter: blur(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: none;
+      }
+    }
+
+    .priorities-reveal-hint {
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-align: center;
+      margin-top: -0.15rem;
+    }
+
+    .priorities-reveal-hint strong { color: var(--navy); }
+
+    .priorities-steps {
+      display: flex;
+      justify-content: center;
+      gap: 0.4rem;
+      margin-top: 0.35rem;
+    }
+
+    .priorities-steps span {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(0, 59, 92, 0.15);
+      transition: background 0.25s, transform 0.25s;
+    }
+
+    .priorities-steps span.is-on {
+      background: var(--orange);
+      transform: scale(1.15);
+    }
+
+    .priorities-steps span.is-done {
+      background: var(--navy);
+      opacity: 0.45;
+    }
+
     .eval-tabs {
       display: flex;
       flex-wrap: wrap;
@@ -2207,6 +2297,8 @@
       .slide { transition: none; }
       .flow-map .wire-active,
       .flow-figure.is-playing .flow-pulse { animation: none; }
+      .priority-bucket { transition: none; }
+      .priority-bucket.is-focused { animation: none; }
     }
   </style>
 </head>
@@ -2462,8 +2554,8 @@
         <p class="lede">
           Where engineering velocity most directly moves the 2026 agenda — and the metrics that tell you if you’re winning.
         </p>
-        <div class="grid-3">
-          <div class="bucket revenue">
+        <div class="grid-3 priorities-reveal" id="prioritiesReveal">
+          <div class="bucket revenue priority-bucket">
             <span class="tag">Increase revenue</span>
             <h3>Ship Active &amp; Agents faster</h3>
             <div class="metrics">
@@ -2479,7 +2571,7 @@
               <li>Accelerate Agent Foundry &amp; conversion-automation delivery that unlocks bookings</li>
             </ul>
           </div>
-          <div class="bucket cost">
+          <div class="bucket cost priority-bucket">
             <span class="tag">Decrease cost</span>
             <h3>Fewer expensive engineers per initiative</h3>
             <div class="metrics">
@@ -2495,7 +2587,7 @@
             </ul>
             <p class="cost-callout"><strong>Hypothesis:</strong> If each major initiative runs ~8 engineers, even a 20% productivity lift is multiple FTEs of capacity returned to the roadmap.</p>
           </div>
-          <div class="bucket risk">
+          <div class="bucket risk priority-bucket">
             <span class="tag">Decrease risk</span>
             <h3>Safer path to production</h3>
             <div class="metrics">
@@ -2512,7 +2604,11 @@
             </ul>
           </div>
         </div>
-        <p class="note"><strong>Ask:</strong> Which of these is the binding constraint on your roadmap right now — velocity, cost, or risk?</p>
+        <p class="priorities-reveal-hint" id="prioritiesHint"><strong>Next</strong> to focus each area — revenue, then cost, then risk.</p>
+        <div class="priorities-steps" id="prioritiesSteps" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+        <p class="note" id="prioritiesNote" hidden><strong>Ask:</strong> Which of these is the binding constraint on your roadmap right now — velocity, cost, or risk?</p>
       </div>
     </section>
 
@@ -3014,6 +3110,73 @@
       const prevBtn = document.getElementById("prev");
       const nextBtn = document.getElementById("next");
       let index = 0;
+      const PRIORITIES_INDEX = 3;
+      let prioritiesStep = 0;
+
+      const priorityBuckets = Array.from(document.querySelectorAll(".priority-bucket"));
+      const prioritiesHint = document.getElementById("prioritiesHint");
+      const prioritiesNote = document.getElementById("prioritiesNote");
+      const prioritiesStepDots = prioritiesHint
+        ? Array.from(document.getElementById("prioritiesSteps").querySelectorAll("span"))
+        : [];
+
+      function updatePrioritiesReveal() {
+        if (!priorityBuckets.length) return;
+
+        priorityBuckets.forEach((bucket, i) => {
+          bucket.classList.remove("is-focused", "is-dimmed", "is-ghost", "is-clear");
+          if (prioritiesStep >= 3) {
+            bucket.classList.add("is-clear");
+            return;
+          }
+          if (i < prioritiesStep) bucket.classList.add("is-dimmed");
+          else if (i === prioritiesStep) bucket.classList.add("is-focused");
+          else bucket.classList.add("is-ghost");
+        });
+
+        prioritiesStepDots.forEach((dot, i) => {
+          dot.classList.toggle("is-on", i === prioritiesStep && prioritiesStep < 3);
+          dot.classList.toggle("is-done", i < prioritiesStep || prioritiesStep >= 3);
+        });
+
+        if (prioritiesHint) {
+          prioritiesHint.hidden = prioritiesStep >= 3;
+        }
+        if (prioritiesNote) {
+          prioritiesNote.hidden = prioritiesStep < 3;
+        }
+      }
+
+      function resetPrioritiesReveal() {
+        prioritiesStep = 0;
+        updatePrioritiesReveal();
+      }
+
+      function syncNavState() {
+        const onPriorities = index === PRIORITIES_INDEX;
+        prevBtn.disabled = index === 0 && !(onPriorities && prioritiesStep > 0);
+        nextBtn.disabled = index === slides.length - 1 && !(onPriorities && prioritiesStep < 3);
+      }
+
+      function advance() {
+        if (index === PRIORITIES_INDEX && prioritiesStep < 3) {
+          prioritiesStep += 1;
+          updatePrioritiesReveal();
+          syncNavState();
+          return;
+        }
+        go(index + 1);
+      }
+
+      function retreat() {
+        if (index === PRIORITIES_INDEX && prioritiesStep > 0) {
+          prioritiesStep -= 1;
+          updatePrioritiesReveal();
+          syncNavState();
+          return;
+        }
+        go(index - 1);
+      }
 
       slides.forEach((_, i) => {
         const dot = document.createElement("button");
@@ -3031,8 +3194,8 @@
         slides.forEach((s, n) => s.classList.toggle("active", n === index));
         dots().forEach((d, n) => d.classList.toggle("active", n === index));
         count.textContent = (index + 1) + " / " + slides.length;
-        prevBtn.disabled = index === 0;
-        nextBtn.disabled = index === slides.length - 1;
+        if (index === PRIORITIES_INDEX) resetPrioritiesReveal();
+        syncNavState();
         if (index === 2) flow.start();
         else flow.pause();
         if (window.__cursorIdeDemo) {
@@ -3055,16 +3218,16 @@
         });
       }
 
-      prevBtn.addEventListener("click", () => go(index - 1));
-      nextBtn.addEventListener("click", () => go(index + 1));
+      prevBtn.addEventListener("click", () => retreat());
+      nextBtn.addEventListener("click", () => advance());
 
       document.addEventListener("keydown", (e) => {
         if (e.key === "ArrowRight" || e.key === "PageDown" || e.key === " ") {
           e.preventDefault();
-          go(index + 1);
+          advance();
         } else if (e.key === "ArrowLeft" || e.key === "PageUp") {
           e.preventDefault();
-          go(index - 1);
+          retreat();
         } else if (e.key === "Home") {
           go(0);
         } else if (e.key === "End") {
@@ -3079,7 +3242,10 @@
       document.addEventListener("touchend", (e) => {
         if (touchX == null) return;
         const dx = e.changedTouches[0].screenX - touchX;
-        if (Math.abs(dx) > 50) go(index + (dx < 0 ? 1 : -1));
+        if (Math.abs(dx) > 50) {
+          if (dx < 0) advance();
+          else retreat();
+        }
         touchX = null;
       }, { passive: true });
 
