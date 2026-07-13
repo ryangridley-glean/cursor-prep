@@ -2383,7 +2383,7 @@
                 <span class="agenda-num">6</span>
                 <span class="agenda-copy">
                   <strong>Evaluation</strong>
-                  <span>What to consider in agentic coding</span>
+                  <span>Model neutrality · codebase · time to value · platform</span>
                 </span>
               </button>
             </li>
@@ -2768,33 +2768,33 @@
           <p class="kicker">Evaluation</p>
           <h2>What to consider in agentic coding</h2>
           <p class="lede">
-            Four criteria that separate a plugin from an operating system — tap each to see what Cursor’s moat looks like in practice.
+            Cursor wins on <strong>workflow, context, and execution</strong> — four core differentiators that pair frontier models with better context and a more integrated way to build software.
           </p>
         </div>
 
         <div class="eval-tabs" id="evalTabs" role="tablist" aria-label="Evaluation criteria">
-          <button type="button" class="eval-tab is-active" role="tab" aria-selected="true" data-eval="0">Multi-model</button>
-          <button type="button" class="eval-tab" role="tab" aria-selected="false" data-eval="1">Deep codebase indexing</button>
-          <button type="button" class="eval-tab" role="tab" aria-selected="false" data-eval="2">Composer 2.5</button>
-          <button type="button" class="eval-tab" role="tab" aria-selected="false" data-eval="3">Enterprise control plane</button>
+          <button type="button" class="eval-tab is-active" role="tab" aria-selected="true" data-eval="0">Model neutrality</button>
+          <button type="button" class="eval-tab" role="tab" aria-selected="false" data-eval="1">Large codebase</button>
+          <button type="button" class="eval-tab" role="tab" aria-selected="false" data-eval="2">Time to value</button>
+          <button type="button" class="eval-tab" role="tab" aria-selected="false" data-eval="3">SDLC platform</button>
         </div>
 
-        <!-- Tab 1: Multi-model -->
+        <!-- Tab 1: Model neutrality -->
         <div class="eval-panel is-active" data-eval-panel="0" role="tabpanel">
           <div class="eval-copy">
-            <div class="ask">Criteria 01</div>
-            <h3>Multi-model ability</h3>
+            <div class="ask">Differentiator 01</div>
+            <h3>Model neutrality</h3>
             <p>
-              Can the platform route work across frontier models as they leapfrog — or are you locked to one lab’s release cycle?
+              Access the best models over time — without single-provider dependence or leaving SOTA model access behind when capabilities and economics change.
             </p>
             <ul>
-              <li>Route planning, coding, and review to the best model for the job</li>
-              <li>Avoid single-vendor lock-in when the leaderboard flips</li>
-              <li>Keep the engineer workflow stable while models change underneath</li>
+              <li>The best model changes constantly; teams want optionality, not lock-in</li>
+              <li>Route planning, coding, and review to the right frontier model for the job</li>
+              <li>Keep the engineer workflow stable while models leapfrog underneath</li>
             </ul>
           </div>
           <div class="viz" id="vizModels">
-            <div class="viz-head">Cursor router <span>selecting frontier models</span></div>
+            <div class="viz-head">Model neutrality <span>frontier optionality · no single-vendor lock-in</span></div>
             <div class="router-cursor" id="routerCursor" aria-hidden="true"></div>
             <div class="viz-models">
               <div class="model-row is-active" data-model="0">
@@ -2829,22 +2829,22 @@
           </div>
         </div>
 
-        <!-- Tab 2: Deep indexing -->
+        <!-- Tab 2: Large codebase performance -->
         <div class="eval-panel" data-eval-panel="1" role="tabpanel" hidden>
           <div class="eval-copy">
-            <div class="ask">Criteria 02</div>
-            <h3>Deep codebase indexing</h3>
+            <div class="ask">Differentiator 02</div>
+            <h3>Large codebase performance</h3>
             <p>
-              Can agents stay coherent across WMS, TMS, OMS, and Agents services — reasoning over years of institutional knowledge, not just the open file?
+              Cursor is not just wrapping a model — it improves how context is found and used across Manhattan’s large, complex, real-world Active platform.
             </p>
             <ul>
-              <li>Index the graph of services, PRs, and patterns Manhattan has already built</li>
-              <li>Keep long-running, multi-service work coherent end-to-end</li>
+              <li>Semantic Search and Dynamic Context Retrieval for messy enterprise repos</li>
+              <li>Stay coherent across WMS, TMS, OMS, and Agents — not just the open file</li>
               <li>Surface “how we did this last time” without Slack archaeology</li>
             </ul>
           </div>
           <div class="viz">
-            <div class="viz-head">Knowledge brain <span>services · PRs · projects · interchangeable</span></div>
+            <div class="viz-head">Semantic Search · Dynamic Context Retrieval <span>services · PRs · projects · interchangeable</span></div>
             <div class="viz-index">
               <div class="brain" id="indexGraph">
                 <svg class="brain-svg" viewBox="0 0 400 260" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
@@ -2876,52 +2876,52 @@
                 <div class="brain-node" data-id="pr2">PR #3994</div>
                 <div class="brain-node" data-id="agents">Agents</div>
               </div>
-              <div class="index-log" id="indexLog">Firing WMS ↔ TMS ↔ PR #4821 — reusable pattern for empty carton contracts…</div>
+              <div class="index-log" id="indexLog">Semantic search: WMS ↔ TMS ↔ PR #4821 — empty-carton contract pattern retrieved…</div>
             </div>
           </div>
         </div>
 
-        <!-- Tab 3: Composer 2.5 -->
+        <!-- Tab 3: Faster time to value -->
         <div class="eval-panel" data-eval-panel="2" role="tabpanel" hidden>
           <div class="eval-copy">
-            <div class="ask">Criteria 03</div>
-            <h3>Composer 2.5</h3>
+            <div class="ask">Differentiator 03</div>
+            <h3>Faster time to value</h3>
             <p>
-              Is the agent stack purpose-built for long coding loops (plan → edit → verify), and massively cost-efficient versus premier lab models for day-to-day agent work?
+              Useful quickly without every developer building a custom agent setup — consistency across teams matters as much as raw model intelligence.
             </p>
             <ul>
-              <li>Trained for agentic coding latency and multi-step edits</li>
-              <li>Powers Cursor agents and Bugbot — not just autocomplete</li>
-              <li>Run more loops per dollar than frontier-only stacks</li>
+              <li>Works well out of the box; strong baseline before power-user tuning</li>
+              <li>Teams standardize faster — shared rules, models, and workflows</li>
+              <li>Lower setup and maintenance burden as adoption scales across squads</li>
             </ul>
           </div>
           <div class="viz">
-            <div class="viz-head">Composer 2.5 loop <span>vs premier labs on cost</span></div>
+            <div class="viz-head">Faster time to value <span>out of the box → team-wide adoption</span></div>
             <div class="viz-composer" id="vizComposer">
               <div class="loop-step is-on" data-loop="0">
                 <span class="ls-n">1</span>
-                <div><div class="ls-t">Plan</div><div class="ls-d">Decompose the Active change</div></div>
+                <div><div class="ls-t">Day 1</div><div class="ls-d">Strong baseline — no DIY agent stack per dev</div></div>
                 <span class="ls-cost">fast</span>
               </div>
               <div class="loop-step" data-loop="1">
                 <span class="ls-n">2</span>
-                <div><div class="ls-t">Edit</div><div class="ls-d">Multi-file agent edits</div></div>
-                <span class="ls-cost">cheap</span>
+                <div><div class="ls-t">Week 1</div><div class="ls-d">Shared rules &amp; models across squads</div></div>
+                <span class="ls-cost">standard</span>
               </div>
               <div class="loop-step" data-loop="2">
                 <span class="ls-n">3</span>
-                <div><div class="ls-t">Verify</div><div class="ls-d">Tests · Bugbot · iterate</div></div>
+                <div><div class="ls-t">Scale</div><div class="ls-d">Power users go deep; org stays consistent</div></div>
                 <span class="ls-cost">repeat</span>
               </div>
               <div class="cost-compare">
                 <div class="cost-bar lab">
-                  <div class="cb-l">Premier lab model / loop</div>
-                  <div class="cb-v">High $</div>
+                  <div class="cb-l">DIY per-developer setup</div>
+                  <div class="cb-v">High friction</div>
                   <div class="cb-meter"><i></i></div>
                 </div>
                 <div class="cost-bar comp">
-                  <div class="cb-l">Composer 2.5 / loop</div>
-                  <div class="cb-v">Far leaner / loop</div>
+                  <div class="cb-l">Cursor standardized rollout</div>
+                  <div class="cb-v">Faster adoption</div>
                   <div class="cb-meter"><i></i></div>
                 </div>
               </div>
@@ -2929,56 +2929,55 @@
           </div>
         </div>
 
-        <!-- Tab 4: Enterprise -->
+        <!-- Tab 4: Platform across the SDLC -->
         <div class="eval-panel" data-eval-panel="3" role="tabpanel" hidden>
           <div class="eval-copy">
-            <div class="ask">Criteria 04</div>
-            <h3>Enterprise control plane</h3>
+            <div class="ask">Differentiator 04</div>
+            <h3>Platform, not just a tool</h3>
             <p>
-              Can security and IT say yes on a versionless customer platform — with privacy, audit, cost, policy, and hosting under your control?
+              Software development is planning, writing, reviewing, debugging, and iterating — Cursor bridges those stages so intelligence lands where developers actually work.
             </p>
             <ul>
-              <li>Privacy modes for sensitive code paths</li>
-              <li>Audit controls and org policies</li>
-              <li>Cost control actions across teams</li>
-              <li>Self-hosted cloud agents where required</li>
+              <li>Agents native across IDE, CLI, Automations, and Cloud Agents</li>
+              <li>Bugbot and Agent Review apply intelligence at merge time</li>
+              <li>Better execution and iteration — not just better answers</li>
             </ul>
           </div>
           <div class="viz">
-            <div class="viz-head">Control plane <span>Teams / Enterprise</span></div>
+            <div class="viz-head">Across the SDLC <span>plan · build · review · ship</span></div>
             <div class="viz-enterprise" id="vizEnterprise">
               <div class="ctl is-pulse" data-ctl="0">
-                <div class="ctl-t">Privacy modes</div>
-                <div class="ctl-d">Keep sensitive Active / customer logic off unintended model paths</div>
-                <span class="ctl-status">Enforced</span>
+                <div class="ctl-t">Plan</div>
+                <div class="ctl-d">Plan Mode &amp; agent scoping in the IDE — intent before edits</div>
+                <span class="ctl-status">IDE</span>
               </div>
               <div class="ctl" data-ctl="1">
-                <div class="ctl-t">Audit controls</div>
-                <div class="ctl-d">Who ran which agent, on which repo, with what outcome</div>
-                <span class="ctl-status">Logged</span>
+                <div class="ctl-t">Build</div>
+                <div class="ctl-d">Agents + CLI execute multi-file changes across the codebase</div>
+                <span class="ctl-status">Agent</span>
               </div>
               <div class="ctl" data-ctl="2">
-                <div class="ctl-t">Cost controls</div>
-                <div class="ctl-d">Budgets, caps, and spend visibility by team / initiative</div>
-                <span class="ctl-status">Capped</span>
+                <div class="ctl-t">Review</div>
+                <div class="ctl-d">Bugbot &amp; Agent Review catch regressions before merge</div>
+                <span class="ctl-status">Bugbot</span>
               </div>
               <div class="ctl" data-ctl="3">
-                <div class="ctl-t">Org policies</div>
-                <div class="ctl-d">SSO, model allowlists, and shared Cursor rules</div>
-                <span class="ctl-status">Applied</span>
+                <div class="ctl-t">Ship &amp; automate</div>
+                <div class="ctl-d">Automations &amp; Cloud Agents extend the same harness beyond the laptop</div>
+                <span class="ctl-status">Cloud</span>
               </div>
               <div class="ctl" data-ctl="4" style="grid-column: 1 / -1;">
-                <div class="ctl-t">Self-hosted cloud agents</div>
-                <div class="ctl-d">Run agent execution in your infrastructure when compliance requires it — same agent UX, your boundary</div>
-                <span class="ctl-status">Optional</span>
+                <div class="ctl-t">Shared AI layer</div>
+                <div class="ctl-d">One coding agent, coordinated across surfaces — planning, execution, and validation with less context switching</div>
+                <span class="ctl-status">Platform</span>
               </div>
             </div>
           </div>
         </div>
 
         <div class="moat-strip">
-          <span class="label">The moat</span>
-          <span>Multi-model routing + deep codebase memory + Composer loops + enterprise control — one write → review → fix → ship system, not four disconnected tools.</span>
+          <span class="label">The combination</span>
+          <span>Model neutrality + large codebase performance + faster time to value + platform across the SDLC — workflow, context, and execution in one system, not four disconnected tools.</span>
         </div>
       </div>
     </section>
@@ -3761,27 +3760,27 @@
             {
               ids: ["wms", "tms", "pr1"],
               edges: [0, 1, 6],
-              log: "Firing WMS ↔ TMS ↔ PR #4821 — empty-carton contract reused across Active…"
+              log: "Semantic search: WMS ↔ TMS ↔ PR #4821 — empty-carton contract reused across Active…"
             },
             {
               ids: ["oms", "wms", "pos"],
               edges: [2, 0, 3],
-              log: "Linking OMS → WMS → POS — omnichannel inventory promise path…"
+              log: "Dynamic context: OMS → WMS → POS — omnichannel inventory promise path…"
             },
             {
               ids: ["planning", "projects", "agents"],
               edges: [4, 8, 5],
-              log: "Projects ↔ Planning ↔ Agents — Foundry work grounded in prior delivery…"
+              log: "Context retrieval: Projects ↔ Planning ↔ Agents — Foundry grounded in prior delivery…"
             },
             {
               ids: ["history", "pr2", "tms"],
               edges: [9, 7, 1],
-              log: "History ↔ PR #3994 ↔ TMS — prior incident pattern recalled for tendering…"
+              log: "Large-repo pass: History ↔ PR #3994 ↔ TMS — prior incident pattern recalled…"
             },
             {
               ids: ["wms", "oms", "planning", "agents"],
               edges: [2, 4, 5, 12],
-              log: "Full brain pass — services, PRs, and projects reasoning interchangeably…"
+              log: "Full context graph — services, PRs, and projects reasoning interchangeably…"
             }
           ];
           let i = 0;
