@@ -189,6 +189,77 @@
       font-weight: 700;
     }
 
+    .agenda-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+      gap: clamp(1.25rem, 3vw, 2.5rem);
+      align-items: center;
+    }
+
+    .agenda-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .agenda-item {
+      display: grid;
+      grid-template-columns: 2.4rem 1fr;
+      gap: 0.75rem;
+      align-items: center;
+      width: 100%;
+      text-align: left;
+      padding: 0.7rem 0.85rem;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--white);
+      box-shadow: 0 6px 18px rgba(0, 42, 66, 0.05);
+      cursor: pointer;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      font-family: inherit;
+      color: inherit;
+    }
+
+    .agenda-item:hover {
+      border-color: rgba(255, 102, 0, 0.35);
+      transform: translateX(4px);
+      box-shadow: 0 10px 24px rgba(0, 42, 66, 0.08);
+    }
+
+    .agenda-num {
+      width: 2.4rem;
+      height: 2.4rem;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--navy);
+      background: var(--sky);
+    }
+
+    .agenda-copy strong {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--navy-deep);
+      line-height: 1.25;
+      margin-bottom: 0.12rem;
+    }
+
+    .agenda-copy span {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+
+    .agenda-hint {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 0.35rem;
+    }
+
     .stat-row {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -2095,6 +2166,7 @@
 
     @media (max-width: 900px) {
       .intro-layout,
+      .agenda-layout,
       .grid-2,
       .grid-3,
       .stat-row,
@@ -2150,8 +2222,95 @@
 
   <div class="deck" id="deck" aria-live="polite">
 
+    <!-- 0. Agenda -->
+    <section class="slide active" data-title="Agenda">
+      <div class="slide-inner">
+        <div class="agenda-layout">
+          <div>
+            <p class="pair">Cursor <span class="x">×</span> Manhattan Associates</p>
+            <p class="kicker">Agenda</p>
+            <h2>What we’ll cover today</h2>
+            <p class="lede" style="margin-top: 0.75rem;">
+              A focused conversation on how Cursor can help Manhattan’s engineering organization move faster on platform, AI, and cloud initiatives.
+            </p>
+            <div class="meta" style="margin-top: 1.25rem;">
+              <span><strong>With</strong> Sanjeev Siotia</span>
+              <span><strong>Role</strong> EVP &amp; Chief Technology Officer</span>
+            </div>
+            <p class="agenda-hint">Click any topic to jump ahead.</p>
+          </div>
+
+          <ol class="agenda-list" id="agendaList">
+            <li>
+              <button type="button" class="agenda-item" data-slide="1">
+                <span class="agenda-num">1</span>
+                <span class="agenda-copy">
+                  <strong>Introduction</strong>
+                  <span>Driving engineering velocity</span>
+                </span>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="agenda-item" data-slide="2">
+                <span class="agenda-num">2</span>
+                <span class="agenda-copy">
+                  <strong>Our point of view</strong>
+                  <span>How we see Manhattan Associates</span>
+                </span>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="agenda-item" data-slide="3">
+                <span class="agenda-num">3</span>
+                <span class="agenda-copy">
+                  <strong>Your top priority initiatives</strong>
+                  <span>Revenue · cost · risk</span>
+                </span>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="agenda-item" data-slide="4">
+                <span class="agenda-num">4</span>
+                <span class="agenda-copy">
+                  <strong>Current state</strong>
+                  <span>How code moves today</span>
+                </span>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="agenda-item" data-slide="5">
+                <span class="agenda-num">5</span>
+                <span class="agenda-copy">
+                  <strong>Future state with Cursor</strong>
+                  <span>Agent on the left · changes on the right</span>
+                </span>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="agenda-item" data-slide="6">
+                <span class="agenda-num">6</span>
+                <span class="agenda-copy">
+                  <strong>Evaluation</strong>
+                  <span>What to consider in agentic coding</span>
+                </span>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="agenda-item" data-slide="7">
+                <span class="agenda-num">7</span>
+                <span class="agenda-copy">
+                  <strong>Customer proof</strong>
+                  <span>Coinbase → what Sanjeev can expect</span>
+                </span>
+              </button>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
     <!-- 1. Intro -->
-    <section class="slide active" data-title="Intro">
+    <section class="slide" data-title="Intro">
       <div class="slide-inner">
         <div class="intro-layout">
           <div>
@@ -2843,7 +3002,7 @@
     <div class="nav-btns">
       <button type="button" id="prev" aria-label="Previous slide">Prev</button>
       <button type="button" id="next" aria-label="Next slide">Next</button>
-      <span class="slide-count" id="count">1 / 7</span>
+      <span class="slide-count" id="count">1 / 8</span>
     </div>
   </div>
 
@@ -2874,16 +3033,26 @@
         count.textContent = (index + 1) + " / " + slides.length;
         prevBtn.disabled = index === 0;
         nextBtn.disabled = index === slides.length - 1;
-        if (index === 1) flow.start();
+        if (index === 2) flow.start();
         else flow.pause();
         if (window.__cursorIdeDemo) {
-          if (index === 4) window.__cursorIdeDemo.start();
+          if (index === 5) window.__cursorIdeDemo.start();
           else window.__cursorIdeDemo.pause();
         }
         if (window.__evalTabs) {
-          if (index === 5) window.__evalTabs.start();
+          if (index === 6) window.__evalTabs.start();
           else window.__evalTabs.pause();
         }
+      }
+
+      const agendaList = document.getElementById("agendaList");
+      if (agendaList) {
+        agendaList.addEventListener("click", (e) => {
+          const btn = e.target.closest("[data-slide]");
+          if (!btn) return;
+          const n = parseInt(btn.getAttribute("data-slide"), 10);
+          if (!Number.isNaN(n)) go(n);
+        });
       }
 
       prevBtn.addEventListener("click", () => go(index - 1));
