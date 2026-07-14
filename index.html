@@ -2995,7 +2995,7 @@
           <button type="button" class="ide-step-btn is-active" data-ide="0">01 Write</button>
           <button type="button" class="ide-step-btn" data-ide="1">02 PR</button>
           <button type="button" class="ide-step-btn" data-ide="2">03 Review</button>
-          <button type="button" class="ide-step-btn" data-ide="3">04 CI / merge</button>
+          <button type="button" class="ide-step-btn" data-ide="3">04 Checks &amp; ship</button>
           <button type="button" class="ide-step-btn" data-ide="4">05 Deploy</button>
           <button type="button" class="ide-step-btn" data-ide="5">06 Recover</button>
         </div>
@@ -3919,20 +3919,20 @@
               </div>`
           },
           {
-            eyebrow: "Stage 04 · CI / merge",
-            title: "Agent clears CI noise",
-            body: "After Bugbot, the agent explains flakes vs real failures and keeps the merge moving — Changes shows the green path.",
+            eyebrow: "Stage 04 · Checks & ship",
+            title: "Agent sorts real problems from glitches",
+            body: "After Bugbot, the agent explains whether a failed check is a real issue or just a flaky test — and keeps the release moving. Changes shows the path to green.",
             initiatives: ["Innovation / TAM", "Cloud subscription growth"],
-            meta: "Agent · CI diagnosis",
+            meta: "Agent · test results",
             name: "Agent",
-            pill: "Diagnosing",
-            composer: "Is allocation-tests a flake or a real fail?",
-            changesMeta: "CI status · active-wms",
-            changesPill: "Green path",
+            pill: "Checking",
+            composer: "Did allocation-tests really fail, or is the test just unreliable?",
+            changesMeta: "Test results · active-wms",
+            changesPill: "Ready to ship",
             stream: [
-              { type: "user", text: "CI failed on allocation-tests after Bugbot autofix — flake or real?" },
-              { type: "tool", name: "read_ci_logs", body: "allocation-tests · shared clock mock · 6 failures / 30 days" },
-              { type: "assistant", text: "Flake in the shared clock mock — your new test is deterministic. Re-run only; no further code change." }
+              { type: "user", text: "Automated checks failed on allocation-tests after Bugbot's fix — real problem or just a glitch?" },
+              { type: "tool", name: "read_ci_logs", body: "allocation-tests · shared timing setup · failed 6 of last 30 runs" },
+              { type: "assistant", text: "Just a glitch in the shared timing setup — your new test is solid. Re-run only; no further code change." }
             ],
             changesHtml: `
               <div class="change-file">
@@ -3940,8 +3940,8 @@
                 <div class="diff-lines">
                   <div class="diff-line ctx"><span class="n">—</span><span>  ✓ compile</span></div>
                   <div class="diff-line add"><span class="n">—</span><span>+ ✓ AllocationServiceTest (12ms)</span></div>
-                  <div class="diff-line del"><span class="n">—</span><span>- ~ allocation-tests (known flake)</span></div>
-                  <div class="diff-line add"><span class="n">—</span><span>+ → re-run queued · merge unblocked</span></div>
+                  <div class="diff-line del"><span class="n">—</span><span>- ~ allocation-tests (unreliable — re-running)</span></div>
+                  <div class="diff-line add"><span class="n">—</span><span>+ → re-run queued · ready to ship</span></div>
                 </div>
               </div>`
           },
