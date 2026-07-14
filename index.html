@@ -1385,6 +1385,76 @@
       color: var(--navy-deep);
     }
 
+    /* Leadership asks */
+    .leadership-asks {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.85rem;
+    }
+
+    .leadership-ask {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: calc(var(--radius) + 2px);
+      padding: 1.1rem 1.15rem;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      min-height: 100%;
+    }
+
+    .leadership-ask .ask-num {
+      display: inline-flex;
+      align-self: flex-start;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--navy);
+      background: var(--sky);
+      padding: 0.28rem 0.55rem;
+      border-radius: 999px;
+    }
+
+    .leadership-ask h3 {
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--navy-deep);
+      line-height: 1.2;
+    }
+
+    .leadership-ask p {
+      font-size: 0.86rem;
+      color: var(--muted);
+      line-height: 1.45;
+      flex: 1;
+    }
+
+    .ask-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.15rem;
+    }
+
+    .ask-tools span {
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: var(--navy);
+      background: rgba(0, 59, 92, 0.06);
+      border: 1px solid rgba(0, 59, 92, 0.1);
+      padding: 0.25rem 0.5rem;
+      border-radius: 999px;
+    }
+
+    .ask-tools span.is-highlight {
+      background: #fff4ec;
+      border-color: rgba(255, 102, 0, 0.25);
+      color: #b34d00;
+    }
+
     .bridge-stack {
       display: flex;
       flex-direction: column;
@@ -2448,6 +2518,7 @@
       .agenda-layout,
       .grid-2,
       .grid-3,
+      .leadership-asks,
       .stat-row,
       .pov-top,
       .state-layout,
@@ -2591,6 +2662,15 @@
                 <span class="agenda-copy">
                   <strong>Next steps</strong>
                   <span>Walk through pilot planning</span>
+                </span>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="agenda-item" data-slide="9">
+                <span class="agenda-num">9</span>
+                <span class="agenda-copy">
+                  <strong>Leadership asks</strong>
+                  <span>Tools · competitive access · post-sales path</span>
                 </span>
               </button>
             </li>
@@ -3326,6 +3406,58 @@
       </div>
     </section>
 
+    <!-- 9. Leadership asks -->
+    <section class="slide" data-title="Leadership asks">
+      <div class="slide-inner" style="gap: 0.85rem;">
+        <div>
+          <p class="kicker">For leadership</p>
+          <h2>Three asks to win the tournament</h2>
+          <p class="lede">
+            What we need enabled upfront so reps can research, compete, and carry customers through close — and beyond, if post-contract ownership is the model.
+          </p>
+        </div>
+
+        <div class="leadership-asks">
+          <div class="leadership-ask">
+            <span class="ask-num">Ask 01</span>
+            <h3>Tools</h3>
+            <p>Give the team the stack to research accounts, run the tournament, and prospect with confidence.</p>
+            <div class="ask-tools">
+              <span class="is-highlight">Glean</span>
+              <span class="is-highlight">Cursor tokens / credits</span>
+              <span>Outreach</span>
+              <span>Prospecting tools</span>
+            </div>
+          </div>
+
+          <div class="leadership-ask">
+            <span class="ask-num">Ask 02</span>
+            <h3>Competitive platform access</h3>
+            <p>Hands-on access to rival agentic coding platforms so we can learn how customers evaluate — not just read the marketing pages.</p>
+            <div class="ask-tools">
+              <span class="is-highlight">Claude Code</span>
+              <span class="is-highlight">Codex</span>
+              <span>GitHub Copilot</span>
+              <span>Other frontier stacks</span>
+            </div>
+          </div>
+
+          <div class="leadership-ask">
+            <span class="ask-num">Ask 03</span>
+            <h3>Clear path to post-sales</h3>
+            <p>If post-contract customer ownership is the model, define who handles customers after close — handoff, success criteria, and escalation before we scale pipeline.</p>
+            <div class="ask-tools">
+              <span>Post-contract handoff</span>
+              <span>Customer success ownership</span>
+              <span>Expansion playbook</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="note"><strong>Close:</strong> Tools to compete · access to learn the field · a defined post-sales path if we own customers after contract.</p>
+      </div>
+    </section>
+
   </div>
 
   <div class="chrome">
@@ -3333,7 +3465,7 @@
     <div class="nav-btns">
       <button type="button" id="prev" aria-label="Previous slide">Prev</button>
       <button type="button" id="next" aria-label="Next slide">Next</button>
-      <span class="slide-count" id="count">1 / 9</span>
+      <span class="slide-count" id="count">1 / 10</span>
     </div>
   </div>
 
