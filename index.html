@@ -2121,6 +2121,542 @@
       line-height: 1.4;
     }
 
+    /* Rich panels in Changes column (GitHub · Manhattan Active) */
+    .changes-body:has(.rich-panel) {
+      overflow-y: auto;
+      padding: 0;
+      font-family: "Outfit", sans-serif;
+    }
+
+    .rich-panel {
+      min-height: 100%;
+      animation: richIn 0.35s var(--ease);
+    }
+
+    @keyframes richIn {
+      from { opacity: 0; transform: scale(0.98); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .gh-panel {
+      background: #0d1117;
+      color: #c9d1d9;
+      font-size: 0.68rem;
+      line-height: 1.4;
+    }
+
+    .gh-chrome {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.45rem 0.65rem;
+      background: #161b22;
+      border-bottom: 1px solid #30363d;
+      color: #8b949e;
+      font-size: 0.62rem;
+    }
+
+    .gh-dots { display: flex; gap: 0.22rem; }
+    .gh-dots i {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #484f58;
+      font-style: normal;
+    }
+
+    .gh-url {
+      flex: 1;
+      text-align: center;
+      background: #0d1117;
+      border: 1px solid #30363d;
+      border-radius: 6px;
+      padding: 0.2rem 0.45rem;
+      color: #c9d1d9;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .gh-repo-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.5rem 0.65rem;
+      border-bottom: 1px solid #21262d;
+      color: #58a6ff;
+      font-weight: 600;
+    }
+
+    .gh-repo-bar span { color: #8b949e; font-weight: 500; }
+
+    .gh-pr-top {
+      padding: 0.65rem 0.7rem 0.5rem;
+      border-bottom: 1px solid #21262d;
+    }
+
+    .gh-pr-top h4 {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #f0f6fc;
+      line-height: 1.3;
+      margin-bottom: 0.35rem;
+    }
+
+    .gh-pr-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      align-items: center;
+    }
+
+    .gh-badge {
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 0.15rem 0.4rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+    }
+
+    .gh-badge.open { background: rgba(35, 134, 54, 0.2); color: #3fb950; border-color: rgba(63, 185, 80, 0.35); }
+    .gh-badge.draft { background: rgba(139, 148, 158, 0.15); color: #8b949e; }
+    .gh-badge.check { background: rgba(56, 139, 253, 0.15); color: #79c0ff; }
+    .gh-badge.warn { background: rgba(255, 102, 0, 0.15); color: #ffb380; }
+
+    .gh-branch {
+      color: #8b949e;
+      font-family: ui-monospace, Menlo, monospace;
+      font-size: 0.62rem;
+    }
+
+    .gh-branch strong { color: #c9d1d9; }
+
+    .gh-layout {
+      display: grid;
+      grid-template-columns: 1fr 7.5rem;
+      gap: 0;
+    }
+
+    .gh-main { padding: 0.55rem 0.7rem 0.7rem; min-width: 0; }
+
+    .gh-side {
+      padding: 0.55rem 0.55rem 0.7rem 0;
+      border-left: 1px solid #21262d;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .gh-side-block strong {
+      display: block;
+      font-size: 0.58rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #8b949e;
+      margin-bottom: 0.2rem;
+    }
+
+    .gh-side-block span,
+    .gh-side-block li {
+      display: block;
+      font-size: 0.62rem;
+      color: #c9d1d9;
+    }
+
+    .gh-labels { display: flex; flex-wrap: wrap; gap: 0.2rem; }
+    .gh-label {
+      font-size: 0.58rem;
+      padding: 0.12rem 0.35rem;
+      border-radius: 999px;
+      background: rgba(56, 139, 253, 0.15);
+      color: #79c0ff;
+    }
+
+    .gh-section {
+      margin-top: 0.5rem;
+      padding-top: 0.45rem;
+      border-top: 1px solid #21262d;
+    }
+
+    .gh-section h5 {
+      font-size: 0.64rem;
+      font-weight: 700;
+      color: #f0f6fc;
+      margin-bottom: 0.3rem;
+    }
+
+    .gh-md {
+      color: #c9d1d9;
+      font-size: 0.64rem;
+      line-height: 1.45;
+    }
+
+    .gh-md ul {
+      margin: 0.25rem 0 0 0.9rem;
+      color: #8b949e;
+    }
+
+    .gh-md li { margin-bottom: 0.15rem; }
+
+    .gh-checks {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      margin-top: 0.35rem;
+    }
+
+    .gh-check {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.3rem 0.4rem;
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      font-size: 0.62rem;
+    }
+
+    .gh-check .ico { font-size: 0.72rem; }
+    .gh-check.pending .ico { color: #d29922; }
+    .gh-check.pass .ico { color: #3fb950; }
+    .gh-check.fail .ico { color: #f85149; }
+
+    .gh-files {
+      margin-top: 0.35rem;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .gh-file-head {
+      padding: 0.35rem 0.45rem;
+      background: #161b22;
+      border-bottom: 1px solid #30363d;
+      font-family: ui-monospace, Menlo, monospace;
+      font-size: 0.6rem;
+      color: #c9d1d9;
+    }
+
+    .gh-file-diff .line {
+      display: grid;
+      grid-template-columns: 1.4rem 1fr;
+      font-family: ui-monospace, Menlo, monospace;
+      font-size: 0.58rem;
+      line-height: 1.45;
+      padding: 0 0.35rem;
+    }
+
+    .gh-file-diff .n { color: #484f58; text-align: right; padding-right: 0.25rem; }
+    .gh-file-diff .add { background: rgba(46, 160, 67, 0.18); color: #aff5b4; }
+    .gh-file-diff .del { background: rgba(248, 81, 73, 0.15); color: #ffc1ba; }
+    .gh-file-diff .ctx { color: #8b949e; }
+
+    .gh-timeline { margin-top: 0.45rem; }
+
+    .gh-comment {
+      display: grid;
+      grid-template-columns: 1.6rem 1fr;
+      gap: 0.4rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .gh-avatar {
+      width: 1.6rem;
+      height: 1.6rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.55rem;
+      font-weight: 800;
+      color: #0d1117;
+      flex-shrink: 0;
+    }
+
+    .gh-avatar.bot { background: linear-gradient(135deg, #ff6600, #ff9940); }
+    .gh-avatar.human { background: #388bfd; color: #fff; }
+
+    .gh-comment-body {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .gh-comment-head {
+      padding: 0.35rem 0.5rem;
+      background: #1c2128;
+      border-bottom: 1px solid #30363d;
+      font-size: 0.6rem;
+      color: #8b949e;
+    }
+
+    .gh-comment-head strong { color: #f0f6fc; }
+
+    .gh-comment-content {
+      padding: 0.45rem 0.5rem;
+      font-size: 0.63rem;
+      line-height: 1.45;
+    }
+
+    .gh-inline-review {
+      margin-top: 0.35rem;
+      border-left: 3px solid #f85149;
+      padding-left: 0.45rem;
+    }
+
+    .gh-inline-review.med { border-left-color: var(--orange); }
+
+    .gh-suggest {
+      margin-top: 0.35rem;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      overflow: hidden;
+      font-family: ui-monospace, Menlo, monospace;
+      font-size: 0.58rem;
+    }
+
+    .gh-suggest .add { background: rgba(46, 160, 67, 0.18); color: #aff5b4; padding: 0.15rem 0.4rem; }
+    .gh-suggest .del { background: rgba(248, 81, 73, 0.15); color: #ffc1ba; padding: 0.15rem 0.4rem; }
+
+    .mah-panel {
+      background: linear-gradient(180deg, #f4f8fb 0%, #eef3f7 100%);
+      color: var(--navy-deep);
+      min-height: 100%;
+    }
+
+    .mah-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      padding: 0.45rem 0.65rem;
+      background: var(--navy-deep);
+      color: #fff;
+      font-size: 0.68rem;
+      font-weight: 600;
+    }
+
+    .mah-topbar img {
+      height: 14px;
+      width: auto;
+      filter: brightness(0) invert(1);
+    }
+
+    .mah-topbar .live {
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #b7f0d4;
+      background: rgba(40, 200, 64, 0.18);
+      border: 1px solid rgba(40, 200, 64, 0.35);
+      padding: 0.15rem 0.4rem;
+      border-radius: 999px;
+      animation: livePulse 2s ease-in-out infinite;
+    }
+
+    @keyframes livePulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.65; }
+    }
+
+    .mah-layout {
+      display: grid;
+      grid-template-columns: 4.2rem 1fr 6.8rem;
+      min-height: calc(100% - 2rem);
+    }
+
+    .mah-nav {
+      background: #fff;
+      border-right: 1px solid var(--line);
+      padding: 0.45rem 0.3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .mah-nav span {
+      font-size: 0.52rem;
+      font-weight: 700;
+      text-align: center;
+      padding: 0.35rem 0.15rem;
+      border-radius: 8px;
+      color: var(--muted);
+      line-height: 1.2;
+    }
+
+    .mah-nav span.on {
+      background: var(--sky);
+      color: var(--navy);
+      box-shadow: inset 0 0 0 1px rgba(0, 59, 92, 0.12);
+    }
+
+    .mah-main {
+      padding: 0.55rem 0.6rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      min-width: 0;
+    }
+
+    .mah-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 0.5rem 0.55rem;
+      box-shadow: 0 6px 16px rgba(0, 42, 66, 0.05);
+    }
+
+    .mah-card h5 {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--navy-deep);
+      margin-bottom: 0.25rem;
+    }
+
+    .mah-kpis {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.3rem;
+    }
+
+    .mah-kpi {
+      background: var(--sky);
+      border-radius: 8px;
+      padding: 0.35rem 0.4rem;
+      text-align: center;
+    }
+
+    .mah-kpi .v {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .mah-kpi .l {
+      font-size: 0.52rem;
+      color: var(--muted);
+      margin-top: 0.1rem;
+    }
+
+    .mah-wave {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .mah-wave-row {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.6rem;
+    }
+
+    .mah-wave-row .bar {
+      flex: 1;
+      height: 6px;
+      background: #e2ebf2;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .mah-wave-row .bar i {
+      display: block;
+      height: 100%;
+      background: linear-gradient(90deg, #1f6b4f, #2a8f68);
+      border-radius: 999px;
+      animation: waveFill 3s var(--ease) infinite alternate;
+    }
+
+    @keyframes waveFill {
+      from { width: 42%; }
+      to { width: 78%; }
+    }
+
+    .mah-wave-row.active .tag {
+      color: #1f6b4f;
+      font-weight: 700;
+    }
+
+    .mah-market {
+      background: #fff;
+      border-left: 1px solid var(--line);
+      padding: 0.45rem 0.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .mah-market h6 {
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .mah-agent {
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      padding: 0.4rem 0.45rem;
+      background: var(--mint);
+      animation: agentGlow 2.4s ease-in-out infinite;
+    }
+
+    @keyframes agentGlow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(31, 107, 79, 0); }
+      50% { box-shadow: 0 0 0 3px rgba(31, 107, 79, 0.12); }
+    }
+
+    .mah-agent .name {
+      font-size: 0.62rem;
+      font-weight: 700;
+      color: #1f6b4f;
+      margin-bottom: 0.15rem;
+    }
+
+    .mah-agent .status {
+      font-size: 0.55rem;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+
+    .mah-agent .status em {
+      font-style: normal;
+      color: #1f6b4f;
+      font-weight: 600;
+    }
+
+    .mah-agent.off {
+      background: #fff;
+      animation: none;
+    }
+
+    .mah-ticker {
+      font-size: 0.55rem;
+      color: var(--muted);
+      padding: 0.3rem 0.35rem;
+      background: var(--sand);
+      border-radius: 8px;
+      border: 1px solid rgba(255, 102, 0, 0.15);
+      line-height: 1.35;
+    }
+
+    .changes-shell[data-theme="github"] .changes-top { background: #161b22; border-color: #30363d; }
+    .changes-shell[data-theme="github"] .changes-top .name,
+    .changes-shell[data-theme="github"] .changes-top .meta { color: #c9d1d9; }
+    .changes-shell[data-theme="github"] .changes-top .meta { color: #8b949e; }
+    .changes-shell[data-theme="github"] .agent-pill { color: #79c0ff; background: rgba(56, 139, 253, 0.12); border-color: rgba(56, 139, 253, 0.25); }
+
+    .changes-shell[data-theme="manhattan"] .changes-top { background: var(--navy-deep); border-color: rgba(255,255,255,0.08); }
+    .changes-shell[data-theme="manhattan"] .changes-top .name,
+    .changes-shell[data-theme="manhattan"] .changes-top .meta { color: #fff; }
+    .changes-shell[data-theme="manhattan"] .changes-top .meta { color: rgba(255,255,255,0.7); }
+    .changes-shell[data-theme="manhattan"] .agent-pill { color: #b7f0d4; background: rgba(40, 200, 64, 0.15); border-color: rgba(40, 200, 64, 0.3); }
+
     .ide-caption {
       background: var(--white);
       border: 1px solid var(--line);
@@ -3802,6 +4338,8 @@
         const buttons = Array.from(document.querySelectorAll(".ide-step-btn"));
         const stream = document.getElementById("agentStream");
         const changes = document.getElementById("changesBody");
+        const changesShell = document.querySelector(".changes-shell");
+        const changesName = changesShell ? changesShell.querySelector(".changes-top .name") : null;
         const composer = document.getElementById("agentComposer");
         const agentMeta = document.getElementById("agentMeta");
         const agentName = document.getElementById("agentName");
@@ -3846,75 +4384,173 @@
           {
             eyebrow: "Stage 02 · PR",
             title: "Agent opens a review-ready PR",
-            body: "The agent drafts the PR body, tests, and rollout notes — Changes shows the test file and PR template it just wrote.",
+            body: "The agent drafts the full PR in GitHub — summary, test plan, rollout notes, and file changes — so reviewers see a complete picture on open.",
             initiatives: ["Sustainable growth", "Lower cost / initiative"],
             meta: "manhattan-active · create pull request",
             name: "Agent",
             pill: "Opening PR",
             composer: "Open the PR with test plan + feature-flag rollout…",
-            changesMeta: "2 files changed",
-            changesPill: "+18 −0",
+            changesLabel: "GitHub",
+            changesTheme: "github",
+            changesMeta: "manhattan-active / wms · pull request",
+            changesPill: "PR #4910",
             stream: [
               { type: "user", text: "Open a PR for this guard. Include test plan and a flag-based rollout." },
               { type: "tool", name: "run_terminal_cmd", body: "gh pr create --title \"fix(wms): guard empty carton groups\"" },
-              { type: "assistant", text: "PR #4910 opened. Added AllocationServiceTest.emptyCartonGroups() and a rollout checklist in the description." }
+              { type: "assistant", text: "PR #4910 opened on GitHub with full description, test plan, rollout checklist, and both files attached." }
             ],
             changesHtml: `
-              <div class="change-file">
-                <div class="change-file-head"><span>wms/AllocationServiceTest.java</span><span class="stats"><span class="add">+12</span></span></div>
-                <div class="diff-lines">
-                  <div class="diff-line add"><span class="n">44</span><span>+ @Test void emptyCartonGroups_returnsEmptyPlan() {</span></div>
-                  <div class="diff-line add"><span class="n">45</span><span>+   Wave wave = Wave.withCartons(List.of());</span></div>
-                  <div class="diff-line add"><span class="n">46</span><span>+   assertEquals(WavePlan.empty(), svc.applyWaveRules(wave));</span></div>
-                  <div class="diff-line add"><span class="n">47</span><span>+ }</span></div>
+              <div class="rich-panel gh-panel">
+                <div class="gh-chrome">
+                  <div class="gh-dots"><i></i><i></i><i></i></div>
+                  <div class="gh-url">github.com/manhattan-active/wms/pull/4910</div>
                 </div>
-              </div>
-              <div class="change-file">
-                <div class="change-file-head"><span>PR #4910 description</span><span class="stats"><span class="add">+6</span></span></div>
-                <div class="diff-lines">
-                  <div class="diff-line add"><span class="n">1</span><span>+ ## Summary</span></div>
-                  <div class="diff-line add"><span class="n">2</span><span>+ Guard empty carton groups before directed pick.</span></div>
-                  <div class="diff-line add"><span class="n">3</span><span>+ Flag: feature.wms.emptyCartonGuard (default off)</span></div>
+                <div class="gh-repo-bar">manhattan-active <span>/</span> wms</div>
+                <div class="gh-pr-top">
+                  <h4>fix(wms): guard empty carton groups before directed pick</h4>
+                  <div class="gh-pr-meta">
+                    <span class="gh-badge open">Open</span>
+                    <span class="gh-branch"><strong>wave-allocation-guard</strong> → <strong>main</strong></span>
+                  </div>
+                </div>
+                <div class="gh-layout">
+                  <div class="gh-main">
+                    <div class="gh-md">
+                      <strong style="color:#f0f6fc">## Summary</strong><br>
+                      Guard empty carton groups before directed pick waves so TMS tendering never receives a null plan.
+                      <ul>
+                        <li>Mirrors prior fix in PR #4821</li>
+                        <li>Adds unit + contract coverage</li>
+                        <li>Rollout behind feature flag (default off)</li>
+                      </ul>
+                    </div>
+                    <div class="gh-section">
+                      <h5>Test plan</h5>
+                      <div class="gh-md">
+                        <ul>
+                          <li>AllocationServiceTest.emptyCartonGroups()</li>
+                          <li>OMS → WMS → TMS contract path on empty wave</li>
+                          <li>Canary on 5% Active tenants before full enable</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="gh-section">
+                      <h5>Checks</h5>
+                      <div class="gh-checks">
+                        <div class="gh-check pending"><span class="ico">◐</span> build-and-test · queued</div>
+                        <div class="gh-check pending"><span class="ico">◐</span> allocation-tests · waiting</div>
+                      </div>
+                    </div>
+                    <div class="gh-section">
+                      <h5>Files changed · 2</h5>
+                      <div class="gh-files">
+                        <div class="gh-file-head">wms/AllocationService.java <span style="color:#3fb950">+3</span></div>
+                        <div class="gh-file-diff">
+                          <div class="line add"><span class="n">117</span><span>+  if (wave.cartonGroups().isEmpty()) {</span></div>
+                          <div class="line add"><span class="n">118</span><span>+    return WavePlan.empty();</span></div>
+                        </div>
+                        <div class="gh-file-head">wms/AllocationServiceTest.java <span style="color:#3fb950">+12</span></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="gh-side">
+                    <div class="gh-side-block">
+                      <strong>Reviewers</strong>
+                      <span>@wms-platform</span>
+                      <span>@tms-contracts</span>
+                    </div>
+                    <div class="gh-side-block">
+                      <strong>Labels</strong>
+                      <div class="gh-labels">
+                        <span class="gh-label">wms</span>
+                        <span class="gh-label">active</span>
+                        <span class="gh-label">bugfix</span>
+                      </div>
+                    </div>
+                    <div class="gh-side-block">
+                      <strong>Milestone</strong>
+                      <span>Active Q3 · Wave reliability</span>
+                    </div>
+                    <div class="gh-side-block">
+                      <strong>Projects</strong>
+                      <span>Cloud conversions</span>
+                    </div>
+                  </div>
                 </div>
               </div>`
           },
           {
             eyebrow: "Stage 03 · Review · Bugbot",
             title: "Differentiated review: Bugbot + /review",
-            body: "Not generic lint — Bugbot reviews the diff with codebase + prior PR context, runs pre-push via /review, and can autofix. Humans review architecture; Bugbot clears the mechanical risk first.",
+            body: "Bugbot reviews the PR inside GitHub — inline comments on the diff, contract risks flagged, and suggested fixes before a human ever opens the thread.",
             initiatives: ["Customer success", "Active Agents", "Safer delivery"],
             meta: "Bugbot · /review-bugbot · PR #4910",
             name: "Bugbot",
             pill: "Reviewing",
             composer: "/review-bugbot",
-            changesMeta: "Findings on this diff",
+            changesLabel: "GitHub",
+            changesTheme: "github",
+            changesMeta: "PR #4910 · Bugbot review",
             changesPill: "2 findings",
             stream: [
               { type: "user", text: "/review-bugbot — check this branch before I push. Focus on Active WMS ↔ TMS contracts." },
               { type: "tool", name: "bugbot.review", body: "Analyzing branch diff vs main · reading PR comments · matching prior #3994 / #4821" },
-              { type: "assistant", text: "Pre-push Bugbot pass complete (synced to GitHub so the PR won’t double-bill). 1 high: TMS still expects WavePlan.empty(), not null — same class of miss as #3994. 1 medium: add wms→tms contract test. I can Autofix both with a cloud agent." }
+              { type: "assistant", text: "Posted review on GitHub. 1 high contract risk on AllocationService.java, 1 medium coverage gap. Autofix available via cloud agent." }
             ],
             changesHtml: `
-              <div class="review-findings">
-                <div class="finding">
-                  <span class="sev high">High · contract</span>
-                  <p>Returning null on empty cartons would break TMS tendering. Use WavePlan.empty() sentinel — matched to INC pattern in #3994.</p>
+              <div class="rich-panel gh-panel">
+                <div class="gh-chrome">
+                  <div class="gh-dots"><i></i><i></i><i></i></div>
+                  <div class="gh-url">github.com/manhattan-active/wms/pull/4910/files</div>
                 </div>
-                <div class="finding">
-                  <span class="sev med">Medium · coverage</span>
-                  <p>No cross-service test proves OMS→WMS→TMS still handles empty() through the tender path.</p>
+                <div class="gh-repo-bar">manhattan-active <span>/</span> wms · Files changed</div>
+                <div class="gh-pr-top">
+                  <div class="gh-pr-meta">
+                    <span class="gh-badge warn">Bugbot reviewed</span>
+                    <span class="gh-badge check">2 findings</span>
+                  </div>
                 </div>
-                <div class="finding">
-                  <span class="sev info">Bugbot</span>
-                  <p>Pre-push /review · incremental on next pushes · Autofix available · learns from resolved PR comments</p>
-                </div>
-              </div>
-              <div class="change-file">
-                <div class="change-file-head"><span>Suggested fix · AllocationService.java</span><span class="stats"><span class="add">+2</span><span class="del">−1</span></span></div>
-                <div class="diff-lines">
-                  <div class="diff-line del"><span class="n">118</span><span>-    return null;</span></div>
-                  <div class="diff-line add"><span class="n">118</span><span>+    return WavePlan.empty(); // TMS contract</span></div>
-                  <div class="diff-line flag"><span class="n">—</span><span>  Autofix: spawn cloud agent to apply + add contract test</span></div>
+                <div class="gh-main" style="padding-top:0.35rem">
+                  <div class="gh-timeline">
+                    <div class="gh-comment">
+                      <div class="gh-avatar bot">BB</div>
+                      <div class="gh-comment-body">
+                        <div class="gh-comment-head"><strong>bugbot</strong> reviewed AllocationService.java · 2m ago</div>
+                        <div class="gh-comment-content">
+                          <div class="gh-inline-review">
+                            <span class="gh-badge warn" style="margin-bottom:0.25rem;display:inline-block">High · contract</span>
+                            <p>Returning null on empty cartons would break TMS tendering. Use <code>WavePlan.empty()</code> — same miss as PR #3994.</p>
+                            <div class="gh-suggest">
+                              <div class="del">-    return null;</div>
+                              <div class="add">+    return WavePlan.empty(); // TMS contract</div>
+                            </div>
+                          </div>
+                          <div class="gh-inline-review med" style="margin-top:0.45rem">
+                            <span class="gh-badge warn" style="margin-bottom:0.25rem;display:inline-block">Medium · coverage</span>
+                            <p>No cross-service test proves OMS→WMS→TMS still handles empty() through the tender path.</p>
+                          </div>
+                          <p style="margin-top:0.4rem;color:#8b949e">Autofix available · learns from resolved PR comments · synced to GitHub</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="gh-section">
+                    <h5>Checks on this commit</h5>
+                    <div class="gh-checks">
+                      <div class="gh-check pass"><span class="ico">✓</span> Bugbot / review · 2 comments posted</div>
+                      <div class="gh-check pending"><span class="ico">◐</span> build-and-test · running</div>
+                    </div>
+                  </div>
+                  <div class="gh-section">
+                    <h5>wms/AllocationService.java</h5>
+                    <div class="gh-files">
+                      <div class="gh-file-diff">
+                        <div class="line ctx"><span class="n">116</span><span>public WavePlan applyWaveRules(Wave wave) {</span></div>
+                        <div class="line del"><span class="n">118</span><span>-    return null;</span></div>
+                        <div class="line add"><span class="n">118</span><span>+    return WavePlan.empty(); // TMS contract</span></div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>`
           },
@@ -3948,32 +4584,74 @@
           {
             eyebrow: "Stage 05 · Deploy",
             title: "Agent plans a safe release",
-            body: "Changes shows the release plan the agent wrote — turn the fix on for a small slice of customers first, watch for issues, then expand.",
+            body: "The fix ships into Manhattan Active WMS — the warehouse app and Active Agents marketplace show the guard running live on a cautious 5% rollout.",
             initiatives: ["Cloud conversions", "Expand Active suite"],
             meta: "Agent · release plan",
             name: "Agent",
-            pill: "Planning",
+            pill: "Deploying",
             composer: "Plan a cautious release for the warehouse fix…",
-            changesMeta: "2 files · release plan",
-            changesPill: "+8 −0",
+            changesLabel: "Manhattan Active",
+            changesTheme: "manhattan",
+            changesMeta: "WMS · directed pick · live",
+            changesPill: "5% rollout",
             stream: [
               { type: "user", text: "The fix is ready — how do we release it to customers without unnecessary risk?" },
               { type: "tool", name: "search_docs", body: "Prior release #4821 · 5% of customers first · full rollout in ~40 min" },
-              { type: "assistant", text: "Leave it off by default → turn on for 5% of customers first → watch error rates. If anything looks wrong, switch it off again — no full redeploy." }
+              { type: "assistant", text: "Enabled on 5% of Active WMS tenants. Empty Carton Guard agent is live in the marketplace — wave WV-2044 processing with zero TMS errors so far." }
             ],
             changesHtml: `
-              <div class="change-file">
-                <div class="change-file-head"><span>config/release-settings.yaml</span><span class="stats"><span class="add">+2</span></span></div>
-                <div class="diff-lines">
-                  <div class="diff-line add"><span class="n">88</span><span>+ warehouse.empty-carton-fix: off</span></div>
-                  <div class="diff-line add"><span class="n">89</span><span>+ warehouse.empty-carton-fix.rollout: 5% of customers</span></div>
+              <div class="rich-panel mah-panel">
+                <div class="mah-topbar">
+                  <span><img src="https://static.cdnlogo.com/logos/m/89/manhattan-associates.svg" alt="" /> Manhattan Active · Warehouse Management</span>
+                  <span class="live">Live · 5% rollout</span>
                 </div>
-              </div>
-              <div class="change-file">
-                <div class="change-file-head"><span>RELEASE_NOTES.md</span><span class="stats"><span class="add">+4</span></span></div>
-                <div class="diff-lines">
-                  <div class="diff-line add"><span class="n">1</span><span>+ Start with 5% of customers · monitor for issues</span></div>
-                  <div class="diff-line add"><span class="n">2</span><span>+ Emergency off-switch: flip setting back (no redeploy)</span></div>
+                <div class="mah-layout">
+                  <nav class="mah-nav" aria-label="WMS modules">
+                    <span>Inbound</span>
+                    <span class="on">Outbound</span>
+                    <span>Waves</span>
+                    <span>Inventory</span>
+                    <span>Agents</span>
+                  </nav>
+                  <div class="mah-main">
+                    <div class="mah-card">
+                      <h5>Directed pick · Wave WV-2044</h5>
+                      <div class="mah-kpis">
+                        <div class="mah-kpi"><div class="v">142</div><div class="l">Cartons staged</div></div>
+                        <div class="mah-kpi"><div class="v">0</div><div class="l">TMS errors</div></div>
+                        <div class="mah-kpi"><div class="v">5%</div><div class="l">Tenants live</div></div>
+                      </div>
+                    </div>
+                    <div class="mah-card mah-wave">
+                      <h5>Wave progress</h5>
+                      <div class="mah-wave-row active">
+                        <span class="tag">Aisle 12 · pick path</span>
+                        <div class="bar"><i></i></div>
+                        <span>78%</span>
+                      </div>
+                      <div class="mah-wave-row">
+                        <span class="tag">Staging · outbound</span>
+                        <div class="bar"><i style="width:54%;animation:none"></i></div>
+                        <span>54%</span>
+                      </div>
+                    </div>
+                    <div class="mah-ticker">Empty carton guard active — 3 empty waves handled safely today · matching PR #4910 behavior</div>
+                  </div>
+                  <aside class="mah-market">
+                    <h6>Active Agents marketplace</h6>
+                    <div class="mah-agent">
+                      <div class="name">Empty Carton Guard</div>
+                      <div class="status"><em>Running</em> · monitoring directed pick waves<br>Deployed via PR #4910 · canary 5%</div>
+                    </div>
+                    <div class="mah-agent off">
+                      <div class="name">Wave Optimizer</div>
+                      <div class="status">Installed · idle</div>
+                    </div>
+                    <div class="mah-agent off">
+                      <div class="name">Slotting Advisor</div>
+                      <div class="status">Available · not deployed</div>
+                    </div>
+                  </aside>
                 </div>
               </div>`
           },
@@ -4034,6 +4712,8 @@
           composer.textContent = s.composer;
           changesMeta.textContent = s.changesMeta;
           changesPill.textContent = s.changesPill;
+          if (changesName) changesName.textContent = s.changesLabel || "Changes";
+          if (changesShell) changesShell.dataset.theme = s.changesTheme || "diff";
           stream.innerHTML = renderStream(s.stream);
           changes.innerHTML = s.changesHtml;
         }
