@@ -4684,7 +4684,6 @@
           }
         ];
 
-        let timer = null;
         let idx = 0;
 
         function renderStream(items) {
@@ -4718,29 +4717,17 @@
           changes.innerHTML = s.changesHtml;
         }
 
-        function startAuto() {
-          clearInterval(timer);
-          timer = window.setInterval(() => show((idx + 1) % scenes.length), 5200);
-        }
-
-        function stopAuto() {
-          clearInterval(timer);
-          timer = null;
-        }
-
         buttons.forEach((btn) => {
           btn.addEventListener("click", (e) => {
             e.stopPropagation();
             show(Number(btn.dataset.ide));
-            stopAuto();
-            window.setTimeout(startAuto, 9000);
           });
         });
 
         show(0);
         window.__cursorIdeDemo = {
-          start() { show(idx); startAuto(); },
-          pause() { stopAuto(); }
+          start() { show(idx); },
+          pause() {}
         };
       })();
 
