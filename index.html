@@ -3947,33 +3947,33 @@
           },
           {
             eyebrow: "Stage 05 · Deploy",
-            title: "Agent drafts the safe rollout",
-            body: "Changes shows the flag + canary plan the agent wrote — so versionless Active deploys stay controlled.",
+            title: "Agent plans a safe release",
+            body: "Changes shows the release plan the agent wrote — turn the fix on for a small slice of customers first, watch for issues, then expand.",
             initiatives: ["Cloud conversions", "Expand Active suite"],
             meta: "Agent · release plan",
             name: "Agent",
             pill: "Planning",
-            composer: "Draft the canary rollout for emptyCartonGuard…",
-            changesMeta: "2 files · release artifacts",
+            composer: "Plan a cautious release for the warehouse fix…",
+            changesMeta: "2 files · release plan",
             changesPill: "+8 −0",
             stream: [
-              { type: "user", text: "Prep prod rollout for the carton guard on Active tenants." },
-              { type: "tool", name: "search_docs", body: "Prior rollout #4821 · 5% canary · 40m to full" },
-              { type: "assistant", text: "Flag default off → 5% canary → watch WavePlan.empty() rate. Rollback is a flag flip, no redeploy." }
+              { type: "user", text: "The fix is ready — how do we release it to customers without unnecessary risk?" },
+              { type: "tool", name: "search_docs", body: "Prior release #4821 · 5% of customers first · full rollout in ~40 min" },
+              { type: "assistant", text: "Leave it off by default → turn on for 5% of customers first → watch error rates. If anything looks wrong, switch it off again — no full redeploy." }
             ],
             changesHtml: `
               <div class="change-file">
-                <div class="change-file-head"><span>config/feature-flags.yaml</span><span class="stats"><span class="add">+2</span></span></div>
+                <div class="change-file-head"><span>config/release-settings.yaml</span><span class="stats"><span class="add">+2</span></span></div>
                 <div class="diff-lines">
-                  <div class="diff-line add"><span class="n">88</span><span>+ feature.wms.emptyCartonGuard: false</span></div>
-                  <div class="diff-line add"><span class="n">89</span><span>+ feature.wms.emptyCartonGuard.canary: 0.05</span></div>
+                  <div class="diff-line add"><span class="n">88</span><span>+ warehouse.empty-carton-fix: off</span></div>
+                  <div class="diff-line add"><span class="n">89</span><span>+ warehouse.empty-carton-fix.rollout: 5% of customers</span></div>
                 </div>
               </div>
               <div class="change-file">
                 <div class="change-file-head"><span>RELEASE_NOTES.md</span><span class="stats"><span class="add">+4</span></span></div>
                 <div class="diff-lines">
-                  <div class="diff-line add"><span class="n">1</span><span>+ Canary 5% Active WMS · metric: wms.wave.empty_cartons</span></div>
-                  <div class="diff-line add"><span class="n">2</span><span>+ Rollback: toggle flag (no redeploy)</span></div>
+                  <div class="diff-line add"><span class="n">1</span><span>+ Start with 5% of customers · monitor for issues</span></div>
+                  <div class="diff-line add"><span class="n">2</span><span>+ Emergency off-switch: flip setting back (no redeploy)</span></div>
                 </div>
               </div>`
           },
