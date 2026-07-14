@@ -254,6 +254,12 @@
       line-height: 1.35;
     }
 
+    .agenda-plus {
+      color: var(--orange);
+      font-weight: 500;
+      margin: 0 0.15rem;
+    }
+
     .agenda-hint {
       font-size: 0.78rem;
       color: var(--muted);
@@ -3140,50 +3146,23 @@
               <button type="button" class="agenda-item" data-slide="1">
                 <span class="agenda-num">1</span>
                 <span class="agenda-copy">
-                  <strong>Introduction</strong>
-                  <span>Driving engineering velocity</span>
-                </span>
-              </button>
-            </li>
-            <li>
-              <button type="button" class="agenda-item" data-slide="2">
-                <span class="agenda-num">2</span>
-                <span class="agenda-copy">
-                  <strong>Our point of view</strong>
-                  <span>How we see Manhattan Associates</span>
+                  <strong>Our point of view <span class="agenda-plus">+</span> Your top priority initiatives</strong>
+                  <span>How we see Manhattan · Revenue · cost · risk</span>
                 </span>
               </button>
             </li>
             <li>
               <button type="button" class="agenda-item" data-slide="3">
-                <span class="agenda-num">3</span>
+                <span class="agenda-num">2</span>
                 <span class="agenda-copy">
-                  <strong>Your top priority initiatives</strong>
-                  <span>Revenue · cost · risk</span>
-                </span>
-              </button>
-            </li>
-            <li>
-              <button type="button" class="agenda-item" data-slide="4">
-                <span class="agenda-num">4</span>
-                <span class="agenda-copy">
-                  <strong>Current state</strong>
-                  <span>How code moves today</span>
+                  <strong>Current state <span class="agenda-plus">+</span> Future state with Cursor</strong>
+                  <span>How code moves today · Agent on the left · changes on the right</span>
                 </span>
               </button>
             </li>
             <li>
               <button type="button" class="agenda-item" data-slide="5">
-                <span class="agenda-num">5</span>
-                <span class="agenda-copy">
-                  <strong>Future state with Cursor</strong>
-                  <span>Agent on the left · changes on the right</span>
-                </span>
-              </button>
-            </li>
-            <li>
-              <button type="button" class="agenda-item" data-slide="6">
-                <span class="agenda-num">6</span>
+                <span class="agenda-num">3</span>
                 <span class="agenda-copy">
                   <strong>Evaluation</strong>
                   <span>Model neutrality · codebase · time to value · platform</span>
@@ -3191,8 +3170,8 @@
               </button>
             </li>
             <li>
-              <button type="button" class="agenda-item" data-slide="7">
-                <span class="agenda-num">7</span>
+              <button type="button" class="agenda-item" data-slide="6">
+                <span class="agenda-num">4</span>
                 <span class="agenda-copy">
                   <strong>Customer proof</strong>
                   <span>Coinbase → what Sanjeev can expect</span>
@@ -3200,20 +3179,11 @@
               </button>
             </li>
             <li>
-              <button type="button" class="agenda-item" data-slide="8">
-                <span class="agenda-num">8</span>
+              <button type="button" class="agenda-item" data-slide="7">
+                <span class="agenda-num">5</span>
                 <span class="agenda-copy">
                   <strong>Next steps</strong>
                   <span>Walk through pilot planning</span>
-                </span>
-              </button>
-            </li>
-            <li>
-              <button type="button" class="agenda-item" data-slide="9">
-                <span class="agenda-num">9</span>
-                <span class="agenda-copy">
-                  <strong>Leadership asks</strong>
-                  <span>Tools · AE:SE ratios · post-sales path</span>
                 </span>
               </button>
             </li>
@@ -3222,35 +3192,7 @@
       </div>
     </section>
 
-    <!-- 1. Intro -->
-    <section class="slide" data-title="Intro">
-      <div class="slide-inner">
-        <div class="intro-layout">
-          <div>
-            <p class="pair">Cursor <span class="x">×</span> Manhattan Associates</p>
-            <p class="kicker">Introduction</p>
-            <h1>Driving engineering velocity</h1>
-            <p class="lede" style="margin-top: 1rem;">
-              How Cursor can help Manhattan’s engineering organization move faster — shipping platform, AI, and cloud initiatives with more leverage and less drag.
-            </p>
-            <div class="meta" style="margin-top: 1.25rem;">
-              <span><strong>With</strong> Sanjeev Siotia</span>
-              <span><strong>Role</strong> EVP &amp; Chief Technology Officer</span>
-            </div>
-          </div>
-          <div class="manh-hero">
-            <img
-              src="https://static.cdnlogo.com/logos/m/89/manhattan-associates.svg"
-              alt="Manhattan Associates"
-              width="520"
-              height="520"
-            />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 2. Point of view -->
+    <!-- 1. Point of view -->
     <section class="slide" data-title="Point of view">
       <div class="slide-inner">
         <div class="pov-top">
@@ -3949,47 +3891,6 @@
       </div>
     </section>
 
-    <!-- 9. Leadership asks -->
-    <section class="slide" data-title="Leadership asks">
-      <div class="slide-inner" style="gap: 0.85rem;">
-        <div>
-          <p class="kicker">For leadership</p>
-          <h2>Three asks for leadership</h2>
-        </div>
-
-        <div class="leadership-asks">
-          <div class="leadership-ask">
-            <span class="ask-num">Ask 01</span>
-            <h3>Tools</h3>
-            <div class="ask-tools">
-              <span class="is-highlight">Glean</span>
-              <span class="is-highlight">Cursor tokens / credits</span>
-              <span>Outreach</span>
-              <span>Prospecting tools</span>
-              <span>Claude Code</span>
-              <span>Codex</span>
-              <span>GitHub Copilot</span>
-            </div>
-          </div>
-
-          <div class="leadership-ask">
-            <span class="ask-num">Ask 02</span>
-            <h3>AE to SE ratios</h3>
-            <p class="ask-note">Building solid SE–AE relationships — not round robin with no real relationship building between SEs and AEs.</p>
-          </div>
-
-          <div class="leadership-ask">
-            <span class="ask-num">Ask 03</span>
-            <h3>Clear defined path to post-sales</h3>
-            <div class="ask-tools">
-              <span>Handling customers post-contract</span>
-              <span>If that’s the model</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
   </div>
 
   <div class="chrome">
@@ -4009,7 +3910,7 @@
       const prevBtn = document.getElementById("prev");
       const nextBtn = document.getElementById("next");
       let index = 0;
-      const PRIORITIES_INDEX = 3;
+      const PRIORITIES_INDEX = 2;
       let prioritiesStep = 0;
 
       const priorityBuckets = Array.from(document.querySelectorAll(".priority-bucket"));
@@ -4095,14 +3996,14 @@
         count.textContent = (index + 1) + " / " + slides.length;
         if (index === PRIORITIES_INDEX) resetPrioritiesReveal();
         syncNavState();
-        if (index === 2) flow.start();
+        if (index === 1) flow.start();
         else flow.pause();
         if (window.__cursorIdeDemo) {
-          if (index === 5) window.__cursorIdeDemo.start();
+          if (index === 4) window.__cursorIdeDemo.start();
           else window.__cursorIdeDemo.pause();
         }
         if (window.__evalTabs) {
-          if (index === 6) window.__evalTabs.start();
+          if (index === 5) window.__evalTabs.start();
           else window.__evalTabs.pause();
         }
       }
